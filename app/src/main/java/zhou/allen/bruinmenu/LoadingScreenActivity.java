@@ -75,11 +75,13 @@ public class LoadingScreenActivity extends Activity
                         startService(i);
                         //todo replace this code with refresh function
 
+                        /*
                         try {
                             Thread.sleep(3000);                 //1000 milliseconds is one second.
                         } catch(InterruptedException ex) {
                             Thread.currentThread().interrupt();
                         }
+                        */
                     }
 
 

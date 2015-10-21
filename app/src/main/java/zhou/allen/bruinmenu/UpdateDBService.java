@@ -20,6 +20,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -90,6 +91,13 @@ public class UpdateDBService extends Service {
                         String mealTime;
 
                         Elements cells = menus.get(i).select(".menugridcell, .menusplit");
+
+                        Elements locs = menus.get(i).select(".menulocheader");
+                        ArrayList<String> locsS = new ArrayList<String>();
+                        for (Element e :locs) {
+                            locsS.add(e.text().trim().toLowerCase());
+                        }
+
                         Elements timeMenu = menus.get(i).select(".menumealheader");
                         if (timeMenu.get(0).text().toLowerCase().contains("breakfast"))
                             mealTime = "breakfast";
@@ -98,19 +106,25 @@ public class UpdateDBService extends Service {
                         else
                             mealTime = "dinner";
 
+                        int temp = 0;
+
                         for (Element e : cells) {
 
                             if (e.hasClass("menusplit")) {
-                                topbottom = false;
-                            } else {
+                                temp += 2;
+                            }
+                            else {
                                 ContentValues values = new ContentValues();
                                 values.put(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM, listText(e));
                                 values.put(MenuDBContract.MenuEntry.COLUMN_NAME_MEALTIME, mealTime);
-                                if (topbottom == true) {
+                                if (locsS.get(temp).contains("covel"))
                                     values.put(MenuDBContract.MenuEntry.COLUMN_NAME_LOC, "covel");
-                                } else if (topbottom == false) {
+                                else if (locsS.get(temp).contains("de neve"))
+                                    values.put(MenuDBContract.MenuEntry.COLUMN_NAME_LOC, "deNeve");
+                                else if (locsS.get(temp).contains("rieber"))
                                     values.put(MenuDBContract.MenuEntry.COLUMN_NAME_LOC, "feast");
-                                }
+                                else
+                                    values.put(MenuDBContract.MenuEntry.COLUMN_NAME_LOC, "bPlate");
                                 long newRowId;
                                 newRowId = db.insert(
                                         MenuDBContract.MenuEntry.TABLE_NAME,
@@ -120,20 +134,23 @@ public class UpdateDBService extends Service {
                         }
 
                         Elements cells2 = menus.get(i).select(".menugridcell_last, .menusplit");
-                        topbottom = true;
+                        temp = 1;
 
                         for (Element e : cells2) {
                             if (e.hasClass("menusplit")) {
-                                topbottom = false;
+                                temp += 2;
                             } else {
                                 ContentValues values = new ContentValues();
                                 values.put(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM, listText(e));
                                 values.put(MenuDBContract.MenuEntry.COLUMN_NAME_MEALTIME, mealTime);
-                                if (topbottom == true) {
+                                if (locsS.get(temp).contains("covel"))
+                                    values.put(MenuDBContract.MenuEntry.COLUMN_NAME_LOC, "covel");
+                                else if (locsS.get(temp).contains("de neve"))
                                     values.put(MenuDBContract.MenuEntry.COLUMN_NAME_LOC, "deNeve");
-                                } else if (topbottom == false) {
+                                else if (locsS.get(temp).contains("rieber"))
+                                    values.put(MenuDBContract.MenuEntry.COLUMN_NAME_LOC, "feast");
+                                else
                                     values.put(MenuDBContract.MenuEntry.COLUMN_NAME_LOC, "bPlate");
-                                }
                                 long newRowId;
                                 newRowId = db.insert(
                                         MenuDBContract.MenuEntry.TABLE_NAME,
