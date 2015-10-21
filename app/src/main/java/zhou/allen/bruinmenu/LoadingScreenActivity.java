@@ -73,8 +73,10 @@ public class LoadingScreenActivity extends Activity
                         AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
                         alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, 2 * AlarmManager.INTERVAL_HOUR, 1000 * 60, pi);
                         startService(i);
+                        //todo replace this code with refresh function
+
                         try {
-                            Thread.sleep(10000);                 //1000 milliseconds is one second.
+                            Thread.sleep(3000);                 //1000 milliseconds is one second.
                         } catch(InterruptedException ex) {
                             Thread.currentThread().interrupt();
                         }
