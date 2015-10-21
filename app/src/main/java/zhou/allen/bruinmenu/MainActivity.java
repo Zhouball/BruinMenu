@@ -1,9 +1,15 @@
 package zhou.allen.bruinmenu;
 
 /**
- * Fix breakfast menu
- * Add a page that tracks swipes left on card
- * Try/catch for internet connection
+ * sqlite
+ * -Fix breakfast menu
+ * -Try/catch for internet connection
+ *
+ * swipetracker
+ * -Add a page that tracks swipes left on card
+ *
+ * sliders
+ * -Swipe animation
  **/
 import android.graphics.Point;
 import android.support.v4.view.GestureDetectorCompat;
@@ -15,20 +21,14 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
-//import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
-import org.jsoup.Jsoup;
-import org.jsoup.helper.Validate;
-import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
-import java.io.IOException;
 
 import info.androidhive.expandablelistview.ExpandableListAdapter;
 
