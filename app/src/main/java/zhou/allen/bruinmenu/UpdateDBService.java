@@ -90,7 +90,10 @@ public class UpdateDBService extends Service {
                         String mealTime;
 
                         Elements cells = menus.get(i).select(".menugridcell, .menusplit");
-                        if (i == 0)
+                        Elements timeMenu = menus.get(i).select(".menumealheader");
+                        if (timeMenu.get(0).text().toLowerCase().contains("breakfast"))
+                            mealTime = "breakfast";
+                        else if (timeMenu.get(0).text().toLowerCase().contains("lunch"))
                             mealTime = "lunch";
                         else
                             mealTime = "dinner";

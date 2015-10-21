@@ -68,12 +68,10 @@ public class MainActivity extends AppCompatActivity {
 
         MenuDBHelper dbHelper = new MenuDBHelper(this);
 
-        List<String> covel = dbHelper.getEntryByLocAndMealTime("covel", "lunch");
-        List<String> deNeve = dbHelper.getEntryByLocAndMealTime("deNeve", "lunch");
-        List<String> feast = dbHelper.getEntryByLocAndMealTime("feast", "lunch");
-        List<String> bPlate = dbHelper.getEntryByLocAndMealTime("bPlate", "lunch");
-
-
+        List<String> covel = dbHelper.getEntryByLocAndMealTime("covel", "dinner");
+        List<String> deNeve = dbHelper.getEntryByLocAndMealTime("deNeve", "dinner");
+        List<String> feast = dbHelper.getEntryByLocAndMealTime("feast", "dinner");
+        List<String> bPlate = dbHelper.getEntryByLocAndMealTime("bPlate", "dinner");
 
         listDataChild.put(listDataHeader.get(0), covel); // Header, Child data
         listDataChild.put(listDataHeader.get(1), deNeve);
