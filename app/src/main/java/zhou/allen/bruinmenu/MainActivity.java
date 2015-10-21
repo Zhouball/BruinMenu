@@ -1,9 +1,8 @@
 package zhou.allen.bruinmenu;
 
 /**
- * Prevent back button from going to loading screen loading screen
- * Add breakfast menu
- * Add a page that tracks swipes
+ * Fix breakfast menu
+ * Add a page that tracks swipes left on card
  * Try/catch for internet connection
  **/
 import android.graphics.Point;
