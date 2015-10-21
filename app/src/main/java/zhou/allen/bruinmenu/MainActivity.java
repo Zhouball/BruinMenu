@@ -1,7 +1,13 @@
 package zhou.allen.bruinmenu;
 
+import android.graphics.Point;
+import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Display;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.widget.ExpandableListView;
 //import android.widget.TextView;
 
@@ -19,7 +25,10 @@ import java.io.IOException;
 
 import info.androidhive.expandablelistview.ExpandableListAdapter;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
+
+    //GestureDetector
+    private GestureDetectorCompat mDetector;
 
     //TextView mainTextView;
     ExpandableListView menu;
@@ -31,13 +40,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //mainTextView = (TextView) findViewById(R.id.main_textview);
+        initScreenSize();
+        mDetector = new GestureDetectorCompat(this,this);
+
         Bundle extras = getIntent().getExtras();
         if(extras !=null) {
             html = extras.getString("html");
         }
 
-        //mainTextView.setText(html);
+        //
 
         // get the listview
         menu = (ExpandableListView) findViewById(R.id.expandableListView);
@@ -126,5 +137,76 @@ public class MainActivity extends AppCompatActivity {
             s.append(listItems.get(listItems.size() - 1).text().trim());
         }
         return s.toString();
+    }
+
+    //Gesture Detection (can implement functionality for other gestures as well later.
+    private String DEBUG_TAG = "Gestures";
+    @Override
+    public boolean onTouchEvent(MotionEvent e) {
+        this.mDetector.onTouchEvent(e);
+        return super.onTouchEvent(e);
+    }
+    @Override
+    public boolean onDown(MotionEvent e) {
+        Log.d(DEBUG_TAG, "onDown: " + e.toString());
+        return false;
+    }
+    @Override
+    public boolean onSingleTapUp(MotionEvent e) {
+        Log.d(DEBUG_TAG, "onSingleTapUp: " + e.toString());
+        return false;
+    }
+    @Override
+    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+        Log.d(DEBUG_TAG, "onScroll: " + e1.toString()+e2.toString());
+        return true;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent e) {
+        Log.d(DEBUG_TAG, "onShowPress: " + e.toString());
+    }
+    @Override
+    public void onLongPress (MotionEvent e) {
+        Log.d(DEBUG_TAG, "onLongPress: " + e.toString());
+    }
+
+    private int screenX, screenY;
+    private float swipeMinDistance;
+    private float swipeMinVelocity = 100;
+    @Override
+    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+        Log.d(DEBUG_TAG, "onFling: " + e1.toString()+e2.toString()+velocityX);
+
+        final float xDistance = Math.abs(e1.getX() - e2.getX());
+        final float yDistance = Math.abs(e1.getY() - e2.getY());
+
+        velocityX = Math.abs(velocityX);
+        boolean result = false;
+        //LR swipe
+        if(velocityX > this.swipeMinVelocity && xDistance > this.swipeMinDistance) {
+            if(e1.getX() > e2.getX())
+                Log.d(DEBUG_TAG, "Swipe to right screen");
+            else
+                Log.d(DEBUG_TAG, "Swipe to left screen");
+            result = true;
+        }
+        return result;
+    }
+
+    private void initScreenSize() {
+        Display display = getWindowManager().getDefaultDisplay();
+        if(android.os.Build.VERSION.SDK_INT >= 13) {
+            Point size = new Point();
+            display.getSize(size);
+            screenX = size.x;
+            screenY = size.y;
+        } else {
+            screenX = display.getWidth();
+            screenY = display.getHeight();
+        }
+        swipeMinDistance = screenX/4;
+
+        Log.d(DEBUG_TAG, "("+screenX+", "+screenY+"), "+swipeMinDistance);
     }
 }
