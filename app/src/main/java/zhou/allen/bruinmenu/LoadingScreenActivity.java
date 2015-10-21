@@ -8,19 +8,29 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.content.Intent;
+import android.content.Context;
+
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 public class LoadingScreenActivity extends Activity
 {
     //A ProgressDialog object
     private ProgressDialog progressDialog;
-    private LoadingScreenActivity thisActivity = this;
 
     /** Called when the activity is first created. */
     @Override
@@ -36,7 +46,7 @@ public class LoadingScreenActivity extends Activity
 
     //To use the AsyncTask, it must be subclassed
     private class GetPageTask extends AsyncTask<Void, Integer, Void> {
-        String html;
+        //String html;
         //Before running code in separate thread
         @Override
         protected void onPreExecute() {
@@ -50,26 +60,37 @@ public class LoadingScreenActivity extends Activity
             //Get the current thread's token
             synchronized (this) {
                 try {
-                    OkHttpClient client = new OkHttpClient();
 
-                    String url = "http://menu.ha.ucla.edu/foodpro/default.asp";
-                    client.setConnectTimeout(15, TimeUnit.SECONDS); // connect timeout
-                    client.setReadTimeout(15, TimeUnit.SECONDS);    // socket timeout
-                    Request request = new Request.Builder()
-                            .url(url)
-                            .build();
 
-                    Response response = client.newCall(request).execute();
-                    html = response.body().string();
-                    //((AppVariables) getApplicationContext()).setBruinMenu(html);
-                    //System.out.print("I got the page!");
-                } catch (IOException e) {
-                    //TODO fails to connect
+                    boolean alarmUp = (PendingIntent.getBroadcast(LoadingScreenActivity.this, 0,
+                            new Intent(getApplicationContext(), UpdateDBService.class),
+                            PendingIntent.FLAG_NO_CREATE) != null);
+
+                    if (!alarmUp) {
+                        Intent i = new Intent(getApplicationContext(), UpdateDBService.class);
+                        PendingIntent pi = PendingIntent.getBroadcast(getApplicationContext(), 0,
+                                i, PendingIntent.FLAG_UPDATE_CURRENT);
+                        AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+                        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, 2 * AlarmManager.INTERVAL_HOUR, 1000 * 60, pi);
+                        startService(i);
+                        //todo replace this code with refresh function
+
+                        try {
+                            Thread.sleep(3000);                 //1000 milliseconds is one second.
+                        } catch(InterruptedException ex) {
+                            Thread.currentThread().interrupt();
+                        }
+                    }
+
+
+
+                } catch (Exception e) {
                     //return "Unable to retrieve web page. http://menu.ha.ucla.edu/foodpro/default.asp may be down.";
                 }
             }
             return null;
         }
+
 
         /*
         //Update the progress
@@ -88,8 +109,8 @@ public class LoadingScreenActivity extends Activity
             //initialize the View
 
             //String html = ((AppVariables) getApplicationContext()).getBruinMenu();
-            Intent i = new Intent(thisActivity, MainActivity.class);
-            i.putExtra("html",html);
+            Intent i = new Intent(LoadingScreenActivity.this, MainActivity.class);
+            //i.putExtra("html",html);
             startActivity(i);
             setContentView(R.layout.activity_main);
         }
