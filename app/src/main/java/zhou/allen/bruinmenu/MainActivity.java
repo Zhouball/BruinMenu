@@ -1,10 +1,10 @@
 package zhou.allen.bruinmenu;
 
- /**
-  * Prevent back button from going to loading screen loading screen
-  * Add breakfast menu
-  * Add a page that tracks swipes
-  * Try/catch for internet connection
+/**
+ * Prevent back button from going to loading screen loading screen
+ * Add breakfast menu
+ * Add a page that tracks swipes
+ * Try/catch for internet connection
  **/
 import android.graphics.Point;
 import android.support.v4.view.GestureDetectorCompat;
