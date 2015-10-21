@@ -54,77 +54,30 @@ public class MainActivity extends AppCompatActivity {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
 
-        Document doc = Jsoup.parse(html);
-        Elements menus = doc.getElementsByClass("menucontent");
-
         listDataHeader.add("Covel");
         listDataHeader.add("De Neve");
         listDataHeader.add("FEAST at Rieber");
         listDataHeader.add("Bruin Plate");
 
+        /*
         List<String> covel = new ArrayList<String>();
         List<String> deNeve = new ArrayList<String>();
         List<String> feast = new ArrayList<String>();
         List<String> bPlate = new ArrayList<String>();
+        */
 
-        boolean topbottom; //top is true
-        for (int i = 0; i < menus.size(); i++) {
-            topbottom = true;
-            Elements cells = menus.get(i).select(".menugridcell, .menusplit");
-            for (Element e : cells) {
-                if (e.hasClass("menusplit")) {
-                    topbottom = false;
-                }
-                else if (topbottom == true) {
-                    covel.add(listText(e));
-                }
-                else if (topbottom == false) {
-                    feast.add(listText(e));
-                }
-            }
-            Elements cells2 = menus.get(i).select(".menugridcell_last, .menusplit");
-            topbottom = true;
-            for (Element e : cells2) {
-                if (e.hasClass("menusplit")) {
-                    topbottom = false;
-                }
-                else if (topbottom == true) {
-                    deNeve.add(listText(e));
-                }
-                else if (topbottom == false) {
-                    bPlate.add(listText(e));
-                }
-            }
-            /*
-                else if (leftright == false) {
-                    if (topbottom == true) {
-                        deNeve.add(e.text());
-                    }
-                    else if (topbottom == false) {
-                        bPlate.add(e.text());
-                    }
-                    leftright = true;
-                }
-                */
+        MenuDBHelper dbHelper = new MenuDBHelper(this);
 
-        }
+        List<String> covel = dbHelper.getEntryByLocAndMealTime("covel", "lunch");
+        List<String> deNeve = dbHelper.getEntryByLocAndMealTime("deNeve", "lunch");
+        List<String> feast = dbHelper.getEntryByLocAndMealTime("feast", "lunch");
+        List<String> bPlate = dbHelper.getEntryByLocAndMealTime("bPlate", "lunch");
+
+
 
         listDataChild.put(listDataHeader.get(0), covel); // Header, Child data
         listDataChild.put(listDataHeader.get(1), deNeve);
         listDataChild.put(listDataHeader.get(2), feast);
         listDataChild.put(listDataHeader.get(3), bPlate);
-    }
-
-    private String listText(Element e) {
-        Elements listItems = e.select("li");
-        StringBuffer s = new StringBuffer(listItems.get(0).text().trim() + ":\n");
-        for (int i = 1; i < listItems.size() - 1; i++) {
-            if (!listItems.get(i).text().isEmpty())
-                s.append(listItems.get(i).text().trim() + "\n");
-        }
-        if (listItems.size() > 1) {
-            s.append(listItems.get(listItems.size() - 1).text().trim());
-        }
-        return s.toString();
     }
 }
