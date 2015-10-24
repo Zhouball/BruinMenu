@@ -2,29 +2,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Loading..."
-        android:id="@+id/titleTextView"
-        android:gravity="center_horizontal"
-        android:layout_alignParentTop="true"
-        android:textSize="30dp"
-        android:fontFamily="sans-serif"
-        android:background="@color/backgroundColor"
-        android:textColor="@color/textColor"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
 
-    <ExpandableListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/titleTextView"
-        android:id="@+id/expandableListView"
-        android:layout_centerHorizontal="true" />
+    <it.neokree.materialtabs.MaterialTabHost
+        android:id="@+id/materialTabHost"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:textColor="@color/textColor"
+        app:primaryColor="@color/backgroundColor"
+        app:accentColor="@color/textColor"/>
 
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/materialTabHost"
+        android:layout_weight="1" />
 
 </RelativeLayout>
