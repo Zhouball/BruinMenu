@@ -4,20 +4,20 @@ package zhou.allen.bruinmenu;
  * Created by Owner on 10/18/2015.
  */
 
-import java.io.IOException;
+//import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import android.app.Activity;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
+//import android.app.AlarmManager;
+//import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.content.Intent;
-import android.content.Context;
+//import android.content.Context;
 
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.OkHttpClient;
@@ -173,12 +173,14 @@ public class RefreshScreenActivity extends Activity
                     dbHelper.close();
                     db.close();
 
-
-
-
-
                 } catch (Exception e) {
-                    //return "Unable to retrieve web page. http://menu.ha.ucla.edu/foodpro/default.asp may be down.";
+                    progressDialog = ProgressDialog.show(RefreshScreenActivity.this, "Connection Failed",
+                            "Unable to connect to BruinMenu", false, false);
+                    try {
+                        Thread.sleep(1000);                 //1000 milliseconds is one second.
+                    } catch(InterruptedException ex) {
+                        Thread.currentThread().interrupt();
+                    }
                 }
             }
             return null;

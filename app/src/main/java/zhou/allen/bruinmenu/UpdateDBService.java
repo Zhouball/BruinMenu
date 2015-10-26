@@ -1,12 +1,12 @@
 package zhou.allen.bruinmenu;
 
-import android.app.Activity;
+//import android.app.Activity;
 import android.app.Service;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
-import android.os.Bundle;
+//import android.os.Bundle;
 import android.os.IBinder;
 
 import com.squareup.okhttp.Call;
@@ -19,7 +19,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.IOException;
+//import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -165,8 +165,7 @@ public class UpdateDBService extends Service {
                     db.close();
 
                 } catch (Exception e) {
-                    //TODO fails to connect
-                    e.printStackTrace();
+                    //Do nothing if service fails.
                     //return "Unable to retrieve web page. http://menu.ha.ucla.edu/foodpro/default.asp may be down.";
                 }
 
