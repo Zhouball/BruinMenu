@@ -80,22 +80,38 @@ public class MenuFragment extends Fragment {
 
     private void prepareListData() {
 
-        listDataHeader.add("Covel");
-        listDataHeader.add("De Neve");
-        listDataHeader.add("FEAST at Rieber");
-        listDataHeader.add("Bruin Plate");
-
         MenuDBHelper dbHelper = new MenuDBHelper(getContext());
+        ArrayList<List<String>> menuList = new ArrayList<List<String>>();
 
         List<String> covel = dbHelper.getEntryByLocAndMealTime("covel", timeOfDay);
+        if (covel.size() != 0) {
+            listDataHeader.add("Covel");
+            menuList.add(covel);
+        }
         List<String> deNeve = dbHelper.getEntryByLocAndMealTime("deNeve", timeOfDay);
+        if (deNeve.size() != 0) {
+            listDataHeader.add("De Neve");
+            menuList.add(deNeve);
+        }
         List<String> feast = dbHelper.getEntryByLocAndMealTime("feast", timeOfDay);
+        if (feast.size() != 0) {
+            listDataHeader.add("FEAST at Rieber");
+            menuList.add(feast);
+        }
         List<String> bPlate = dbHelper.getEntryByLocAndMealTime("bPlate", timeOfDay);
+        if (bPlate.size() != 0) {
+            listDataHeader.add("Bruin Plate");
+            menuList.add(bPlate);
+        }
 
-        listDataChild.put(listDataHeader.get(0), covel); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), deNeve);
-        listDataChild.put(listDataHeader.get(2), feast);
-        listDataChild.put(listDataHeader.get(3), bPlate);
+        if (menuList.size() == 0) {
+            listDataHeader.add("Nothing to see here!");
+            menuList.add(new ArrayList<String>());
+        }
+        else
+            for (int i = 0; i < menuList.size(); i++) {
+                listDataChild.put(listDataHeader.get(i), menuList.get(i)); // Header, Child data
+            }
     }
 /*
     private String listText(Element e) {
