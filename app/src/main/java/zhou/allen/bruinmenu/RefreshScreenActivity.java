@@ -1,13 +1,23 @@
 package zhou.allen.bruinmenu;
 
-//import android.app.Activity;
-import android.app.Service;
+/**
+ * Created by Owner on 10/18/2015.
+ */
+
+//import java.io.IOException;
+import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+
+import android.app.Activity;
+//import android.app.AlarmManager;
+//import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.content.ContentValues;
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
-//import android.os.Bundle;
-import android.os.IBinder;
+import android.os.Bundle;
+import android.content.Intent;
+//import android.content.Context;
 
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.OkHttpClient;
@@ -19,41 +29,40 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-//import java.io.IOException;
-import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
+public class RefreshScreenActivity extends Activity
+{
+    //A ProgressDialog object
+    private ProgressDialog progressDialog;
 
-/**
- * Created by Owner on 10/20/2015.
- */
-public class UpdateDBService extends Service {
-
-    public IBinder onBind(Intent arg0) {
-        return null;
-    }
-
-    public void onCreate() {
-        super.onCreate();
-
-        new UpdateDB().execute();
-        stopSelf();
-    }
-
-    public int onStartCommand(Intent intent, int flags, int startID)
+    /** Called when the activity is first created. */
+    @Override
+    public void onCreate(Bundle savedInstanceState)
     {
-        //super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);
 
-        //new UpdateDB().execute();
+        //Initialize a LoadViewTask object and call the execute() method
+        new GetPageTask().execute();
 
 
-        return 1;
     }
 
-    private class UpdateDB extends AsyncTask<Void, Integer, Void> {
+    //To use the AsyncTask, it must be subclassed
+    private class GetPageTask extends AsyncTask<Void, Integer, Void> {
+        //String html;
+        boolean refresh;
+        //Before running code in separate thread
+        @Override
+        protected void onPreExecute() {
+            progressDialog = ProgressDialog.show(RefreshScreenActivity.this, "Connecting...",
+                    "Connecting to Bruin Menu, please wait...", false, false);
+        }
+
+        //The code to be executed in a background thread.
+        @Override
         protected Void doInBackground(Void... params) {
+            //Get the current thread's token
             synchronized (this) {
                 try {
-
                     OkHttpClient client = new OkHttpClient();
 
                     String url = "http://menu.ha.ucla.edu/foodpro/default.asp";
@@ -115,7 +124,7 @@ public class UpdateDBService extends Service {
                             }
                             else {
                                 ContentValues values = new ContentValues();
-                                values.put(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM, listText(e));
+                                values.put(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM, UpdateDBService.listText(e));
                                 values.put(MenuDBContract.MenuEntry.COLUMN_NAME_MEALTIME, mealTime);
                                 if (locsS.get(temp).contains("covel"))
                                     values.put(MenuDBContract.MenuEntry.COLUMN_NAME_LOC, "covel");
@@ -141,7 +150,7 @@ public class UpdateDBService extends Service {
                                 temp += 2;
                             } else {
                                 ContentValues values = new ContentValues();
-                                values.put(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM, listText(e));
+                                values.put(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM, UpdateDBService.listText(e));
                                 values.put(MenuDBContract.MenuEntry.COLUMN_NAME_MEALTIME, mealTime);
                                 if (locsS.get(temp).contains("covel"))
                                     values.put(MenuDBContract.MenuEntry.COLUMN_NAME_LOC, "covel");
@@ -165,25 +174,41 @@ public class UpdateDBService extends Service {
                     db.close();
 
                 } catch (Exception e) {
-                    //Do nothing if service fails.
-                    //return "Unable to retrieve web page. http://menu.ha.ucla.edu/foodpro/default.asp may be down.";
+                    progressDialog = ProgressDialog.show(RefreshScreenActivity.this, "Connection Failed",
+                            "Unable to connect to BruinMenu", false, false);
+                    try {
+                        Thread.sleep(1000);                 //1000 milliseconds is one second.
+                    } catch(InterruptedException ex) {
+                        Thread.currentThread().interrupt();
+                    }
                 }
-
             }
             return null;
         }
-    }
 
-    public static String listText(Element e) {
-        Elements listItems = e.select("li");
-        StringBuffer s = new StringBuffer(listItems.get(0).text().trim() + ":\n");
-        for (int i = 1; i < listItems.size() - 1; i++) {
-            if (!listItems.get(i).text().isEmpty())
-                s.append(listItems.get(i).text().trim() + "\n");
+
+        /*
+        //Update the progress
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            //set the current progress of the progress dialog
+            progressDialog.setProgress(values[0]);
         }
-        if (listItems.size() > 1) {
-            s.append(listItems.get(listItems.size() - 1).text().trim());
+        */
+
+        //after executing the code in the thread
+        @Override
+        protected void onPostExecute(Void result) {
+            //close the progress dialog
+            progressDialog.dismiss();
+            //initialize the View
+
+            //String html = ((AppVariables) getApplicationContext()).getBruinMenu();
+            Intent i = new Intent(RefreshScreenActivity.this, MainActivity.class);
+
+            //i.putExtra("html",html);
+            startActivity(i);
+            //setContentView(R.layout.activity_main);
         }
-        return s.toString();
     }
 }

@@ -4,28 +4,28 @@ package zhou.allen.bruinmenu;
  * Created by Owner on 10/18/2015.
  */
 
-import java.io.IOException;
-import java.util.concurrent.TimeUnit;
+//import java.io.IOException;
+//import java.util.concurrent.TimeUnit;
 
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
-import android.content.ContentValues;
-import android.database.sqlite.SQLiteDatabase;
+//import android.content.ContentValues;
+//import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.content.Intent;
 import android.content.Context;
 
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
+//import com.squareup.okhttp.OkHttpClient;
+//import com.squareup.okhttp.Request;
+//import com.squareup.okhttp.Response;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+//import org.jsoup.Jsoup;
+//import org.jsoup.nodes.Document;
+//import org.jsoup.nodes.Element;
+//import org.jsoup.select.Elements;
 
 public class LoadingScreenActivity extends Activity
 {
@@ -39,19 +39,20 @@ public class LoadingScreenActivity extends Activity
         super.onCreate(savedInstanceState);
 
         //Initialize a LoadViewTask object and call the execute() method
-        new GetPageTask().execute();
+        new LoadTask().execute();
 
 
     }
 
     //To use the AsyncTask, it must be subclassed
-    private class GetPageTask extends AsyncTask<Void, Integer, Void> {
+    private class LoadTask extends AsyncTask<Void, Integer, Void> {
         //String html;
+        boolean refresh;
         //Before running code in separate thread
         @Override
         protected void onPreExecute() {
             progressDialog = ProgressDialog.show(LoadingScreenActivity.this, "Connecting...",
-                    "Connecting to Bruin Menu, please wait...", false, false);
+                    "Loading, please wait...", false, false);
         }
 
         //The code to be executed in a background thread.
@@ -72,14 +73,16 @@ public class LoadingScreenActivity extends Activity
                                 i, PendingIntent.FLAG_UPDATE_CURRENT);
                         AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
                         alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, 2 * AlarmManager.INTERVAL_HOUR, 1000 * 60, pi);
-                        startService(i);
-                        //todo replace this code with refresh function
+                        //startService(i);
+                        refresh = true;
 
+                        /*
                         try {
                             Thread.sleep(3000); //1000 milliseconds is one second.
                         } catch(InterruptedException ex) {
                             Thread.currentThread().interrupt();
                         }
+                        */
                     }
 
 
@@ -109,10 +112,16 @@ public class LoadingScreenActivity extends Activity
             //initialize the View
 
             //String html = ((AppVariables) getApplicationContext()).getBruinMenu();
-            Intent i = new Intent(LoadingScreenActivity.this, MainActivity.class);
+            Intent i;
+            if (refresh = false) {
+                i = new Intent(LoadingScreenActivity.this, MainActivity.class);
+            }
+            else {
+                i = new Intent (LoadingScreenActivity.this, RefreshScreenActivity.class);
+            }
             //i.putExtra("html",html);
             startActivity(i);
-            setContentView(R.layout.activity_main);
+            //setContentView(R.layout.activity_main);
         }
     }
 }
