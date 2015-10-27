@@ -11,13 +11,20 @@
         android:layout_height="48dp"
         app:textColor="@color/textColor"
         app:primaryColor="@color/backgroundColor"
-        app:accentColor="@color/textColor"/>
+        app:accentColor="@color/colorAccent"/>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/activity_main_swipe_refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:layout_below="@+id/materialTabHost"
-        android:layout_weight="1" />
+        android:layout_height="match_parent">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

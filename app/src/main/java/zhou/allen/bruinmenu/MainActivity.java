@@ -15,11 +15,13 @@ package zhou.allen.bruinmenu;
  * -Swipe animation
  * -Make the list_items look better (make two textviews, one has bold kitchen, other has food)
  **/
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
     private MaterialTabHost tabHost;
     private ViewPager viewPager;
     private ViewPagerAdapter viewAdapter;
+    SwipeRefreshLayout mSwipeRefreshLayout;
 
     int currentMenu = -1;
     int NUM_PAGES = 3;
@@ -54,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
         tabHost = (MaterialTabHost) findViewById(R.id.materialTabHost);
         viewAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(viewAdapter);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activity_main_swipe_refresh_layout);
 
         viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
@@ -79,9 +83,23 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
         }
 
         viewPager.setCurrentItem(currentMenu);
+
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshContent();
+            }
+        });
     }
 
-    @Override
+    private void refreshContent(){
+        Intent i = new Intent(this, RefreshScreenActivity.class);
+        startActivity(i);
+        mSwipeRefreshLayout.setRefreshing(false);
+        finish();
+    }
+
+        @Override
     public void onTabSelected(MaterialTab tab) {
         currentMenu = tab.getPosition();
         viewPager.setCurrentItem(tab.getPosition());
