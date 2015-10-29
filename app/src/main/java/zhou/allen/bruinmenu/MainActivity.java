@@ -12,8 +12,8 @@ package zhou.allen.bruinmenu;
  * -Add a page that tracks swipes left on card
  *
  * sliders
- * -Swipe animation
  * -Make the list_items look better (make two textviews, one has bold kitchen, other has food)
+ * -Refresh view (https://www.bignerdranch.com/blog/implementing-swipe-to-refresh/)
  **/
 import android.content.Intent;
 import android.net.Uri;
@@ -31,16 +31,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import java.util.Calendar;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+import java.util.Calendar;
 
 import it.neokree.materialtabs.MaterialTab;
 import it.neokree.materialtabs.MaterialTabHost;
 import it.neokree.materialtabs.MaterialTabListener;
 
-public class MainActivity extends AppCompatActivity implements MaterialTabListener, MenuFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements MaterialTabListener, MenuFragment.OnFragmentInteractionListener, SwipesLeftFragment.OnFragmentInteractionListener{
 
     private MaterialTabHost tabHost;
     private ViewPager viewPager;
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
     SwipeRefreshLayout mSwipeRefreshLayout;
 
     int currentMenu = -1;
-    int NUM_PAGES = 3;
+    int NUM_PAGES = 4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,11 +77,11 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
         Calendar calendar = Calendar.getInstance();
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         if (hour > 3 && hour < 10) {
-            currentMenu = 0;
-        } else if(hour < 16) {
             currentMenu = 1;
-        } else {
+        } else if(hour < 16) {
             currentMenu = 2;
+        } else {
+            currentMenu = 3;
         }
 
         viewPager.setCurrentItem(currentMenu);
@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
         finish();
     }
 
-        @Override
+    @Override
     public void onTabSelected(MaterialTab tab) {
         currentMenu = tab.getPosition();
         viewPager.setCurrentItem(tab.getPosition());
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
 
     private class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
-        String menus[] = {"Breakfast", "Lunch", "Dinner"};
+        String menus[] = {"Swipes", "Breakfast", "Lunch", "Dinner"};
 
         FragmentManager fragmentManager;
 
@@ -156,12 +156,19 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
             Fragment fragment = null;
             switch (num) {
                 case 0:
-                    fragment = MenuFragment.newInstance("breakfast");
+                    fragment = SwipesLeftFragment.newInstance();
                     break;
                 case 1:
-                    fragment = MenuFragment.newInstance("lunch");
+                    Calendar c = Calendar.getInstance();
+                    int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
+
+                    if(dayOfWeek == 1 || dayOfWeek == 7) fragment = MenuFragment.newInstance("lunch");
+                    else fragment = MenuFragment.newInstance("breakfast");
                     break;
                 case 2:
+                    fragment = MenuFragment.newInstance("lunch");
+                    break;
+                case 3:
                     fragment = MenuFragment.newInstance("dinner");
                     break;
             }
@@ -170,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
 
         @Override
         public int getCount() {
-            return NUM_PAGES;
+            return menus.length;
         }
 
         @Override

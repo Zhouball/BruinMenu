@@ -4,13 +4,11 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,7 +55,6 @@ public class MenuFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             timeOfDay = getArguments().getString(ARG_PARAM1);
-            Log.d("TOD", timeOfDay); ///TODO: REMOVE LOG
         }
     }
 
