@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
@@ -57,6 +60,7 @@ public class MenuFragment extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -64,14 +68,42 @@ public class MenuFragment extends Fragment {
 
         //get the listview and textview
         menu = (ExpandableListView) layout.findViewById(R.id.expandableListView);
+        //textView = (TextView) layout.findViewById(R.id.titleTextView);
         //setting list adapter
         listAdapter = new ExpandableListAdapter(getContext(), listDataHeader, listDataChild);
         menu.setAdapter(listAdapter);
+
+
+        final ExpandableListView elv = (ExpandableListView) layout.findViewById(R.id.expandableListView);
+        final SwipeRefreshLayout mSwipeRefreshLayout = (SwipeRefreshLayout) getActivity().findViewById(R.id.activity_main_swipe_refresh_layout);
+        elv.setOnScrollListener(new AbsListView.OnScrollListener() {
+
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem,
+                                 int visibleItemCount, int totalItemCount) {
+                boolean enable = false;
+                if (elv != null && elv.getChildCount() > 0) {
+                    // check if the first item of the list is visible
+                    boolean firstItemVisible = elv.getFirstVisiblePosition() == 0;
+                    // check if the top of the first item is visible
+                    boolean topOfFirstItemVisible = elv.getChildAt(0).getTop() == 0;
+                    // enabling or disabling the refresh layout
+                    enable = firstItemVisible && topOfFirstItemVisible;
+                }
+                mSwipeRefreshLayout.setEnabled(enable);
+            }
+        });
         //preparing list data
         prepareListData();
 
         return layout;
     }
+
+
 
     private void prepareListData() {
 

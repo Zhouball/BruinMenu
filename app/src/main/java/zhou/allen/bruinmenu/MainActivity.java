@@ -90,12 +90,14 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
 
         viewPager.setCurrentItem(currentMenu);
 
+
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 refreshContent();
             }
         });
+
     }
 
     @Override
@@ -120,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
         return super.onOptionsItemSelected(item);
     }
 
-    private void refreshContent(){
+    public void refreshContent(){
         Intent i = new Intent(this, RefreshScreenActivity.class);
         startActivity(i);
         mSwipeRefreshLayout.setRefreshing(false);

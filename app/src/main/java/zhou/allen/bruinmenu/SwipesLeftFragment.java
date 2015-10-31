@@ -55,16 +55,25 @@ public class SwipesLeftFragment extends Fragment {
         if (getArguments() != null) {
             //Get params if any exist
         }
-        calcSwipes();
-        //setSwipes();
-        Log.d("Swipes Left", "(14P: " + p14 + "), (19P: " + p19 + "), (14: " + r14 + "), (19: " + r19 + ")");
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_swipes_left, container, false);
+        View layout = inflater.inflate(R.layout.fragment_swipes_left, container, false);
+        calcSwipes();
+        //Log.d("Swipes Left", "(14P: " + p14 + "), (19P: " + p19 + "), (14: " + r14 + "), (19: " + r19 + ")");
+
+        TextView p14Text = (TextView) layout.findViewById(R.id.p14Text);
+        TextView r14Text = (TextView) layout.findViewById(R.id.r14Text);
+        TextView p19Text = (TextView) layout.findViewById(R.id.p19Text);
+        TextView r19Text = (TextView) layout.findViewById(R.id.r19Text);
+        p14Text.setText(Integer.toString(p14));
+        r14Text.setText(Integer.toString(r14));
+        p19Text.setText(Integer.toString(p19));
+        r19Text.setText(Integer.toString(r19));
+
+        return layout;
     }
 
     private void calcSwipes() {
@@ -115,19 +124,6 @@ public class SwipesLeftFragment extends Fragment {
             if(Calendar.getInstance().compareTo(cal) < 0) return cal;
         }
         return null;
-    }
-
-    private void setSwipes() {
-        //if(layout!=null) {
-            TextView p14Text = (TextView) getActivity().findViewById(R.id.p14Text);
-            TextView r14Text = (TextView) getActivity().findViewById(R.id.r14Text);
-            TextView p19Text = (TextView) getActivity().findViewById(R.id.p19Text);
-            TextView r19Text = (TextView) getActivity().findViewById(R.id.r19Text);
-            p14Text.setText(Integer.toString(p14));
-            r14Text.setText(Integer.toString(r14));
-            p19Text.setText(Integer.toString(p19));
-            r19Text.setText(Integer.toString(r19));
-        //}
     }
 
     public void onButtonPressed(Uri uri) {
