@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,7 +36,6 @@ public class MenuFragment extends Fragment {
     View layout;
     ExpandableListView menu;
     ExpandableListAdapter listAdapter;
-    //TextView textView;
     List<String> listDataHeader = new ArrayList<>();
     HashMap<String, List<String>> listDataChild = new HashMap<>();
 
@@ -59,7 +57,6 @@ public class MenuFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             timeOfDay = getArguments().getString(ARG_PARAM1);
-            Log.d("TOD", timeOfDay); ///TODO: REMOVE LOG
         }
     }
 
