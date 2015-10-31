@@ -8,11 +8,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -27,13 +31,14 @@ public class SwipesLeftFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    private int p14=0, p19=0, r14=0, r19=0;
+    //premiums start from -4 because last 4 swipes (saturday and sunday of finals week) aren't counted.
+    private int p14=-4, p19=-4, r14=0, r19=0;
     private String[] quarterEndDates = {
             "12112015",
             "03182016",
             "06102016",
             "12092016",
-            "03242016"
+            "03242017"
     };
 
     public static SwipesLeftFragment newInstance() {
@@ -50,19 +55,79 @@ public class SwipesLeftFragment extends Fragment {
         if (getArguments() != null) {
             //Get params if any exist
         }
-        Calendar cal = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("MMddyyyy", Locale.ENGLISH);
-        try {
-            cal.setTime(sdf.parse("10252015"));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        calcSwipes();
+        //setSwipes();
+        Log.d("Swipes Left", "(14P: " + p14 + "), (19P: " + p19 + "), (14: " + r14 + "), (19: " + r19 + ")");
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_swipes_left, container, false);
+    }
+
+    private void calcSwipes() {
+        Calendar curr = Calendar.getInstance();
+        curr.set(Calendar.MILLISECOND, 0);
+        Calendar cal = findQuarter();
+        //go backwards each week
+        while(cal.get(Calendar.WEEK_OF_YEAR) != curr.get(Calendar.WEEK_OF_YEAR)) {
+            p14+=14;
+            p19+=19;
+            cal.set(Calendar.WEEK_OF_YEAR, cal.get(Calendar.WEEK_OF_YEAR)-1);
+        }
+
+        //adds the swipes that you'd have for next day
+        switch((curr.get(Calendar.DAY_OF_WEEK)+5)%7) {
+            case 0: r14+=2; r19+=3;
+            case 1: r14+=2; r19+=3;
+            case 2: r14+=2; r19+=3;
+            case 3: r14+=2; r19+=3;
+            case 4: r14+=2; r19+=2;
+            case 5: r14+=2; r19+=2;
+            default:
+        }
+        //adds the swipes assuming you've used it at the start of the meal period
+        int hour = curr.get(Calendar.HOUR_OF_DAY);
+        if(hour >= 17) { //dinner started
+            //daily swipes over
+        } else if(hour >= 11) { //lunch started
+            r14+=1; r19+=1;
+        } else if(hour >= 7) { //breakfast started
+            r14+=2; r19+=2;
+        } else {
+            r14+=2; r19+=3;
+        }
+        p14+=r14; p19+=r19;
+    }
+
+    private Calendar findQuarter() {
+        for(String s : quarterEndDates) {
+            Calendar cal = Calendar.getInstance();
+
+            SimpleDateFormat sdf = new SimpleDateFormat("MMddyyyy", Locale.ENGLISH);
+            try {
+                cal.setTime(sdf.parse(s));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            if(Calendar.getInstance().compareTo(cal) < 0) return cal;
+        }
+        return null;
+    }
+
+    private void setSwipes() {
+        //if(layout!=null) {
+            TextView p14Text = (TextView) getActivity().findViewById(R.id.p14Text);
+            TextView r14Text = (TextView) getActivity().findViewById(R.id.r14Text);
+            TextView p19Text = (TextView) getActivity().findViewById(R.id.p19Text);
+            TextView r19Text = (TextView) getActivity().findViewById(R.id.r19Text);
+            p14Text.setText(Integer.toString(p14));
+            r14Text.setText(Integer.toString(r14));
+            p19Text.setText(Integer.toString(p19));
+            r19Text.setText(Integer.toString(r19));
+        //}
     }
 
     public void onButtonPressed(Uri uri) {

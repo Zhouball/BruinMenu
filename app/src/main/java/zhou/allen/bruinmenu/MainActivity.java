@@ -5,15 +5,19 @@ package zhou.allen.bruinmenu;
 
 /**
  * sqlite
- * -Fix breakfast menu
- * -Try/catch for internet connection
+ * -Save the lunch if it is replaced
+ * -vegetarian marker
  *
- * swipetracker
- * -Add a page that tracks swipes left on card
+ * swiper
+ * -Make the UI of the page
+ * -Make sure the page updates every meal period
+ * -Easter egg
+ * -App icon
  *
  * sliders
  * -Make the list_items look better (make two textviews, one has bold kitchen, other has food)
- * -Refresh view (https://www.bignerdranch.com/blog/implementing-swipe-to-refresh/)
+ * -If not open, show it in red
+ * -change fontFamilies
  **/
 import android.content.Intent;
 import android.net.Uri;

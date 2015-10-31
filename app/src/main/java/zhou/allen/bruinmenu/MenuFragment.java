@@ -33,7 +33,6 @@ public class MenuFragment extends Fragment {
     View layout;
     ExpandableListView menu;
     ExpandableListAdapter listAdapter;
-    TextView textView;
     List<String> listDataHeader = new ArrayList<>();
     HashMap<String, List<String>> listDataChild = new HashMap<>();
 
@@ -65,7 +64,6 @@ public class MenuFragment extends Fragment {
 
         //get the listview and textview
         menu = (ExpandableListView) layout.findViewById(R.id.expandableListView);
-        textView = (TextView) layout.findViewById(R.id.titleTextView);
         //setting list adapter
         listAdapter = new ExpandableListAdapter(getContext(), listDataHeader, listDataChild);
         menu.setAdapter(listAdapter);
