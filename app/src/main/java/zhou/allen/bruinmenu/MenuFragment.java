@@ -138,6 +138,7 @@ public class MenuFragment extends Fragment {
             for (int i = 0; i < menuList.size(); i++) {
                 listDataChild.put(listDataHeader.get(i), menuList.get(i)); // Header, Child data
             }
+        dbHelper.close();
     }
 /*
     private String listText(Element e) {

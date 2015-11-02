@@ -94,9 +94,9 @@ public class RefreshScreenActivity extends Activity
                     Document doc = Jsoup.parse(html);
                     Elements menus = doc.getElementsByClass("menucontent");
 
-                    boolean topbottom; //top is true
+                    //boolean topbottom; //top is true
                     for (int i = 0; i < menus.size(); i++) {
-                        topbottom = true;
+                        //topbottom = true;
                         String mealTime;
 
                         Elements cells = menus.get(i).select(".menugridcell, .menusplit");
