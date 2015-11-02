@@ -47,7 +47,7 @@ public class LoadingScreenActivity extends Activity
     //To use the AsyncTask, it must be subclassed
     private class LoadTask extends AsyncTask<Void, Integer, Void> {
         //String html;
-        boolean refresh;
+        boolean refresh = false;
         //Before running code in separate thread
         @Override
         protected void onPreExecute() {
@@ -72,7 +72,7 @@ public class LoadingScreenActivity extends Activity
                         PendingIntent pi = PendingIntent.getBroadcast(getApplicationContext(), 0,
                                 i, PendingIntent.FLAG_UPDATE_CURRENT);
                         AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
-                        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, 2 * AlarmManager.INTERVAL_HOUR, 1000 * 60, pi);
+                        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME, 6 * AlarmManager.INTERVAL_HOUR, AlarmManager.INTERVAL_HALF_DAY, pi);
                         //startService(i);
                         refresh = true;
 
