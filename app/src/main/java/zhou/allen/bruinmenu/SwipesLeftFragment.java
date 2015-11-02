@@ -88,13 +88,14 @@ public class SwipesLeftFragment extends Fragment {
         }
 
         //adds the swipes that you'd have for next day
-        switch((curr.get(Calendar.DAY_OF_WEEK)+5)%7) {
-            case 0: r14+=2; r19+=3;
-            case 1: r14+=2; r19+=3;
+        switch(curr.get(Calendar.DAY_OF_WEEK)) {
+            case 1: p14+=14; p19+=19; break;
             case 2: r14+=2; r19+=3;
             case 3: r14+=2; r19+=3;
-            case 4: r14+=2; r19+=2;
-            case 5: r14+=2; r19+=2;
+            case 4: r14+=2; r19+=3;
+            case 5: r14+=2; r19+=3;
+            case 6: r14+=2; r19+=2;
+            case 7: r14+=2; r19+=2;
             default:
         }
         //adds the swipes assuming you've used it at the start of the meal period

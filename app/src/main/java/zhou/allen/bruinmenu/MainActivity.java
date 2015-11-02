@@ -4,20 +4,18 @@ package zhou.allen.bruinmenu;
 ///TODO: Fix force quit. Google, stackoverflow code, and look at samples
 
 /**
- * sqlite
- * -Save the lunch if it is replaced
- * -vegetarian marker
+ * easter
+ * -Easter egg
  *
  * swiper
- * -Make the UI of the page
- * -Make sure the page updates every meal period
- * -Easter egg
- * -App icon
+ * -Make sure the page updates every meal period (http://stackoverflow.com/questions/10849552/update-viewpager-dynamically/17855730#17855730)
  *
  * sliders
  * -Make the list_items look better (make two textviews, one has bold kitchen, other has food)
  * -If not open, show it in red
+ * -vegetarian marker
  * -change fontFamilies
+ * -App icon
  **/
 import android.content.Intent;
 import android.net.Uri;
@@ -64,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
         viewAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(viewAdapter);
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activity_main_swipe_refresh_layout);
-
+        mSwipeRefreshLayout.setDistanceToTriggerSync(100);
         viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {

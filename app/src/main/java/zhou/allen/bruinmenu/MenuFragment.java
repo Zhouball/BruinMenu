@@ -83,8 +83,7 @@ public class MenuFragment extends Fragment {
             }
 
             @Override
-            public void onScroll(AbsListView view, int firstVisibleItem,
-                                 int visibleItemCount, int totalItemCount) {
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
                 boolean enable = false;
                 if (elv != null && elv.getChildCount() > 0) {
                     // check if the first item of the list is visible
