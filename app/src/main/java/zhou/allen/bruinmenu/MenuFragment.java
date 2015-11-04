@@ -38,6 +38,7 @@ public class MenuFragment extends Fragment {
     ExpandableListAdapter listAdapter;
     List<String> listDataHeader = new ArrayList<>();
     HashMap<String, List<String>> listDataChild = new HashMap<>();
+    HashMap<String, List<Boolean>> listChildrenIsKitchen = new HashMap<>();
 
     private OnFragmentInteractionListener mListener;
 
@@ -70,7 +71,7 @@ public class MenuFragment extends Fragment {
         menu = (ExpandableListView) layout.findViewById(R.id.expandableListView);
         //textView = (TextView) layout.findViewById(R.id.titleTextView);
         //setting list adapter
-        listAdapter = new ExpandableListAdapter(getContext(), listDataHeader, listDataChild);
+        listAdapter = new ExpandableListAdapter(getContext(), listDataHeader, listDataChild, listChildrenIsKitchen);
         menu.setAdapter(listAdapter);
 
 
@@ -110,21 +111,25 @@ public class MenuFragment extends Fragment {
         ArrayList<List<String>> menuList = new ArrayList<List<String>>();
 
         List<String> covel = dbHelper.getEntryByLocAndMealTime("covel", timeOfDay);
+        List<Boolean> covelIsKitchen = dbHelper.getIsKitchenList("covel");
         if (covel.size() != 0) {
             listDataHeader.add("Covel");
             menuList.add(covel);
         }
         List<String> deNeve = dbHelper.getEntryByLocAndMealTime("deNeve", timeOfDay);
+        List<Boolean> deNeveIsKitchen = dbHelper.getIsKitchenList("deNeve");
         if (deNeve.size() != 0) {
             listDataHeader.add("De Neve");
             menuList.add(deNeve);
         }
         List<String> feast = dbHelper.getEntryByLocAndMealTime("feast", timeOfDay);
+        List<Boolean> feastIsKitchen = dbHelper.getIsKitchenList("feast");
         if (feast.size() != 0) {
             listDataHeader.add("FEAST at Rieber");
             menuList.add(feast);
         }
         List<String> bPlate = dbHelper.getEntryByLocAndMealTime("bPlate", timeOfDay);
+        List<Boolean> bPlateIsKitchen = dbHelper.getIsKitchenList("bPlate");
         if (bPlate.size() != 0) {
             listDataHeader.add("Bruin Plate");
             menuList.add(bPlate);
