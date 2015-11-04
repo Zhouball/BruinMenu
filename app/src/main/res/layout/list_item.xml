@@ -15,7 +15,7 @@
 
     <TextView
         android:id="@+id/lblListItem"
-        android:text="Oops... You shouldn't be seeing this"
+        android:text="Oops... You shouldn't be seeing this. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porta lacus quis eros finibus."
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="17dip"
@@ -24,9 +24,10 @@
         android:paddingLeft="20dp"
         android:layout_alignTop="@+id/vegetarian"
         android:layout_toRightOf="@+id/vegetarian"
-        android:layout_toEndOf="@+id/vegetarian" />
+        android:paddingRight="40dp"/>
 
-    <ImageButton android:id="@+id/favorite"
+    <ImageButton
+        android:id="@+id/favorite"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/star"

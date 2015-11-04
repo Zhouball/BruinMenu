@@ -70,22 +70,24 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            if(getChildIsKitchen(groupPosition, childPosition)) convertView = infalInflater.inflate(R.layout.list_item, null);
-            else convertView = infalInflater.inflate(R.layout.list_item, null);
-        }
+            if(getChildIsKitchen(groupPosition, childPosition)) convertView = infalInflater.inflate(R.layout.list_kitchen, null);
+            else {
+                convertView = infalInflater.inflate(R.layout.list_item, null);
 
-        if(getChildVeg(groupPosition, childPosition) == 1) {
-            ImageView vegIcon = (ImageView) convertView.findViewById(R.id.vegetarian);
-            vegIcon.setVisibility(View.VISIBLE);
-        } else if(getChildVeg(groupPosition, childPosition) == 2) {
-            ImageView vegIcon = (ImageView) convertView.findViewById(R.id.vegetarian);
-            vegIcon.setImageDrawable(_context.getResources().getDrawable(R.drawable.vegan));
-            vegIcon.setVisibility(View.VISIBLE);
-        }
+                if(getChildVeg(groupPosition, childPosition) == 1) {
+                    ImageView vegIcon = (ImageView) convertView.findViewById(R.id.vegetarian);
+                    vegIcon.setVisibility(View.VISIBLE);
+                } else if(getChildVeg(groupPosition, childPosition) == 2) {
+                    ImageView vegIcon = (ImageView) convertView.findViewById(R.id.vegetarian);
+                    vegIcon.setImageDrawable(_context.getResources().getDrawable(R.drawable.vegan));
+                    vegIcon.setVisibility(View.VISIBLE);
+                }
 
-        if(getChildIsFav(groupPosition, childPosition)) {
-            ImageButton favIcon = (ImageButton) convertView.findViewById(R.id.favorite);
-            favIcon.setSelected(true);
+                if(getChildIsFav(groupPosition, childPosition)) {
+                    ImageButton favIcon = (ImageButton) convertView.findViewById(R.id.favorite);
+                    favIcon.setSelected(true);
+                }
+            }
         }
 
         TextView txtListChild = (TextView) convertView.findViewById(R.id.lblListItem);
