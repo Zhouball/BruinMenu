@@ -1,4 +1,4 @@
-package info.androidhive.expandablelistview;
+package zhou.allen.bruinmenu;
 
 /*
 Custom ExpandableListAdapter class
