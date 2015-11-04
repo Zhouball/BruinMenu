@@ -110,7 +110,7 @@ public class MenuFragment extends Fragment {
             ArrayList<Kitchen> kitchensList = (ArrayList) dbHelper.getKitchensByHall(hall); //get list of kitchens (Kitchens)
             ArrayList<MenuItem> listItems = new ArrayList<>(); //list of menuItems (name, url, veg, fav, id)
             for(Kitchen kitchen : kitchensList) {
-                listItems.add(new MenuItem(kitchen.getItem(), "", Boolean.FALSE, Boolean.FALSE, -78)); //-78 = magic number to show it's a kitchen
+                listItems.add(new MenuItem(kitchen.getItem(), "", -78, Boolean.FALSE, -78)); //-78 = magic number to show it's a kitchen
                 ArrayList<MenuItem> menuItems = (ArrayList) dbHelper.getMenuItemsByKitchen(kitchen);
                 for(MenuItem menuItem : menuItems) {
                     listItems.add(menuItem);
