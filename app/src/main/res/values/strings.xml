@@ -11,5 +11,6 @@
     This project is licensed under the terms of the MIT license.\n \n
     Source code is available at https://github.com/Zhouball/BruinMenu \n \n
     If you find an issue, send us an email at a.zhou@ucla.edu \n \n</string>
+    <string name="title_activity_nutri_data_web_view">NutriDataWebView</string>
 
 </resources>

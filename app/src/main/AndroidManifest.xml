@@ -40,6 +40,12 @@
 
         <activity android:name=".CreditsActivity" >
         </activity>
+
+        <activity
+            android:name=".NutriDataWebView"
+            android:label="Nutritional Data"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>
