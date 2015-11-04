@@ -100,7 +100,7 @@ public class MenuFragment extends Fragment {
     }
 
     private void prepareListData() {
-        ///TODO: If counter is never -1, we can get rid of isKitchen arraylist.
+
         MenuDBHelper dbHelper = new MenuDBHelper(getContext());
         ArrayList<List<MenuItem>> menuList = new ArrayList<>();
         ArrayList<Hall> halls = (ArrayList) dbHelper.getHallsByMealTime(timeOfDay);

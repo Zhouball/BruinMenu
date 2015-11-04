@@ -1,8 +1,5 @@
 package zhou.allen.bruinmenu;
 
-
-///TODO: Fix force quit. Google, stackoverflow code, and look at samples
-
 /**
  * sqlite
  * -Store Table of Dining Halls, Table of Kitchens-Hall relations (to select list of kitchens), and food-kitchen relations
