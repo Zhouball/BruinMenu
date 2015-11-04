@@ -148,7 +148,7 @@ public class MenuDBHelper extends SQLiteOpenHelper {
             do {
                 String s = c.getString(c.getColumnIndex(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM));
                 String url = c.getString(c.getColumnIndex(MenuDBContract.MenuEntry.COLUMN_NAME_NUTRIURL));
-                boolean v = c.getInt(c.getColumnIndex(MenuDBContract.MenuEntry.COLUMN_NAME_VEG)) > 0;
+                int v = c.getInt(c.getColumnIndex(MenuDBContract.MenuEntry.COLUMN_NAME_VEG));
                 // adding to list
                 boolean f = favorites.contains(s);
                 int id = c.getInt(c.getColumnIndex(MenuDBContract.MenuEntry._ID));

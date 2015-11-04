@@ -6,11 +6,11 @@ package zhou.allen.bruinmenu;
 public class MenuItem {
     private String item;
     private String nutriurl;
-    private boolean veg;
+    private int veg;
     private boolean fav;
     private int id;
 
-    public MenuItem(String n, String nu, boolean ve, boolean fa, int i) {
+    public MenuItem(String n, String nu, int ve, boolean fa, int i) {
         item = n;
         nutriurl = nu;
         veg = ve;
@@ -26,7 +26,7 @@ public class MenuItem {
         return nutriurl;
     }
 
-    public boolean isVegetarian() {
+    public int getVeg() {
         return veg;
     }
 
