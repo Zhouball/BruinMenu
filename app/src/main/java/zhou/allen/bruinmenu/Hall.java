@@ -5,9 +5,9 @@ public class Hall {
     private String item;
     private long id;
 
-    public Hall(String mt, String n, long i) {
-        mealTime = mt;
+    public Hall(String n, String mt, long i) {
         item = n;
+        mealTime = mt;
         id = i;
     }
 

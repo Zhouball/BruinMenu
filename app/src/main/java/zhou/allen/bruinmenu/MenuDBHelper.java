@@ -110,7 +110,7 @@ public class MenuDBHelper extends SQLiteOpenHelper {
         if (c.moveToFirst()) {
             do {
                 String s = c.getString(c.getColumnIndex(MenuDBContract.KitchenEntry.COLUMN_NAME_ITEM));
-                int id = c.getInt(c.getColumnIndex(MenuDBContract.KitchenEntry._ID));
+                long id = c.getLong(c.getColumnIndex(MenuDBContract.KitchenEntry._ID));
 
                 // adding to list
                 returnList.add(new Kitchen(s, id));
@@ -152,7 +152,7 @@ public class MenuDBHelper extends SQLiteOpenHelper {
                 int v = c.getInt(c.getColumnIndex(MenuDBContract.MenuEntry.COLUMN_NAME_VEG));
                 // adding to list
                 boolean f = favorites.contains(s);
-                int id = c.getInt(c.getColumnIndex(MenuDBContract.MenuEntry._ID));
+                long id = c.getLong(c.getColumnIndex(MenuDBContract.MenuEntry._ID));
                 returnList.add(new MenuItem(s, url, v, f, id));
             } while (c.moveToNext());
         }
