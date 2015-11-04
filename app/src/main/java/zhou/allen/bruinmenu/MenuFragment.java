@@ -35,7 +35,6 @@ public class MenuFragment extends Fragment {
     ExpandableListAdapter listAdapter;
     List<String> listDataHeader = new ArrayList<>();
     HashMap<String, List<MenuItem>> listDataChild = new HashMap<>();
-    HashMap<String, List<Boolean>> listChildrenIsKitchen = new HashMap<>();
 
     private OnFragmentInteractionListener mListener;
 
@@ -68,7 +67,7 @@ public class MenuFragment extends Fragment {
         menu = (ExpandableListView) layout.findViewById(R.id.expandableListView);
         //textView = (TextView) layout.findViewById(R.id.titleTextView);
         //setting list adapter
-        listAdapter = new ExpandableListAdapter(getContext(), listDataHeader, listDataChild, listChildrenIsKitchen);
+        listAdapter = new ExpandableListAdapter(getContext(), listDataHeader, listDataChild);
         menu.setAdapter(listAdapter);
 
 
@@ -101,28 +100,23 @@ public class MenuFragment extends Fragment {
     }
 
     private void prepareListData() {
-        ///TODO: Rewrite once Kitchens, Halls, MenuItems, all dbHelper functions are written!
+        ///TODO: If counter is never -1, we can get rid of isKitchen arraylist.
         MenuDBHelper dbHelper = new MenuDBHelper(getContext());
         ArrayList<List<MenuItem>> menuList = new ArrayList<>();
-        ArrayList<Hall> halls = new ArrayList<>();
-        halls = dbHelper.getHallsByMealTime(timeOfDay);
+        ArrayList<Hall> halls = (ArrayList) dbHelper.getHallsByMealTime(timeOfDay);
 
         for(Hall hall : halls) {
-            listDataHeader.add(hall.getName());
-            ArrayList<Kitchen> kitchensList = dbHelper.getKitchensByHall(hall);
-            ArrayList<MenuItem> listItems = new ArrayList<>();
-            ArrayList<Boolean> isKitchens = new ArrayList<>();
-            for(String kitchen : kitchensList) {
-                listItems.add(new MenuItem(kitchen, "", Boolean.FALSE, Boolean.FALSE));
-                isKitchens.add(Boolean.TRUE);
-                ArrayList<MenuItem> menuItems = dbHelper.getMenuItemsByKitchen(kitchen);
+            listDataHeader.add(hall.getItem()); //add the name of hall to listDataHeader
+            ArrayList<Kitchen> kitchensList = (ArrayList) dbHelper.getKitchensByHall(hall); //get list of kitchens (Kitchens)
+            ArrayList<MenuItem> listItems = new ArrayList<>(); //list of menuItems (name, url, veg, fav, id)
+            for(Kitchen kitchen : kitchensList) {
+                listItems.add(new MenuItem(kitchen.getItem(), "", Boolean.FALSE, Boolean.FALSE, -78)); //-78 = magic number to show it's a kitchen
+                ArrayList<MenuItem> menuItems = (ArrayList) dbHelper.getMenuItemsByKitchen(kitchen);
                 for(MenuItem menuItem : menuItems) {
                     listItems.add(menuItem);
-                    isKitchens.add(Boolean.FALSE);
                 }
             }
             menuList.add(listItems);
-            listChildrenIsKitchen.put(hall, isKitchens);
         }
 
         /*List<String> covel = dbHelper.getEntryByLocAndMealTime("covel", timeOfDay);

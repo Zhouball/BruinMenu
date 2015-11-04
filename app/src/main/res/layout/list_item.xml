@@ -6,6 +6,7 @@
 
     <ImageView
         android:src="@drawable/vegetarian"
+        android:visibility="invisible"
         android:background="@android:color/transparent"
         android:layout_width="35dp"
         android:layout_height="35dp"

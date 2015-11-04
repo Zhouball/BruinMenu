@@ -13,11 +13,10 @@ package zhou.allen.bruinmenu;
  *
  * list-view
  * TODO: -Vegetarian marker in list_item.xml (toggle visibility in exandablelistviewadapter)
- * TODO: -Also have a star icon that allows you to favorite (store in preferences)
- * TODO: -Modify everything to account for getting another string (NUTRIURL) from dbHelper.getMenuItems....()
+ * TODO: -May have to setOnClickListener for favIcon if setSelected doesn't work...
  * TODO: -On clicking star icon store data in another sqlite table
  * TODO: -Get notification when favorite food appears (check each item in menu item)
- * Need sqlite-update1: -Make food textviews clickable (onclick leads to webview with nutritional data)
+ * Need sqlite-update1: -Make food textviews clickable (onclick leads to webview with nutritional data that's zoomed in a bit)
  * -If dining hall not open, show it in red
  *
  * sliders
