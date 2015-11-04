@@ -26,6 +26,7 @@ public class MenuDBHelper extends SQLiteOpenHelper {
         db.execSQL(MenuDBContract.KitchenEntry.CREATE_TABLE);
         db.execSQL(MenuDBContract.HallEntry.CREATE_TABLE);
         db.execSQL(MenuDBContract.MenuEntry.CREATE_TABLE);
+        db.execSQL(MenuDBContract.Favorites.CREATE_TABLE);
     }
 
     // Method is called during an upgrade of the database
@@ -34,6 +35,7 @@ public class MenuDBHelper extends SQLiteOpenHelper {
         db.execSQL(MenuDBContract.KitchenEntry.DELETE_TABLE);
         db.execSQL(MenuDBContract.HallEntry.DELETE_TABLE);
         db.execSQL(MenuDBContract.MenuEntry.DELETE_TABLE);
+        db.execSQL(MenuDBContract.Favorites.DELETE_TABLE);
         onCreate(db);
     }
 
@@ -66,8 +68,8 @@ public class MenuDBHelper extends SQLiteOpenHelper {
     }
     */
 
-    public List<String> getHallsByMealTime(String mealTime) {
-        List<String> returnList = new ArrayList<String>();
+    public List<Hall> getHallsByMealTime(String mealTime) {
+        List<Hall> returnList = new ArrayList<Hall>();
 
         String selectQuery = "SELECT " + MenuDBContract.HallEntry.COLUMN_NAME_ITEM + " FROM " + MenuDBContract.HallEntry.TABLE_NAME +
                 " WHERE " + MenuDBContract.HallEntry.COLUMN_NAME_MEALTIME + "='" + mealTime + "'";
@@ -81,20 +83,22 @@ public class MenuDBHelper extends SQLiteOpenHelper {
         if (c.moveToFirst()) {
             do {
                 String s = c.getString(c.getColumnIndex(MenuDBContract.HallEntry.COLUMN_NAME_ITEM));
+                String m = c.getString(c.getColumnIndex(MenuDBContract.HallEntry.COLUMN_NAME_MEALTIME));
+                int id = c.getInt(c.getColumnIndex(MenuDBContract.HallEntry._ID));
 
                 // adding to list
-                returnList.add(s);
+                returnList.add(new Hall(s, m, id));
             } while (c.moveToNext());
         }
         c.close();
         return returnList;
     }
 
-    public List<String> getKitchensByHall(String hall) {
-        List<String> returnList = new ArrayList<String>();
+    public List<Kitchen> getKitchensByHall(Hall hall) {
+        List<Kitchen> returnList = new ArrayList<Kitchen>();
 
         String selectQuery = "SELECT " + MenuDBContract.KitchenEntry.COLUMN_NAME_ITEM + " FROM " + MenuDBContract.KitchenEntry.TABLE_NAME +
-                " WHERE " + MenuDBContract.KitchenEntry.COLUMN_NAME_HALL + "='" + hall + "'";
+                " WHERE " + MenuDBContract.KitchenEntry.COLUMN_NAME_HALL + "='" + hall.getId() + "'";
 
         Log.e(LOG, selectQuery);
 
@@ -105,20 +109,60 @@ public class MenuDBHelper extends SQLiteOpenHelper {
         if (c.moveToFirst()) {
             do {
                 String s = c.getString(c.getColumnIndex(MenuDBContract.KitchenEntry.COLUMN_NAME_ITEM));
+                int id = c.getInt(c.getColumnIndex(MenuDBContract.KitchenEntry._ID));
 
                 // adding to list
-                returnList.add(s);
+                returnList.add(new Kitchen(s, id));
             } while (c.moveToNext());
         }
         c.close();
         return returnList;
     }
 
-    public List<String> getMenuItemsByKitchen(String kitchen) {
-        List<String> returnList = new ArrayList<String>();
+    public List<MenuItem> getMenuItemsByKitchen(Kitchen kitchen) {
+        List<MenuItem> returnList = new ArrayList<MenuItem>();
+        List<String> favorites = new ArrayList<String>();
 
         String selectQuery = "SELECT " + MenuDBContract.MenuEntry.COLUMN_NAME_ITEM + " FROM " + MenuDBContract.MenuEntry.TABLE_NAME +
-                " WHERE " + MenuDBContract.MenuEntry.COLUMN_NAME_KITCHEN + "='" + kitchen + "'";
+                " WHERE " + MenuDBContract.MenuEntry.COLUMN_NAME_KITCHEN + "='" + kitchen.getId() + "'";
+
+        String favoritesQuery = "SELECT " + MenuDBContract.Favorites.COLUMN_NAME_ITEM + " FROM " + MenuDBContract.Favorites.TABLE_NAME;
+
+        Log.e(LOG, favoritesQuery);
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor b = db.rawQuery(favoritesQuery, null);
+        if (b.moveToFirst()) {
+            do {
+                String s = b.getString(b.getColumnIndex(MenuDBContract.Favorites.COLUMN_NAME_ITEM));
+                favorites.add(s);
+            } while (b.moveToNext());
+        }
+        b.close();
+
+        Log.e(LOG, selectQuery);
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                String s = c.getString(c.getColumnIndex(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM));
+                String url = c.getString(c.getColumnIndex(MenuDBContract.MenuEntry.COLUMN_NAME_NUTRIURL));
+                boolean v = c.getInt(c.getColumnIndex(MenuDBContract.MenuEntry.COLUMN_NAME_VEG)) > 0;
+                // adding to list
+                boolean f = favorites.contains(s);
+                int id = c.getInt(c.getColumnIndex(MenuDBContract.MenuEntry._ID));
+                returnList.add(new MenuItem(s, url, v, f, id));
+            } while (c.moveToNext());
+        }
+        c.close();
+        return returnList;
+    }
+
+    public List<String> getFavorites() {
+        List<String> returnList = new ArrayList<String>();
+
+        String selectQuery = "SELECT " + MenuDBContract.Favorites.COLUMN_NAME_ITEM + " FROM " + MenuDBContract.Favorites.TABLE_NAME;
 
         Log.e(LOG, selectQuery);
 
@@ -128,7 +172,7 @@ public class MenuDBHelper extends SQLiteOpenHelper {
         // looping through all rows and adding to list
         if (c.moveToFirst()) {
             do {
-                String s = c.getString(c.getColumnIndex(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM));
+                String s = c.getString(c.getColumnIndex(MenuDBContract.Favorites.COLUMN_NAME_ITEM));
 
                 // adding to list
                 returnList.add(s);
