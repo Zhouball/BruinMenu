@@ -12,8 +12,8 @@ package zhou.allen.bruinmenu;
  * -Make sure the page updates every meal period (http://stackoverflow.com/questions/10849552/update-viewpager-dynamically/17855730#17855730)
  *
  * list-view
+ * TODO: -Vegetarian marker in list_item.xml (toggle visibility in exandablelistviewadapter)
  * TODO: -Also have a star icon that allows you to favorite (store in preferences)
- * TODO: -Vegetarian marker in list_item.xml (toggleable in exandablelistviewadapter)
  * TODO: -Modify everything to account for getting another string (NUTRIURL) from dbHelper.getMenuItems....()
  * TODO: -On clicking star icon store data in another sqlite table
  * TODO: -Get notification when favorite food appears (check each item in menu item)

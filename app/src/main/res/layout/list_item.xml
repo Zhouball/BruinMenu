@@ -1,16 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="55dip"
     android:orientation="vertical" >
 
+    <ImageView
+        android:src="@drawable/vegetarian"
+        android:background="@android:color/transparent"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:padding="8dp"
+        android:id="@+id/vegetarian"/>
+
     <TextView
         android:id="@+id/lblListItem"
-        android:layout_width="fill_parent"
+        android:text="Oops... You shouldn't be seeing this"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="17dip"
-        android:paddingTop="2dp"
+        android:paddingTop="8dp"
         android:paddingBottom="2dp"
-        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
+        android:paddingLeft="20dp"
+        android:layout_alignTop="@+id/vegetarian"
+        android:layout_toRightOf="@+id/vegetarian"
+        android:layout_toEndOf="@+id/vegetarian" />
 
-</LinearLayout>
+    <ImageButton android:id="@+id/favorite"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/star"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="#00FFFFFF"/>
+
+</RelativeLayout>
