@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ExpandableListView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -102,13 +103,30 @@ public class MenuFragment extends Fragment {
 
 
     private void prepareListData() {
-        ///TODO: Make lists of whether an item is a kitchen or not and add all the kitchens and food to the List<String> diningHall
-        ///TODO: For loop for each dining hall from SQLite
-        ///TODO: For loop with for loop that adds kitchen and then each food item for each kitchen (also handle the isKitchen stuff here)
+
         MenuDBHelper dbHelper = new MenuDBHelper(getContext());
         ArrayList<List<String>> menuList = new ArrayList<List<String>>();
 
-        List<String> covel = dbHelper.getEntryByLocAndMealTime("covel", timeOfDay);
+        listDataHeader = dbHelper.getHallsByMealTime(timeOfDay);
+
+        for(String hall : listDataHeader) {
+            ArrayList<String> kitchensList = dbHelper.getKitchensByHall(hall);
+            ArrayList<String> listItems = new ArrayList<>();
+            ArrayList<Boolean> isKitchens = new ArrayList<>();
+            for(String kitchen : kitchensList) {
+                listItems.add(kitchen);
+                isKitchens.add(Boolean.TRUE);
+                ArrayList<String> menuItems = dbHelper.getMenuItemsByKitchen(kitchen);
+                for(String food : menuItems) {
+                    listItems.add(food);
+                    isKitchens.add(Boolean.FALSE);
+                }
+            }
+            menuList.add(listItems);
+            listChildrenIsKitchen.put(hall, isKitchens);
+        }
+
+        /*List<String> covel = dbHelper.getEntryByLocAndMealTime("covel", timeOfDay);
         //List<Boolean> covelIsKitchen = dbHelper.getIsKitchenList("covel");
         if (covel.size() != 0) {
             listDataHeader.add("Covel");
@@ -131,7 +149,7 @@ public class MenuFragment extends Fragment {
         if (bPlate.size() != 0) {
             listDataHeader.add("Bruin Plate");
             menuList.add(bPlate);
-        }
+        }*/
 
         if (menuList.size() == 0) {
             listDataHeader.add("Nothing to see here!");

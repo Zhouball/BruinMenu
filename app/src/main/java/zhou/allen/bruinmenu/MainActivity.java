@@ -11,13 +11,15 @@ package zhou.allen.bruinmenu;
  * swiper
  * -Make sure the page updates every meal period (http://stackoverflow.com/questions/10849552/update-viewpager-dynamically/17855730#17855730)
  *
- * sliders
+ * list-view
  * -Somehow make the kitchens look and behave different from the food (no favorite, not clickable) -- probably have to change ExpandableListAdapter class
  * -Separate each item into separate clickable textviews (onclick leads to webview with nutritional data)
  * -Also have a star icon that allows you to favorite (store in preferences)
  * -Get notification when favorite food appears (check each item in menu item)
  * -If dining hall not open, show it in red
  * -Vegetarian marker
+ *
+ * sliders
  * -Change font families
  * -App icon
  **/
