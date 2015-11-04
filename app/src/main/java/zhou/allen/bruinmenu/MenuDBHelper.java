@@ -1,5 +1,6 @@
 package zhou.allen.bruinmenu;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -183,5 +184,13 @@ public class MenuDBHelper extends SQLiteOpenHelper {
         }
         c.close();
         return returnList;
+    }
+
+    public long addFavorite(String favorite) {
+        ContentValues values = new ContentValues();
+        values.put(MenuDBContract.Favorites.COLUMN_NAME_ITEM, favorite);
+        SQLiteDatabase db = this.getWritableDatabase();
+        long id = db.insert(MenuDBContract.Favorites.TABLE_NAME, null, values);
+        return id;
     }
 }
