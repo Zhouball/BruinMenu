@@ -111,25 +111,25 @@ public class MenuFragment extends Fragment {
         ArrayList<List<String>> menuList = new ArrayList<List<String>>();
 
         List<String> covel = dbHelper.getEntryByLocAndMealTime("covel", timeOfDay);
-        List<Boolean> covelIsKitchen = dbHelper.getIsKitchenList("covel");
+        //List<Boolean> covelIsKitchen = dbHelper.getIsKitchenList("covel");
         if (covel.size() != 0) {
             listDataHeader.add("Covel");
             menuList.add(covel);
         }
         List<String> deNeve = dbHelper.getEntryByLocAndMealTime("deNeve", timeOfDay);
-        List<Boolean> deNeveIsKitchen = dbHelper.getIsKitchenList("deNeve");
+        //List<Boolean> deNeveIsKitchen = dbHelper.getIsKitchenList("deNeve");
         if (deNeve.size() != 0) {
             listDataHeader.add("De Neve");
             menuList.add(deNeve);
         }
         List<String> feast = dbHelper.getEntryByLocAndMealTime("feast", timeOfDay);
-        List<Boolean> feastIsKitchen = dbHelper.getIsKitchenList("feast");
+        //List<Boolean> feastIsKitchen = dbHelper.getIsKitchenList("feast");
         if (feast.size() != 0) {
             listDataHeader.add("FEAST at Rieber");
             menuList.add(feast);
         }
         List<String> bPlate = dbHelper.getEntryByLocAndMealTime("bPlate", timeOfDay);
-        List<Boolean> bPlateIsKitchen = dbHelper.getIsKitchenList("bPlate");
+        //List<Boolean> bPlateIsKitchen = dbHelper.getIsKitchenList("bPlate");
         if (bPlate.size() != 0) {
             listDataHeader.add("Bruin Plate");
             menuList.add(bPlate);
