@@ -138,7 +138,7 @@ public class RefreshScreenActivity extends Activity
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM, e.text().trim());
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_KITCHEN, id);
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_NUTRIURL, link.attr("abs:href"));
-                                    Element v = items.select("img").first();
+                                    Element v = e.select("img").first();
                                     int veg = 0;
                                     if (v == null) {
                                         veg = 0;
@@ -178,7 +178,7 @@ public class RefreshScreenActivity extends Activity
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM, e.text().trim());
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_KITCHEN, id);
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_NUTRIURL, link.attr("abs:href"));
-                                    Element v = items.select("img").first();
+                                    Element v = e.select("img").first();
                                     int veg = 0;
                                     if (v == null) {
                                         veg = 0;
