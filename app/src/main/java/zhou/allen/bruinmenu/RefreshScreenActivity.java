@@ -101,12 +101,6 @@ public class RefreshScreenActivity extends Activity
 
                         Elements cells = menus.get(i).select(".menugridcell, .menusplit");
 
-                        Elements locs = menus.get(i).select(".menulocheader");
-                        ArrayList<String> locsS = new ArrayList<String>();
-                        for (Element e :locs) {
-                            locsS.add(e.text().trim().toLowerCase());
-                        }
-
                         Elements timeMenu = menus.get(i).select(".menumealheader");
                         if (timeMenu.get(0).text().toLowerCase().contains("breakfast"))
                             mealTime = "breakfast";
@@ -114,6 +108,12 @@ public class RefreshScreenActivity extends Activity
                             mealTime = "lunch";
                         else
                             mealTime = "dinner";
+
+                        Elements locs = menus.get(i).select(".menulocheader");
+                        ArrayList<String> locsS = new ArrayList<String>();
+                        for (Element e :locs) {
+                            locsS.add(e.text().trim().toLowerCase());
+                        }
 
                         int temp = 0;
 
