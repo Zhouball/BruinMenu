@@ -102,7 +102,9 @@ public class MenuFragment extends Fragment {
 
 
     private void prepareListData() {
-
+        ///TODO: Make lists of whether an item is a kitchen or not and add all the kitchens and food to the List<String> diningHall
+        ///TODO: For loop for each dining hall from SQLite
+        ///TODO: For loop with for loop that adds kitchen and then each food item for each kitchen (also handle the isKitchen stuff here)
         MenuDBHelper dbHelper = new MenuDBHelper(getContext());
         ArrayList<List<String>> menuList = new ArrayList<List<String>>();
 
