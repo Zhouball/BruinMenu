@@ -3,9 +3,9 @@ package zhou.allen.bruinmenu;
 public class Hall {
     private String mealTime;
     private String item;
-    private int id;
+    private long id;
 
-    public Hall(String mt, String n, int i) {
+    public Hall(String mt, String n, long i) {
         mealTime = mt;
         item = n;
         id = i;
@@ -19,7 +19,7 @@ public class Hall {
         return mealTime;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 }

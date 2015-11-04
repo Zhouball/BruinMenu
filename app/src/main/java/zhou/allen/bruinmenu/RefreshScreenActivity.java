@@ -84,6 +84,8 @@ public class RefreshScreenActivity extends Activity
                     // also be created.
                     SQLiteDatabase db = dbHelper.getWritableDatabase();
 
+                    db.delete(MenuDBContract.HallEntry.TABLE_NAME, null, null);
+                    db.delete(MenuDBContract.KitchenEntry.TABLE_NAME, null, null);
                     db.delete(MenuDBContract.MenuEntry.TABLE_NAME, null, null);
 
                     Document doc = Jsoup.parse(html);

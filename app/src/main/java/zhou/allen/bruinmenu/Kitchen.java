@@ -2,9 +2,9 @@ package zhou.allen.bruinmenu;
 
 public class Kitchen {
 private String item;
-private int id;
+private long id;
 
-    public Kitchen(String n, int i) {
+    public Kitchen(String n, long i) {
         item = n;
         id = i;
     }
@@ -13,7 +13,7 @@ private int id;
         return item;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 }

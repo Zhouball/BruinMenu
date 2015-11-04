@@ -5,9 +5,9 @@ public class MenuItem {
     private String nutriurl;
     private int veg;
     private boolean fav;
-    private int id;
+    private long id;
 
-    public MenuItem(String n, String nu, int ve, boolean fa, int i) {
+    public MenuItem(String n, String nu, int ve, boolean fa, long i) {
         item = n;
         nutriurl = nu;
         veg = ve;
@@ -31,7 +31,7 @@ public class MenuItem {
         return fav;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 }
