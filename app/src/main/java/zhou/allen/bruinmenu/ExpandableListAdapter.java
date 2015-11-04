@@ -13,6 +13,7 @@ import java.util.List;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,10 +27,10 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private Context _context;
     private List<String> _listDataHeader; // header titles
     // child data in format of header title, child title
-    private HashMap<String, List<String>> _listDataChild;
+    private HashMap<String, List<Pair<String,Boolean>>> _listDataChild;
     private HashMap<String, List<Boolean>> _listChildrenIsKitchen;
 
-    public ExpandableListAdapter(Context context, List<String> listDataHeader, HashMap<String, List<String>> listChildData, HashMap<String, List<Boolean>> listChildrenIsKitchen) {
+    public ExpandableListAdapter(Context context, List<String> listDataHeader, HashMap<String, List<Pair<String,Boolean>>> listChildData, HashMap<String, List<Boolean>> listChildrenIsKitchen) {
         this._context = context;
         this._listDataHeader = listDataHeader;
         this._listDataChild = listChildData;
@@ -38,11 +39,14 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return this._listDataChild.get(this._listDataHeader.get(groupPosition)).get(childPosition);
+        return this._listDataChild.get(this._listDataHeader.get(groupPosition)).get(childPosition).first;
     }
 
     public Boolean getChildIsKitchen(int groupPosition, int childPosition) {
         return this._listChildrenIsKitchen.get(this._listDataHeader.get(groupPosition)).get(childPosition);
+    }
+    public Boolean getChildIsVeg(int groupPosition, int childPosition) {
+        return this._listDataChild.get(this._listDataHeader.get(groupPosition)).get(childPosition).second;
     }
 
     @Override
@@ -59,7 +63,10 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             LayoutInflater infalInflater = (LayoutInflater) this._context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             if(getChildIsKitchen(groupPosition, childPosition)) convertView = infalInflater.inflate(R.layout.list_item, null);
             //if(childPosition == 0) convertView = infalInflater.inflate(R.layout.list_kitchen, null);
-            else convertView = infalInflater.inflate(R.layout.list_item, null);
+            else {
+                convertView = infalInflater.inflate(R.layout.list_item, null);
+                if(getChildIsVeg(groupPosition, childPosition));///TODO: get toggleabel icon here and toggle it
+            }
         }
 
         TextView txtListChild = (TextView) convertView.findViewById(R.id.lblListItem);

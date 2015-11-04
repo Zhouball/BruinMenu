@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,7 @@ public class MenuFragment extends Fragment {
     ExpandableListView menu;
     ExpandableListAdapter listAdapter;
     List<String> listDataHeader = new ArrayList<>();
-    HashMap<String, List<String>> listDataChild = new HashMap<>();
+    HashMap<String, List<Pair<String,Boolean>>> listDataChild = new HashMap<>();
     HashMap<String, List<Boolean>> listChildrenIsKitchen = new HashMap<>();
 
     private OnFragmentInteractionListener mListener;
@@ -100,25 +101,23 @@ public class MenuFragment extends Fragment {
         return layout;
     }
 
-
-
     private void prepareListData() {
 
         MenuDBHelper dbHelper = new MenuDBHelper(getContext());
-        ArrayList<List<String>> menuList = new ArrayList<List<String>>();
+        ArrayList<List<Pair<String,Boolean>>> menuList = new ArrayList<>();
 
         listDataHeader = dbHelper.getHallsByMealTime(timeOfDay);
 
         for(String hall : listDataHeader) {
             ArrayList<String> kitchensList = dbHelper.getKitchensByHall(hall);
-            ArrayList<String> listItems = new ArrayList<>();
+            ArrayList<Pair<String,Boolean>> listItems = new ArrayList<>();
             ArrayList<Boolean> isKitchens = new ArrayList<>();
             for(String kitchen : kitchensList) {
-                listItems.add(kitchen);
+                listItems.add(new Pair<>(kitchen,Boolean.FALSE));
                 isKitchens.add(Boolean.TRUE);
-                ArrayList<String> menuItems = dbHelper.getMenuItemsByKitchen(kitchen);
-                for(String food : menuItems) {
-                    listItems.add(food);
+                ArrayList<Pair<String, Boolean>> menuItems = dbHelper.getMenuItemsByKitchen(kitchen);
+                for(Pair<String, Boolean> foodvegPair : menuItems) {
+                    listItems.add(foodvegPair);
                     isKitchens.add(Boolean.FALSE);
                 }
             }
@@ -153,7 +152,7 @@ public class MenuFragment extends Fragment {
 
         if (menuList.size() == 0) {
             listDataHeader.add("Nothing to see here!");
-            menuList.add(new ArrayList<String>());
+            menuList.add(new ArrayList<Pair<String,Boolean>>());
         }
         else
             for (int i = 0; i < menuList.size(); i++) {
