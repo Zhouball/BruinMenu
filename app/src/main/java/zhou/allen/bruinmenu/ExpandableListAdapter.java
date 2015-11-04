@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.Image;
 import android.util.Log;
@@ -90,19 +91,15 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         TextView txtListChild = (TextView) convertView.findViewById(R.id.lblListItem);
         txtListChild.setText(childText);
 
-        /*txtListChild.setOnClickListener(new View.OnClickListener() {
+        txtListChild.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String nutriURL = getChildNurtiUrl(groupPosition, childPosition);
-                WebView webview = new WebView(_context);
-                _context.setContentView(webview);
-
-                webview.getSettings().setJavaScriptEnabled(true);
-                webview.getSettings().setBuiltInZoomControls(true);
-
-                webview.loadUrl(nutriURL);
+                Intent intent = new Intent(_context, NutriDataWebView.class);
+                intent.putExtra("nutriURL", nutriURL);
+                _context.startActivity(intent);
             }
-        });*/
+        });
 
         return convertView;
     }
