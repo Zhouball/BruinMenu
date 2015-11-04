@@ -66,15 +66,12 @@ public class MenuDBHelper extends SQLiteOpenHelper {
         c.close();
         return returnList;
     }
-<<<<<<< HEAD
-
-=======
     */
 
     public List<Hall> getHallsByMealTime(String mealTime) {
         List<Hall> returnList = new ArrayList<Hall>();
 
-        String selectQuery = "SELECT " + MenuDBContract.HallEntry.COLUMN_NAME_ITEM + " FROM " + MenuDBContract.HallEntry.TABLE_NAME +
+        String selectQuery = "SELECT * FROM " + MenuDBContract.HallEntry.TABLE_NAME +
                 " WHERE " + MenuDBContract.HallEntry.COLUMN_NAME_MEALTIME + "='" + mealTime + "'";
 
         Log.e(LOG, selectQuery);
@@ -87,7 +84,7 @@ public class MenuDBHelper extends SQLiteOpenHelper {
             do {
                 String s = c.getString(c.getColumnIndex(MenuDBContract.HallEntry.COLUMN_NAME_ITEM));
                 String m = c.getString(c.getColumnIndex(MenuDBContract.HallEntry.COLUMN_NAME_MEALTIME));
-                int id = c.getInt(c.getColumnIndex(MenuDBContract.HallEntry._ID));
+                long id = c.getLong(c.getColumnIndex(MenuDBContract.HallEntry._ID));
 
                 // adding to list
                 returnList.add(new Hall(s, m, id));
@@ -100,7 +97,7 @@ public class MenuDBHelper extends SQLiteOpenHelper {
     public List<Kitchen> getKitchensByHall(Hall hall) {
         List<Kitchen> returnList = new ArrayList<Kitchen>();
 
-        String selectQuery = "SELECT " + MenuDBContract.KitchenEntry.COLUMN_NAME_ITEM + " FROM " + MenuDBContract.KitchenEntry.TABLE_NAME +
+        String selectQuery = "SELECT * FROM " + MenuDBContract.KitchenEntry.TABLE_NAME +
                 " WHERE " + MenuDBContract.KitchenEntry.COLUMN_NAME_HALL + "='" + hall.getId() + "'";
 
         Log.e(LOG, selectQuery);
@@ -126,7 +123,7 @@ public class MenuDBHelper extends SQLiteOpenHelper {
         List<MenuItem> returnList = new ArrayList<MenuItem>();
         List<String> favorites = new ArrayList<String>();
 
-        String selectQuery = "SELECT " + MenuDBContract.MenuEntry.COLUMN_NAME_ITEM + " FROM " + MenuDBContract.MenuEntry.TABLE_NAME +
+        String selectQuery = "SELECT * FROM " + MenuDBContract.MenuEntry.TABLE_NAME +
                 " WHERE " + MenuDBContract.MenuEntry.COLUMN_NAME_KITCHEN + "='" + kitchen.getId() + "'";
 
         String favoritesQuery = "SELECT " + MenuDBContract.Favorites.COLUMN_NAME_ITEM + " FROM " + MenuDBContract.Favorites.TABLE_NAME;
