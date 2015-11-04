@@ -11,7 +11,7 @@ public final class MenuDBContract {
     public static final String DATABASE_NAME = "menudb.db";
 
     private static final String TEXT_TYPE = " TEXT";
-    private static final String BOOLEAN_TYPE = " BOOLEAN";
+    private static final String INT_TYPE = " INT";
     private static final String COMMA_SEP = ",";
 
     public MenuDBContract() {
@@ -30,7 +30,7 @@ public final class MenuDBContract {
                 COLUMN_NAME_ITEM + TEXT_TYPE + COMMA_SEP +
                 COLUMN_NAME_KITCHEN + TEXT_TYPE + COMMA_SEP +
                 COLUMN_NAME_NUTRIURL + TEXT_TYPE + COMMA_SEP +
-                COLUMN_NAME_VEG + BOOLEAN_TYPE + " )";
+                COLUMN_NAME_VEG + INT_TYPE + " )";
         public static final String DELETE_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
     }
 
