@@ -4,19 +4,18 @@ package zhou.allen.bruinmenu;
  * sqlite
  * -Store Table of Dining Halls, Table of Kitchens-Hall relations (to select list of kitchens), and food-kitchen relations
  * -Store nutritional data with food (link)
- * -Stop updating every time I open the app
+ * TODO: -Fix updating every time error
  *
  * swiper
  * -Make sure the page updates every meal period (http://stackoverflow.com/questions/10849552/update-viewpager-dynamically/17855730#17855730)
  *
  * list-view
-<<<<<<< HEAD
-=======
- * TODO: -Fix scrolling in webviews
->>>>>>> origin/more-loading-circles
- * TODO: -On clicking star icon store favorite in another sqlite table
- * TODO: -Get notification when favorite food appears (check each item in menu item)
  * -If dining hall not open, show it in red
+ *
+ * favorites
+ * TODO: -Get notification when favorite food appears (check each item in menu item)
+ * TODO: -Change icon in notification (and all the other icons)
+ * TODO: Dismiss notification onClick
  *
  * sliders
  * -Change font families (font size in sp (not dip), different font type)

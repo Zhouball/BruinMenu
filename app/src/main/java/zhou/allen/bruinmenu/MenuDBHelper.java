@@ -1,11 +1,16 @@
 package zhou.allen.bruinmenu;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +21,11 @@ import java.util.List;
 public class MenuDBHelper extends SQLiteOpenHelper {
 
     private static final String LOG = MenuDBHelper.class.getName();
+    private Context _context;
 
     public MenuDBHelper(Context context) {
         super(context, MenuDBContract.DATABASE_NAME, null, MenuDBContract.DATABASE_VERSION);
+        _context = context;
     }
 
     // Method is called during creation of the database
@@ -146,6 +153,7 @@ public class MenuDBHelper extends SQLiteOpenHelper {
 
         // looping through all rows and adding to list
         if (c.moveToFirst()) {
+            ArrayList<String> favoriteFood = new ArrayList<>();
             do {
                 String s = c.getString(c.getColumnIndex(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM));
                 String url = c.getString(c.getColumnIndex(MenuDBContract.MenuEntry.COLUMN_NAME_NUTRIURL));
@@ -154,7 +162,28 @@ public class MenuDBHelper extends SQLiteOpenHelper {
                 boolean f = favorites.contains(s);
                 long id = c.getLong(c.getColumnIndex(MenuDBContract.MenuEntry._ID));
                 returnList.add(new MenuItem(s, url, v, f, id));
+
+                // sending notification if favorite
+                if(f) {
+                    favoriteFood.add(kitchen.getItem() + " - " + s);
+                }
             } while (c.moveToNext());
+            if(!favoriteFood.isEmpty()) {
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(_context).
+                        setSmallIcon(R.drawable.vegetarian).
+                        setContentTitle("Today's Favorites").
+                        setContentText(favoriteFood.get(0) + "....");
+                NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
+                inboxStyle.setBigContentTitle("Today's Favorites");
+                for(String foods : favoriteFood) {
+                    inboxStyle.addLine(foods);
+                }
+                builder.setStyle(inboxStyle);
+                builder.setContentIntent(PendingIntent.getActivity(_context, 0, new Intent(_context, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT));
+                builder.setAutoCancel(true);
+                NotificationManager notifManager = (NotificationManager) _context.getSystemService(Context.NOTIFICATION_SERVICE);
+                notifManager.notify((int) kitchen.getId(), builder.build());
+            }
         }
         c.close();
         return returnList;
