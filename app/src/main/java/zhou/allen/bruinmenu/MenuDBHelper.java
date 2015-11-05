@@ -22,13 +22,6 @@ public class MenuDBHelper extends SQLiteOpenHelper {
 
     private static final String LOG = MenuDBHelper.class.getName();
     private Context _context;
-    private ArrayList<String> favoriteFood;
-
-    public MenuDBHelper(Context context, List<String> favFood) {
-        super(context, MenuDBContract.DATABASE_NAME, null, MenuDBContract.DATABASE_VERSION);
-        _context = context;
-        favoriteFood = (ArrayList<String>) favFood;
-    }
 
     public MenuDBHelper(Context context) {
         super(context, MenuDBContract.DATABASE_NAME, null, MenuDBContract.DATABASE_VERSION);
@@ -169,11 +162,6 @@ public class MenuDBHelper extends SQLiteOpenHelper {
                 boolean f = favorites.contains(s);
                 long id = c.getLong(c.getColumnIndex(MenuDBContract.MenuEntry._ID));
                 returnList.add(new MenuItem(s, url, v, f, id));
-
-                // adding food to favorites (for displaying notification)
-                if(f) {
-                    favoriteFood.add(kitchen.getItem() + " - " + s);
-                }
             } while (c.moveToNext());
         }
         c.close();
