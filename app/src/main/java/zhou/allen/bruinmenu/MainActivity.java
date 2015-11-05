@@ -13,9 +13,8 @@ package zhou.allen.bruinmenu;
  * -If dining hall not open, show it in red
  *
  * favorites
- * TODO: -Get notification when favorite food appears (check each item in menu item)
+ * TODO: -Modify intent to go to the correct page and open correct dining hall in expandable list view
  * TODO: -Change icon in notification (and all the other icons)
- * TODO: Dismiss notification onClick
  *
  * sliders
  * -Change font families (font size in sp (not dip), different font type)
