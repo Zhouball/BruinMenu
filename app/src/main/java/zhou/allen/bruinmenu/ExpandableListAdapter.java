@@ -96,9 +96,11 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             favIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(getChildIsFav(groupPosition, childPosition)) {
-                        
+                    if(!getChildIsFav(groupPosition, childPosition)) {
+                        favIcon.setImageDrawable(_context.getResources().getDrawable(R.drawable.star_pressed));
+
                     } else {
+                        favIcon.setImageDrawable(_context.getResources().getDrawable(R.drawable.star_unpressed));
 
                     }
                     ///TODO: if not favorite: add to favorites, set button to enabled
@@ -107,7 +109,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             });
 
             if(getChildIsFav(groupPosition, childPosition)) {
-                favIcon.setSelected(true);
+                favIcon.setImageDrawable(_context.getResources().getDrawable(R.drawable.star_pressed));
             }
 
             txtListChild.setOnClickListener(new View.OnClickListener() {
