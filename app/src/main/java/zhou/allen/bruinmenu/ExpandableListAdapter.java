@@ -106,9 +106,12 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             }
 
             txtListChild.setOnClickListener(new View.OnClickListener() {
+                private String nutriURLprefix = "http://menu.ha.ucla.edu/foodpro/";
+
                 @Override
                 public void onClick(View v) {
-                    String nutriURL = getChildNurtiUrl(groupPosition, childPosition);
+                    String nutriURL = nutriURLprefix + getChildNurtiUrl(groupPosition, childPosition);
+                    Log.d("URL", nutriURL);
                     Intent intent = new Intent(_context, NutriDataWebView.class);
                     intent.putExtra("nutriURL", nutriURL);
                     _context.startActivity(intent);
