@@ -190,4 +190,10 @@ public class MenuDBHelper extends SQLiteOpenHelper {
         long id = db.insert(MenuDBContract.Favorites.TABLE_NAME, null, values);
         return id;
     }
+
+    public boolean deleteFavorite(String name)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(MenuDBContract.Favorites.TABLE_NAME, MenuDBContract.Favorites.COLUMN_NAME_ITEM + "=" + name, null) > 0;
+    }
 }
