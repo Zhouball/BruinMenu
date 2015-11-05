@@ -45,13 +45,13 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         return this._listDataChild.get(this._listDataHeader.get(groupPosition)).get(childPosition).getItem();
     }
 
-    public Boolean getChildIsKitchen(int groupPosition, int childPosition) {
-        return (this._listDataChild.get(this._listDataHeader.get(groupPosition)).get(childPosition).getId() == -78);
+    public boolean getChildIsKitchen(int groupPosition, int childPosition) {
+        return (this._listDataChild.get(this._listDataHeader.get(groupPosition)).get(childPosition).getVeg() == -78);
     }
     public Integer getChildVeg(int groupPosition, int childPosition) {
         return this._listDataChild.get(this._listDataHeader.get(groupPosition)).get(childPosition).getVeg();
     }
-    public Boolean getChildIsFav(int groupPosition, int childPosition) {
+    public boolean getChildIsFav(int groupPosition, int childPosition) {
         return this._listDataChild.get(this._listDataHeader.get(groupPosition)).get(childPosition).isFavorite();
     }
     public String getChildNurtiUrl(int groupPosition, int childPosition) {
