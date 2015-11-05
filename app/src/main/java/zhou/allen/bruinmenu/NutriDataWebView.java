@@ -26,7 +26,6 @@ public class NutriDataWebView extends AppCompatActivity {
         webview.getSettings().setJavaScriptEnabled(true);
         webview.getSettings().setBuiltInZoomControls(true);
 
-        Log.d("URL", nutriURL);
         webview.loadUrl(nutriURL);
     }
 }
