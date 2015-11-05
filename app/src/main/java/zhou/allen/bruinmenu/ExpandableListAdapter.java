@@ -105,7 +105,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                     } else {
                         favIcon.setImageDrawable(_context.getResources().getDrawable(R.drawable.star_unpressed));
                         getChildData(groupPosition, childPosition).setFavorite(false);
-                        dbHelper.removeFavorite((String) (getChild(groupPosition, childPosition)));
+                        dbHelper.deleteFavorite((String) (getChild(groupPosition, childPosition)));
                     }
                     dbHelper.close();
                 }
