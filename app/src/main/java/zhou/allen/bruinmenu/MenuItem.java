@@ -34,4 +34,8 @@ public class MenuItem {
     public long getId() {
         return id;
     }
+
+    public void setFavorite(boolean favorite) {
+        this.fav = favorite;
+    }
 }

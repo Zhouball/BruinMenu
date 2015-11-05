@@ -96,15 +96,18 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             favIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    MenuDBHelper dbHelper = new MenuDBHelper(_context);
+
                     if(!getChildIsFav(groupPosition, childPosition)) {
                         favIcon.setImageDrawable(_context.getResources().getDrawable(R.drawable.star_pressed));
-
+                        getChildData(groupPosition, childPosition).setFavorite(true);
+                        dbHelper.addFavorite((String) (getChild(groupPosition, childPosition)));
                     } else {
                         favIcon.setImageDrawable(_context.getResources().getDrawable(R.drawable.star_unpressed));
-
+                        getChildData(groupPosition, childPosition).setFavorite(false);
+                        dbHelper.removeFavorite((String) (getChild(groupPosition, childPosition)));
                     }
-                    ///TODO: if not favorite: add to favorites, set button to enabled
-                    ///TODO: else: remove from favorites, set button to disabled
+                    dbHelper.close();
                 }
             });
 
