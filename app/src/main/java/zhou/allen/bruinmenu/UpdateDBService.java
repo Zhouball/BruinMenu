@@ -12,6 +12,8 @@ import android.os.AsyncTask;
 //import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.OkHttpClient;
@@ -33,6 +35,9 @@ import java.util.concurrent.TimeUnit;
  */
 public class UpdateDBService extends Service {
 
+    private ArrayList<String> favoriteFoodPresent;
+    private ArrayList<String> favoriteFood;
+
     public IBinder onBind(Intent arg0) {
         return null;
     }
@@ -41,6 +46,27 @@ public class UpdateDBService extends Service {
         super.onCreate();
 
         new UpdateDB().execute();
+
+        //displaying notification
+        if(!favoriteFoodPresent.isEmpty()) {
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this).
+                    setSmallIcon(R.drawable.vegetarian).
+                    setContentTitle("Today's Favorites").
+                    setContentText(favoriteFoodPresent.get(0) + "....");
+            NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
+            inboxStyle.setBigContentTitle("Today's Favorites");
+            for(String foods : favoriteFoodPresent) {
+                inboxStyle.addLine(foods);
+            }
+            builder.setStyle(inboxStyle);
+            builder.setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT));
+            builder.setAutoCancel(true);
+            NotificationManager notifManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+            int notificationID = 1;
+            notifManager.notify(notificationID, builder.build());
+        }
+
         stopSelf();
     }
 
@@ -78,11 +104,10 @@ public class UpdateDBService extends Service {
                     //((AppVariables) getApplicationContext()).setBruinMenu(html);
                     //System.out.print("I got the page!");
 
-                    Context _context = getApplicationContext();
-                    MenuDBHelper dbHelper = new MenuDBHelper(_context);
+                    MenuDBHelper dbHelper = new MenuDBHelper(getApplicationContext());
 
-                    ArrayList<String> favoriteFoodPresent = new ArrayList<>();
-                    ArrayList<String> favoriteFood = (ArrayList<String>) dbHelper.getFavorites();
+                    favoriteFoodPresent = new ArrayList<>();
+                    favoriteFood = (ArrayList<String>) dbHelper.getFavorites();
                     // Get the database. If it does not exist, this is where it will
                     // also be created.
                     SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -143,7 +168,9 @@ public class UpdateDBService extends Service {
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM, menuItemName);
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_KITCHEN, id);
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_NUTRIURL, link.attr("href"));
-                                    if(favoriteFood.contains(menuItemName)) favoriteFoodPresent.add(id + "-" + menuItemName);
+                                    if(favoriteFood.contains(menuItemName)) {
+                                        favoriteFoodPresent.add(id + "-" + menuItemName);
+                                    }
 
                                     Element v = e.select("img").first();
                                     int veg = 0;
@@ -203,28 +230,9 @@ public class UpdateDBService extends Service {
                             }
                         }
                     }
+
                     dbHelper.close();
                     db.close();
-
-                    //displaying notification
-                    if(!favoriteFoodPresent.isEmpty()) {
-                        NotificationCompat.Builder builder = new NotificationCompat.Builder(_context).
-                                setSmallIcon(R.drawable.vegetarian).
-                                setContentTitle("Today's Favorites").
-                                setContentText(favoriteFoodPresent.get(0) + "....");
-                        NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
-                        inboxStyle.setBigContentTitle("Today's Favorites");
-                        for(String foods : favoriteFoodPresent) {
-                            inboxStyle.addLine(foods);
-                        }
-                        builder.setStyle(inboxStyle);
-                        builder.setContentIntent(PendingIntent.getActivity(_context, 0, new Intent(_context, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT));
-                        builder.setAutoCancel(true);
-                        NotificationManager notifManager = (NotificationManager) _context.getSystemService(Context.NOTIFICATION_SERVICE);
-
-                        int notificationID = 1;
-                        notifManager.notify(notificationID, builder.build());
-                    }
 
                 } catch (Exception e) {
                     //Do nothing if service fails.
