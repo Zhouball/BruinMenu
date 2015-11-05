@@ -10,8 +10,7 @@ package zhou.allen.bruinmenu;
  * -Make sure the page updates every meal period (http://stackoverflow.com/questions/10849552/update-viewpager-dynamically/17855730#17855730)
  *
  * list-view
- * TODO: -Make food textviews clickable (onclick leads to webview with nutritional data that's zoomed in a bit)
- * TODO: -Vegetarian marker in list_item.xml (toggle visibility in exandablelistviewadapter)
+ * TODO: -Fix scrolling in webviews
  * TODO: -On clicking star icon store favorite in another sqlite table
  * TODO: -Get notification when favorite food appears (check each item in menu item)
  * -If dining hall not open, show it in red
@@ -83,11 +82,11 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
         Calendar calendar = Calendar.getInstance();
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         if (hour > 3 && hour < 10) {
-            currentMenu = 1;
+            currentMenu = 0;
         } else if(hour < 16) {
-            currentMenu = 2;
+            currentMenu = 1;
         } else {
-            currentMenu = 3;
+            currentMenu = 2;
         }
 
         viewPager.setCurrentItem(currentMenu);
@@ -151,7 +150,7 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
 
     private class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
-        String menus[] = {"Swipes", "Breakfast", "Lunch", "Dinner"};
+        String menus[] = {"Breakfast", "Lunch", "Dinner", "Swipes"};
 
         FragmentManager fragmentManager;
 
@@ -164,20 +163,19 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
             Fragment fragment = null;
             switch (num) {
                 case 0:
-                    fragment = SwipesLeftFragment.newInstance();
-                    break;
-                case 1:
                     Calendar c = Calendar.getInstance();
                     int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
-
                     if(dayOfWeek == 1 || dayOfWeek == 7) fragment = MenuFragment.newInstance("lunch");
                     else fragment = MenuFragment.newInstance("breakfast");
                     break;
-                case 2:
+                case 1:
                     fragment = MenuFragment.newInstance("lunch");
                     break;
-                case 3:
+                case 2:
                     fragment = MenuFragment.newInstance("dinner");
+                    break;
+                case 3:
+                    fragment = SwipesLeftFragment.newInstance();
                     break;
             }
             return fragment;

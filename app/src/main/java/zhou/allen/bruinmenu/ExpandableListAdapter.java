@@ -92,17 +92,24 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                 vegIcon.setVisibility(View.VISIBLE);
             }
 
-            ImageButton favIcon = (ImageButton) convertView.findViewById(R.id.favorite);
+            final ImageButton favIcon = (ImageButton) convertView.findViewById(R.id.favorite);
             favIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if(!getChildIsFav(groupPosition, childPosition)) {
+                        favIcon.setImageDrawable(_context.getResources().getDrawable(R.drawable.star_pressed));
+
+                    } else {
+                        favIcon.setImageDrawable(_context.getResources().getDrawable(R.drawable.star_unpressed));
+
+                    }
                     ///TODO: if not favorite: add to favorites, set button to enabled
                     ///TODO: else: remove from favorites, set button to disabled
                 }
             });
 
             if(getChildIsFav(groupPosition, childPosition)) {
-                favIcon.setSelected(true);
+                favIcon.setImageDrawable(_context.getResources().getDrawable(R.drawable.star_pressed));
             }
 
             txtListChild.setOnClickListener(new View.OnClickListener() {

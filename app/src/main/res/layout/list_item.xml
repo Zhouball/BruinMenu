@@ -30,7 +30,7 @@
         android:id="@+id/favorite"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@drawable/star"
+        android:src="@drawable/star_unpressed"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"

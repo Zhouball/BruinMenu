@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
@@ -37,9 +38,10 @@ public class NutriDataWebView extends AppCompatActivity {
 
             WebView webview = new WebView(this);
             setContentView(webview);
+            WebSettings webSettings = webview.getSettings();
 
-            webview.getSettings().setJavaScriptEnabled(true);
-            webview.getSettings().setBuiltInZoomControls(true);
+            webSettings.setJavaScriptEnabled(true);
+            webSettings.setLoadWithOverviewMode(true);
 
             webview.loadDataWithBaseURL("file:///android_asset/", html, "text/html", "UTF-8", "");
         } catch (Exception e) {
