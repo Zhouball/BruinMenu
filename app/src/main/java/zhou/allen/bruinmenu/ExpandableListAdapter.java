@@ -112,7 +112,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                 public void onClick(View v) {
                     String nutriURL = nutriURLprefix + getChildNurtiUrl(groupPosition, childPosition);
                     Log.d("URL", nutriURL);
-                    Intent intent = new Intent(_context, NutriDataWebView.class);
+                    Intent intent = new Intent(_context, LoadNutriDataActivity.class);
                     intent.putExtra("nutriURL", nutriURL);
                     _context.startActivity(intent);
                 }

@@ -32,7 +32,6 @@
         <!-- Main Activity (display menu) -->
         <activity
             android:name=".RefreshScreenActivity"
-            android:label="@string/app_name"
             android:noHistory="true" >
         </activity>
 
@@ -45,6 +44,11 @@
             android:name=".NutriDataWebView"
             android:label="Nutritional Data"
             android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+
+        <activity
+            android:name=".LoadNutriDataActivity"
+            android:noHistory="true" >
         </activity>
     </application>
 
