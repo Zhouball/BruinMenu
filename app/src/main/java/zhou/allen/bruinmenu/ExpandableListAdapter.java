@@ -40,22 +40,26 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         this._listDataChild = listChildData;
     }
 
+    public MenuItem getChildData(int groupPosition, int childPosition) {
+        return this._listDataChild.get(this._listDataHeader.get(groupPosition)).get(childPosition);
+    }
+
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return this._listDataChild.get(this._listDataHeader.get(groupPosition)).get(childPosition).getItem();
+        return getChildData(groupPosition, childPosition).getItem();
     }
 
     public boolean getChildIsKitchen(int groupPosition, int childPosition) {
-        return (this._listDataChild.get(this._listDataHeader.get(groupPosition)).get(childPosition).getVeg() == -78);
+        return (getChildData(groupPosition, childPosition).getVeg() == -78);
     }
     public Integer getChildVeg(int groupPosition, int childPosition) {
-        return this._listDataChild.get(this._listDataHeader.get(groupPosition)).get(childPosition).getVeg();
+        return getChildData(groupPosition, childPosition).getVeg();
     }
     public boolean getChildIsFav(int groupPosition, int childPosition) {
-        return this._listDataChild.get(this._listDataHeader.get(groupPosition)).get(childPosition).isFavorite();
+        return getChildData(groupPosition, childPosition).isFavorite();
     }
     public String getChildNurtiUrl(int groupPosition, int childPosition) {
-        return this._listDataChild.get(this._listDataHeader.get(groupPosition)).get(childPosition).getNutriurl();
+        return getChildData(groupPosition, childPosition).getNutriurl();
     }
 
     @Override
@@ -68,40 +72,50 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
         final String childText = (String) getChild(groupPosition, childPosition);
 
-        if (convertView == null) {
-            LayoutInflater infalInflater = (LayoutInflater) this._context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            if(getChildIsKitchen(groupPosition, childPosition)) convertView = infalInflater.inflate(R.layout.list_kitchen, null);
-            else {
-                convertView = infalInflater.inflate(R.layout.list_item, null);
+        LayoutInflater infalInflater = (LayoutInflater) this._context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-                if(getChildVeg(groupPosition, childPosition) == 1) {
-                    ImageView vegIcon = (ImageView) convertView.findViewById(R.id.vegetarian);
-                    vegIcon.setVisibility(View.VISIBLE);
-                } else if(getChildVeg(groupPosition, childPosition) == 2) {
-                    ImageView vegIcon = (ImageView) convertView.findViewById(R.id.vegetarian);
-                    vegIcon.setImageDrawable(_context.getResources().getDrawable(R.drawable.vegan));
-                    vegIcon.setVisibility(View.VISIBLE);
-                }
-
-                if(getChildIsFav(groupPosition, childPosition)) {
-                    ImageButton favIcon = (ImageButton) convertView.findViewById(R.id.favorite);
-                    favIcon.setSelected(true);
-                }
-            }
+        if(getChildIsKitchen(groupPosition, childPosition)) {
+            convertView = infalInflater.inflate(R.layout.list_kitchen, null);
+        } else {
+            convertView = infalInflater.inflate(R.layout.list_item, null);
         }
 
         TextView txtListChild = (TextView) convertView.findViewById(R.id.lblListItem);
         txtListChild.setText(childText);
 
-        txtListChild.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String nutriURL = getChildNurtiUrl(groupPosition, childPosition);
-                Intent intent = new Intent(_context, NutriDataWebView.class);
-                intent.putExtra("nutriURL", nutriURL);
-                _context.startActivity(intent);
+        if(!getChildIsKitchen(groupPosition, childPosition)) {
+            ImageView vegIcon = (ImageView) convertView.findViewById(R.id.vegetarian);
+            if (getChildVeg(groupPosition, childPosition) == 1) {
+                vegIcon.setVisibility(View.VISIBLE);
+            } else if (getChildVeg(groupPosition, childPosition) == 2) {
+                vegIcon.setImageDrawable(_context.getResources().getDrawable(R.drawable.vegan));
+                vegIcon.setVisibility(View.VISIBLE);
             }
-        });
+
+            ImageButton favIcon = (ImageButton) convertView.findViewById(R.id.favorite);
+            favIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ///TODO: if not favorite: add to favorites, set button to enabled
+                    ///TODO: else: remove from favorites, set button to disabled
+                }
+            });
+
+            if(getChildIsFav(groupPosition, childPosition)) {
+                favIcon.setSelected(true);
+            }
+
+            txtListChild.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String nutriURL = getChildNurtiUrl(groupPosition, childPosition);
+                    Intent intent = new Intent(_context, NutriDataWebView.class);
+                    intent.putExtra("nutriURL", nutriURL);
+                    _context.startActivity(intent);
+                }
+            });
+
+        }
 
         return convertView;
     }
