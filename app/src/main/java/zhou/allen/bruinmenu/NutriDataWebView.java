@@ -33,7 +33,7 @@ public class NutriDataWebView extends AppCompatActivity {
             setContentView(R.layout.activity_nutri_data_web_view);
 
             Intent intent = getIntent();
-            String html = intent.getStringExtra("html");
+            String html = "<link rel=\"stylesheet\" type=\"text/css\" href=\"nutristyle.css\" />" + intent.getStringExtra("html");
 
             WebView webview = new WebView(this);
             setContentView(webview);
@@ -41,7 +41,7 @@ public class NutriDataWebView extends AppCompatActivity {
             webview.getSettings().setJavaScriptEnabled(true);
             webview.getSettings().setBuiltInZoomControls(true);
 
-            webview.loadDataWithBaseURL("", html, "text/html", "UTF-8", "");
+            webview.loadDataWithBaseURL("file:///android_asset/", html, "text/html", "UTF-8", "");
         } catch (Exception e) {
             Toast.makeText(activity, "If you got here, something is horribly wrong.", Toast.LENGTH_SHORT).show();
             finish();
