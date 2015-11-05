@@ -92,10 +92,15 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                 vegIcon.setVisibility(View.VISIBLE);
             }
 
-            ImageButton favIcon = (ImageButton) convertView.findViewById(R.id.favorite);
+            final ImageButton favIcon = (ImageButton) convertView.findViewById(R.id.favorite);
             favIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if(getChildIsFav(groupPosition, childPosition)) {
+                        
+                    } else {
+
+                    }
                     ///TODO: if not favorite: add to favorites, set button to enabled
                     ///TODO: else: remove from favorites, set button to disabled
                 }
