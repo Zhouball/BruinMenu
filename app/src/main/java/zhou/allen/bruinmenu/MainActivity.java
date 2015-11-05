@@ -10,6 +10,10 @@ package zhou.allen.bruinmenu;
  * -Make sure the page updates every meal period (http://stackoverflow.com/questions/10849552/update-viewpager-dynamically/17855730#17855730)
  *
  * list-view
+<<<<<<< HEAD
+=======
+ * TODO: -Fix scrolling in webviews
+>>>>>>> origin/more-loading-circles
  * TODO: -On clicking star icon store favorite in another sqlite table
  * TODO: -Get notification when favorite food appears (check each item in menu item)
  * -If dining hall not open, show it in red
@@ -161,9 +165,6 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
         public Fragment getItem(int num) {
             Fragment fragment = null;
             switch (num) {
-                case 3:
-                    fragment = SwipesLeftFragment.newInstance();
-                    break;
                 case 0:
                     Calendar c = Calendar.getInstance();
                     int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
@@ -175,6 +176,9 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
                     break;
                 case 2:
                     fragment = MenuFragment.newInstance("dinner");
+                    break;
+                case 3:
+                    fragment = SwipesLeftFragment.newInstance();
                     break;
             }
             return fragment;

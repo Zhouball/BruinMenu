@@ -49,13 +49,13 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         return getChildData(groupPosition, childPosition).getItem();
     }
 
-    public Boolean getChildIsKitchen(int groupPosition, int childPosition) {
-        return (getChildData(groupPosition, childPosition).getId() == -78);
+    public boolean getChildIsKitchen(int groupPosition, int childPosition) {
+        return (getChildData(groupPosition, childPosition).getVeg() == -78);
     }
     public Integer getChildVeg(int groupPosition, int childPosition) {
         return getChildData(groupPosition, childPosition).getVeg();
     }
-    public Boolean getChildIsFav(int groupPosition, int childPosition) {
+    public boolean getChildIsFav(int groupPosition, int childPosition) {
         return getChildData(groupPosition, childPosition).isFavorite();
     }
     public String getChildNurtiUrl(int groupPosition, int childPosition) {
@@ -92,17 +92,24 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                 vegIcon.setVisibility(View.VISIBLE);
             }
 
-            ImageButton favIcon = (ImageButton) convertView.findViewById(R.id.favorite);
+            final ImageButton favIcon = (ImageButton) convertView.findViewById(R.id.favorite);
             favIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if(!getChildIsFav(groupPosition, childPosition)) {
+                        favIcon.setImageDrawable(_context.getResources().getDrawable(R.drawable.star_pressed));
+
+                    } else {
+                        favIcon.setImageDrawable(_context.getResources().getDrawable(R.drawable.star_unpressed));
+
+                    }
                     ///TODO: if not favorite: add to favorites, set button to enabled
                     ///TODO: else: remove from favorites, set button to disabled
                 }
             });
 
             if(getChildIsFav(groupPosition, childPosition)) {
-                favIcon.setSelected(true);
+                favIcon.setImageDrawable(_context.getResources().getDrawable(R.drawable.star_pressed));
             }
 
             txtListChild.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +118,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                 @Override
                 public void onClick(View v) {
                     String nutriURL = nutriURLprefix + getChildNurtiUrl(groupPosition, childPosition);
-                    Intent intent = new Intent(_context, NutriDataWebView.class);
+                    Intent intent = new Intent(_context, LoadNutriDataActivity.class);
                     intent.putExtra("nutriURL", nutriURL);
                     _context.startActivity(intent);
                 }
