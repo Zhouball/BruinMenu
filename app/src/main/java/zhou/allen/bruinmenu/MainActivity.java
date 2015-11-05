@@ -18,6 +18,7 @@ package zhou.allen.bruinmenu;
  *
  * sliders
  * -Change font families (font size in sp (not dip), different font type)
+ * -Move refresh functionality to options menu (makes swiping easier)
  * -App icon
  **/
 import android.content.Intent;

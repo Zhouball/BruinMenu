@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -100,7 +101,9 @@ public class MenuFragment extends Fragment {
     }
 
     private void prepareListData() {
-
+        ///TODO: Kitchens/Items sometimes work weirdly (bolding when not supposed to. Not bold when supposed to...)
+        ///TODO: Fix WebView
+        ///TODO: Favorite button doesn't work
         MenuDBHelper dbHelper = new MenuDBHelper(getContext());
         ArrayList<List<MenuItem>> menuList = new ArrayList<>();
         ArrayList<Hall> halls = (ArrayList) dbHelper.getHallsByMealTime(timeOfDay);
@@ -111,10 +114,7 @@ public class MenuFragment extends Fragment {
             ArrayList<MenuItem> listItems = new ArrayList<>(); //list of menuItems (name, url, veg, fav, id)
             for(Kitchen kitchen : kitchensList) {
                 listItems.add(new MenuItem(kitchen.getItem(), "", -78, Boolean.FALSE, -78)); //-78 = magic number to show it's a kitchen
-                ArrayList<MenuItem> menuItems = (ArrayList) dbHelper.getMenuItemsByKitchen(kitchen);
-                for(MenuItem menuItem : menuItems) {
-                    listItems.add(menuItem);
-                }
+                listItems.addAll(dbHelper.getMenuItemsByKitchen(kitchen));
             }
             menuList.add(listItems);
         }
@@ -123,10 +123,9 @@ public class MenuFragment extends Fragment {
             listDataHeader.add("Nothing to see here!");
             menuList.add(new ArrayList<MenuItem>());
         }
-        else
-            for (int i = 0; i < menuList.size(); i++) {
-                listDataChild.put(listDataHeader.get(i), menuList.get(i)); // Header, Child data
-            }
+        for (int i = 0; i < menuList.size(); i++) {
+            listDataChild.put(listDataHeader.get(i), menuList.get(i)); // Header, Child data
+        }
         dbHelper.close();
     }
 /*
