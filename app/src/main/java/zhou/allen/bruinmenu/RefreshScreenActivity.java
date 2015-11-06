@@ -257,7 +257,7 @@ public class RefreshScreenActivity extends Activity
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(_context).
                         setSmallIcon(R.drawable.vegetarian).
                         setContentTitle("Today's Favorites").
-                        setContentText(favoriteFoodPresent.get(0) + "....");
+                        setContentText(favoriteFoodPresent.get(0) + (favoriteFoodPresent.size()==1?"":"...."));
                 NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
                 inboxStyle.setBigContentTitle("Today's Favorites");
                 for(String foods : favoriteFoodPresent) {

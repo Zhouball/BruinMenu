@@ -47,19 +47,20 @@ public class UpdateDBService extends Service {
 
         new UpdateDB().execute();
 
+        Context _context = getApplicationContext();
         //displaying notification
         if(!favoriteFoodPresent.isEmpty()) {
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(this).
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(_context).
                     setSmallIcon(R.drawable.vegetarian).
                     setContentTitle("Today's Favorites").
-                    setContentText(favoriteFoodPresent.get(0) + "....");
+                    setContentText(favoriteFoodPresent.get(0) + (favoriteFoodPresent.size() == 1 ? "" : "...."));
             NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
             inboxStyle.setBigContentTitle("Today's Favorites");
             for(String foods : favoriteFoodPresent) {
                 inboxStyle.addLine(foods);
             }
             builder.setStyle(inboxStyle);
-            builder.setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT));
+            builder.setContentIntent(PendingIntent.getActivity(_context, 0, new Intent(_context, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT));
             builder.setAutoCancel(true);
             NotificationManager notifManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
