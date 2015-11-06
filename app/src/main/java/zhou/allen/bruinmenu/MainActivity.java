@@ -13,7 +13,8 @@ package zhou.allen.bruinmenu;
  * -If dining hall not open, show it in red
  *
  * settings
- * TODO: -update frequency, turn off notifications
+ * TODO: -update frequency setting in menu
+ * TODO: -turn off notifications (using sharedpreferences in UpdateDBService to turn off notifications) //requires merging the fixed updatedbservice
  *
  * notify-favorites
  * TODO: -End the branch and checkout to list-view with the working code (notification in updateDBService instead of refreshscreenactivity; remove all the string ArrayLists; check both right and left column parsing)
@@ -28,22 +29,16 @@ package zhou.allen.bruinmenu;
  **/
 import android.content.Intent;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
-
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import java.util.Calendar;
 
@@ -65,7 +60,8 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //set default 
+        //set default settings
+        PreferenceManager.setDefaultValues(this, R.xml.preference, false);
 
         //get ViewPager and MaterialTabHost
         viewPager = (ViewPager) findViewById(R.id.viewPager);
@@ -135,6 +131,8 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
             return true;
         } else if(id == R.id.action_settings) {
             Intent i = new Intent(this, SettingsActivity.class);
+            startActivity(i);
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
