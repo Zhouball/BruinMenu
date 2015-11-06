@@ -12,6 +12,10 @@ package zhou.allen.bruinmenu;
  * list-view
  * -If dining hall not open, show it in red
  *
+ * notify-favorites
+ * TODO: -Get notification to work
+ * TODO: -End the branch and checkout to list-view with the working code (notification in updateDBService instead of refreshscreenactivity; remove all the string ArrayLists; check both right and left column parsing)
+ *
  * favorites
  * TODO: -Modify intent to go to the correct page and open correct dining hall in expandable list view
  * TODO: -Change icon in notification (and all the other icons)
@@ -67,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
         viewPager.setAdapter(viewAdapter);
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activity_main_swipe_refresh_layout);
         mSwipeRefreshLayout.setDistanceToTriggerSync(100);
+        
         viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {

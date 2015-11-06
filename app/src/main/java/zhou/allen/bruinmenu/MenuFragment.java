@@ -107,10 +107,8 @@ public class MenuFragment extends Fragment {
 
     private void prepareListData() {
 
-        ArrayList<String> favoriteFood = new ArrayList<>();
-
         Context _context = getContext();
-        MenuDBHelper dbHelper = new MenuDBHelper(_context, favoriteFood);
+        MenuDBHelper dbHelper = new MenuDBHelper(_context);
         ArrayList<List<MenuItem>> menuList = new ArrayList<>();
         ArrayList<Hall> halls = (ArrayList) dbHelper.getHallsByMealTime(timeOfDay);
 
@@ -131,30 +129,6 @@ public class MenuFragment extends Fragment {
         }
         for (int i = 0; i < menuList.size(); i++) {
             listDataChild.put(listDataHeader.get(i), menuList.get(i)); // Header, Child data
-        }
-
-        //displaying notification
-        if(!favoriteFood.isEmpty()) {
-            timeOfDay = timeOfDay.substring(0, 1).toUpperCase() + timeOfDay.substring(1);
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(_context).
-                    setSmallIcon(R.drawable.vegetarian).
-                    setContentTitle(timeOfDay + " Favorites").
-                    setContentText(favoriteFood.get(0) + "....");
-            NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
-            inboxStyle.setBigContentTitle(timeOfDay + " Favorites");
-            for(String foods : favoriteFood) {
-                inboxStyle.addLine(foods);
-            }
-            builder.setStyle(inboxStyle);
-            builder.setContentIntent(PendingIntent.getActivity(_context, 0, new Intent(_context, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT));
-            builder.setAutoCancel(true);
-            NotificationManager notifManager = (NotificationManager) _context.getSystemService(Context.NOTIFICATION_SERVICE);
-
-            int notificationID = -1;
-            if("Breakfast".equals(timeOfDay)) notificationID = 0;
-            else if("Lunch".equals(timeOfDay)) notificationID = 1;
-            else if("Dinner".equals(timeOfDay)) notificationID = 2;
-            notifManager.notify(notificationID, builder.build());
         }
         dbHelper.close();
     }

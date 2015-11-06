@@ -1,15 +1,18 @@
 package zhou.allen.bruinmenu;
 
 //import android.app.Activity;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 //import android.os.Bundle;
 import android.os.IBinder;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.OkHttpClient;
@@ -22,6 +25,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 //import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -29,6 +33,9 @@ import java.util.concurrent.TimeUnit;
  * Created by Owner on 10/20/2015.
  */
 public class UpdateDBService extends Service {
+
+    private ArrayList<String> favoriteFoodPresent;
+    private ArrayList<String> favoriteFood;
 
     public IBinder onBind(Intent arg0) {
         return null;
@@ -40,6 +47,27 @@ public class UpdateDBService extends Service {
 
         Log.i(TAG, "Service is running");
         new UpdateDB().execute();
+
+        //displaying notification
+        if(!favoriteFoodPresent.isEmpty()) {
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this).
+                    setSmallIcon(R.drawable.vegetarian).
+                    setContentTitle("Today's Favorites").
+                    setContentText(favoriteFoodPresent.get(0) + "....");
+            NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
+            inboxStyle.setBigContentTitle("Today's Favorites");
+            for(String foods : favoriteFoodPresent) {
+                inboxStyle.addLine(foods);
+            }
+            builder.setStyle(inboxStyle);
+            builder.setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT));
+            builder.setAutoCancel(true);
+            NotificationManager notifManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+            int notificationID = 1;
+            notifManager.notify(notificationID, builder.build());
+        }
+
         stopSelf();
     }
 
@@ -74,6 +102,9 @@ public class UpdateDBService extends Service {
                     //System.out.print("I got the page!");
 
                     MenuDBHelper dbHelper = new MenuDBHelper(getApplicationContext());
+
+                    favoriteFoodPresent = new ArrayList<>();
+                    favoriteFood = (ArrayList<String>) dbHelper.getFavorites();
                     // Get the database. If it does not exist, this is where it will
                     // also be created.
                     SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -84,6 +115,7 @@ public class UpdateDBService extends Service {
 
                     Document doc = Jsoup.parse(html);
                     Elements menus = doc.getElementsByClass("menucontent");
+
 
                     for (int i = 0; i < menus.size(); i++) {
                         String mealTime;
@@ -129,9 +161,14 @@ public class UpdateDBService extends Service {
                                 for (Element e : items) {
                                     ContentValues ivalues = new ContentValues();
                                     Element link = e.select("a").first();
-                                    ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM, e.text().trim());
+                                    String menuItemName = e.text().trim();
+                                    ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM, menuItemName);
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_KITCHEN, id);
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_NUTRIURL, link.attr("href"));
+                                    if(favoriteFood.contains(menuItemName)) {
+                                        favoriteFoodPresent.add(id + "-" + menuItemName);
+                                    }
+
                                     Element v = e.select("img").first();
                                     int veg = 0;
                                     if (v == null) {
@@ -190,6 +227,7 @@ public class UpdateDBService extends Service {
                             }
                         }
                     }
+
                     dbHelper.close();
                     db.close();
 
