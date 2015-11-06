@@ -26,6 +26,7 @@ package zhou.allen.bruinmenu;
  * sliders
  * -Change font families (font size in sp (not dip), different font type)
  * -App icon
+ * -Edit credits (emails, names, special thanks?.. etc)
  **/
 import android.content.Intent;
 import android.net.Uri;
