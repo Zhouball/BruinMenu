@@ -71,11 +71,17 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
         viewPager.setAdapter(viewAdapter);
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activity_main_swipe_refresh_layout);
         mSwipeRefreshLayout.setDistanceToTriggerSync(100);
+        
         viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 tabHost.setSelectedNavigationItem(position);
+            }
 
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                if(state == ViewPager.SCROLL_STATE_DRAGGING) mSwipeRefreshLayout.setEnabled(false);
+                else mSwipeRefreshLayout.setEnabled(true);
             }
         });
         //Add all the Tabs to the TabHost
