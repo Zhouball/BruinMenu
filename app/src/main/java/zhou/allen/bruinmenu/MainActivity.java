@@ -18,7 +18,6 @@ package zhou.allen.bruinmenu;
  *
  * sliders
  * -Change font families (font size in sp (not dip), different font type)
- * -Move refresh functionality to options menu (makes swiping easier) or fix how the swiping works
  * -App icon
  **/
 import android.content.Intent;
@@ -35,6 +34,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import android.os.Bundle;
@@ -71,7 +71,12 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
             @Override
             public void onPageSelected(int position) {
                 tabHost.setSelectedNavigationItem(position);
+            }
 
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                if(state == ViewPager.SCROLL_STATE_DRAGGING) mSwipeRefreshLayout.setEnabled(false);
+                else mSwipeRefreshLayout.setEnabled(true);
             }
         });
         //Add all the Tabs to the TabHost
