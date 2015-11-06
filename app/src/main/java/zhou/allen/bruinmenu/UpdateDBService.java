@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 //import android.os.Bundle;
 import android.os.IBinder;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.OkHttpClient;
@@ -31,10 +33,12 @@ public class UpdateDBService extends Service {
     public IBinder onBind(Intent arg0) {
         return null;
     }
+    private static final String TAG = "UpdateDbService";
 
     public void onCreate() {
         super.onCreate();
 
+        Log.i(TAG, "Service is running");
         new UpdateDB().execute();
         stopSelf();
     }
@@ -42,10 +46,6 @@ public class UpdateDBService extends Service {
     public int onStartCommand(Intent intent, int flags, int startID)
     {
         //super.onCreate(savedInstanceState);
-
-        //new UpdateDB().execute();
-
-
         return 1;
     }
 
