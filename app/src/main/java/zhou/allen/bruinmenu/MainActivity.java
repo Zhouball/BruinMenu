@@ -12,8 +12,10 @@ package zhou.allen.bruinmenu;
  * list-view
  * -If dining hall not open, show it in red
  *
+ * settings
+ * TODO: -update frequency, turn off notifications
+ *
  * notify-favorites
- * TODO: -Get notification to work
  * TODO: -End the branch and checkout to list-view with the working code (notification in updateDBService instead of refreshscreenactivity; remove all the string ArrayLists; check both right and left column parsing)
  *
  * favorites
@@ -22,7 +24,6 @@ package zhou.allen.bruinmenu;
  *
  * sliders
  * -Change font families (font size in sp (not dip), different font type)
- * -Move refresh functionality to options menu (makes swiping easier) or fix how the swiping works
  * -App icon
  **/
 import android.content.Intent;
@@ -64,6 +65,8 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //set default 
+
         //get ViewPager and MaterialTabHost
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         tabHost = (MaterialTabHost) findViewById(R.id.materialTabHost);
@@ -71,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
         viewPager.setAdapter(viewAdapter);
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activity_main_swipe_refresh_layout);
         mSwipeRefreshLayout.setDistanceToTriggerSync(100);
-        
+
         viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
@@ -130,6 +133,8 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
             Intent i = new Intent(this, CreditsActivity.class);
             startActivity(i);
             return true;
+        } else if(id == R.id.action_settings) {
+            Intent i = new Intent(this, SettingsActivity.class);
         }
         return super.onOptionsItemSelected(item);
     }
