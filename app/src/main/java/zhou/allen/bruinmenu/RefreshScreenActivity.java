@@ -8,17 +8,12 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import android.app.Activity;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.content.Intent;
-import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.OkHttpClient;
@@ -34,14 +29,13 @@ public class RefreshScreenActivity extends Activity
 {
     //A ProgressDialog object
     private ProgressDialog progressDialog;
-    private ArrayList<String> favoriteFoodPresent;
-    private ArrayList<String> favoriteFood;
 
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
         //Initialize a LoadViewTask object and call the execute() method
         new GetPageTask().execute();
 
@@ -86,9 +80,6 @@ public class RefreshScreenActivity extends Activity
                     //System.out.print("I got the page!");
 
                     MenuDBHelper dbHelper = new MenuDBHelper(getApplicationContext());
-
-                    favoriteFoodPresent = new ArrayList<>();
-                    favoriteFood = (ArrayList<String>) dbHelper.getFavorites();
                     // Get the database. If it does not exist, this is where it will
                     // also be created.
                     SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -133,8 +124,7 @@ public class RefreshScreenActivity extends Activity
                             else {
                                 Elements kitchen = cell.select(".category5");
                                 ContentValues kvalues = new ContentValues();
-                                String kitchenName = kitchen.first().text().trim();
-                                kvalues.put(MenuDBContract.KitchenEntry.COLUMN_NAME_ITEM, kitchenName);
+                                kvalues.put(MenuDBContract.KitchenEntry.COLUMN_NAME_ITEM, kitchen.first().text().trim());
                                 kvalues.put(MenuDBContract.KitchenEntry.COLUMN_NAME_HALL, hallsIds.get(ite));
                                 long id = db.insert(
                                         MenuDBContract.KitchenEntry.TABLE_NAME,
@@ -145,15 +135,9 @@ public class RefreshScreenActivity extends Activity
                                 for (Element e : items) {
                                     ContentValues ivalues = new ContentValues();
                                     Element link = e.select("a").first();
-
-                                    String menuItemName = e.text().trim();
-                                    ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM, menuItemName);
+                                    ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM, e.text().trim());
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_KITCHEN, id);
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_NUTRIURL, link.attr("href"));
-                                    if(favoriteFood.contains(menuItemName)) {
-                                        favoriteFoodPresent.add(kitchenName + "-" + menuItemName);
-                                    }
-
                                     Element v = e.select("img").first();
                                     int veg = 0;
                                     if (v == null) {
@@ -180,8 +164,7 @@ public class RefreshScreenActivity extends Activity
                             else {
                                 Elements kitchen = cell.select(".category5");
                                 ContentValues kvalues = new ContentValues();
-                                String kitchenName = kitchen.first().text().trim();
-                                kvalues.put(MenuDBContract.KitchenEntry.COLUMN_NAME_ITEM, kitchenName);
+                                kvalues.put(MenuDBContract.KitchenEntry.COLUMN_NAME_ITEM, kitchen.first().text().trim());
                                 kvalues.put(MenuDBContract.KitchenEntry.COLUMN_NAME_HALL, hallsIds.get(ite));
                                 long id = db.insert(
                                         MenuDBContract.KitchenEntry.TABLE_NAME,
@@ -192,15 +175,9 @@ public class RefreshScreenActivity extends Activity
                                 for (Element e : items) {
                                     ContentValues ivalues = new ContentValues();
                                     Element link = e.select("a").first();
-
-                                    String menuItemName = e.text().trim();
-                                    ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM, menuItemName);
+                                    ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM, e.text().trim());
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_KITCHEN, id);
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_NUTRIURL, link.attr("href"));
-                                    if(favoriteFood.contains(menuItemName)) {
-                                        favoriteFoodPresent.add(kitchenName + "-" + menuItemName);
-                                    }
-
                                     Element v = e.select("img").first();
                                     int veg = 0;
                                     if (v == null) {
@@ -250,28 +227,6 @@ public class RefreshScreenActivity extends Activity
         protected void onPostExecute(Void result) {
             //close the progress dialog
             progressDialog.dismiss();
-
-            Context _context = getApplicationContext();
-            //displaying notification
-            if(!favoriteFoodPresent.isEmpty()) {
-                NotificationCompat.Builder builder = new NotificationCompat.Builder(_context).
-                        setSmallIcon(R.drawable.vegetarian).
-                        setContentTitle("Today's Favorites").
-                        setContentText(favoriteFoodPresent.get(0) + "....");
-                NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
-                inboxStyle.setBigContentTitle("Today's Favorites");
-                for(String foods : favoriteFoodPresent) {
-                    inboxStyle.addLine(foods);
-                }
-                builder.setStyle(inboxStyle);
-                builder.setContentIntent(PendingIntent.getActivity(_context, 0, new Intent(_context, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT));
-                builder.setAutoCancel(true);
-                NotificationManager notifManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
-                int notificationID = 1;
-                notifManager.notify(notificationID, builder.build());
-            }
-
             //initialize the View
 
             //String html = ((AppVariables) getApplicationContext()).getBruinMenu();
