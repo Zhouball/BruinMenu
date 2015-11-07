@@ -17,6 +17,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.content.Intent;
 import android.content.Context;
+import android.widget.Toast;
 
 //import com.squareup.okhttp.OkHttpClient;
 //import com.squareup.okhttp.Request;
@@ -62,30 +63,18 @@ public class LoadingScreenActivity extends Activity
             synchronized (this) {
                 try {
 
-
+                    Intent i = new Intent("zhou.allen.bruinmenu.UPDATEDB");
                     boolean alarmUp = (PendingIntent.getBroadcast(LoadingScreenActivity.this, 0,
-                            new Intent(getApplicationContext(), UpdateDBService.class),
+                            i,
                             PendingIntent.FLAG_NO_CREATE) != null);
 
                     if (!alarmUp) {
-                        Intent i = new Intent(getApplicationContext(), UpdateDBService.class);
-                        PendingIntent pi = PendingIntent.getBroadcast(getApplicationContext(), 0,
+                        PendingIntent pi = PendingIntent.getBroadcast(LoadingScreenActivity.this, 0,
                                 i, PendingIntent.FLAG_UPDATE_CURRENT);
-                        AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
-                        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME, 6 * AlarmManager.INTERVAL_HOUR, AlarmManager.INTERVAL_HALF_DAY, pi);
-                        //startService(i);
+                        AlarmManager alarmManager = (AlarmManager) LoadingScreenActivity.this.getSystemService(Context.ALARM_SERVICE);
+                        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME, 6 * AlarmManager.INTERVAL_HOUR, AlarmManager.INTERVAL_DAY, pi);
                         refresh = true;
-
-                        /*
-                        try {
-                            Thread.sleep(3000); //1000 milliseconds is one second.
-                        } catch(InterruptedException ex) {
-                            Thread.currentThread().interrupt();
-                        }
-                        */
                     }
-
-
 
                 } catch (Exception e) {
                     //return "Unable to retrieve web page. http://menu.ha.ucla.edu/foodpro/default.asp may be down.";
@@ -113,7 +102,7 @@ public class LoadingScreenActivity extends Activity
 
             //String html = ((AppVariables) getApplicationContext()).getBruinMenu();
             Intent i;
-            if (refresh = false) {
+            if (refresh == false) {
                 i = new Intent(LoadingScreenActivity.this, MainActivity.class);
             }
             else {

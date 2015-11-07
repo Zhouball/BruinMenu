@@ -9,9 +9,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
-//import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.OkHttpClient;
@@ -39,11 +39,14 @@ public class UpdateDBService extends Service {
     public IBinder onBind(Intent arg0) {
         return null;
     }
+    private static final String TAG = "UpdateDbService";
 
     public void onCreate() {
         super.onCreate();
 
+        Log.i(TAG, "Service is running");
         new UpdateDB().execute();
+
 
         Context _context = getApplicationContext();
         //displaying notification
@@ -72,10 +75,6 @@ public class UpdateDBService extends Service {
     public int onStartCommand(Intent intent, int flags, int startID)
     {
         //super.onCreate(savedInstanceState);
-
-        //new UpdateDB().execute();
-
-
         return 1;
     }
 
@@ -118,6 +117,7 @@ public class UpdateDBService extends Service {
 
                     Document doc = Jsoup.parse(html);
                     Elements menus = doc.getElementsByClass("menucontent");
+
 
                     for (int i = 0; i < menus.size(); i++) {
                         String mealTime;
@@ -238,6 +238,7 @@ public class UpdateDBService extends Service {
                             }
                         }
                     }
+
                     dbHelper.close();
                     db.close();
 
