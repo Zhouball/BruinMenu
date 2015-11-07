@@ -20,7 +20,14 @@
     <ListView
         android:id="@android:id/list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/appbarlayout"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/pickerbutton"
+        android:text="PICK START TIME"
+        android:layout_below="@android:id/list"/>
 
 </RelativeLayout>

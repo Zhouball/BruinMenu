@@ -13,10 +13,12 @@ import android.app.PendingIntent;
 import android.app.ProgressDialog;
 //import android.content.ContentValues;
 //import android.database.sqlite.SQLiteDatabase;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.content.Intent;
 import android.content.Context;
+import android.preference.PreferenceManager;
 import android.widget.Toast;
 
 //import com.squareup.okhttp.OkHttpClient;
@@ -62,17 +64,16 @@ public class LoadingScreenActivity extends Activity
             //Get the current thread's token
             synchronized (this) {
                 try {
-
                     Intent i = new Intent("zhou.allen.bruinmenu.UPDATEDB");
-                    boolean alarmUp = (PendingIntent.getBroadcast(LoadingScreenActivity.this, 0,
-                            i,
-                            PendingIntent.FLAG_NO_CREATE) != null);
+                    boolean alarmUp = (PendingIntent.getBroadcast(LoadingScreenActivity.this, 0, i, PendingIntent.FLAG_NO_CREATE) != null);
 
                     if (!alarmUp) {
-                        PendingIntent pi = PendingIntent.getBroadcast(LoadingScreenActivity.this, 0,
-                                i, PendingIntent.FLAG_UPDATE_CURRENT);
+                        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        long updateStartTime = prefs.getLong("update_start", 6*AlarmManager.INTERVAL_HOUR);
+
+                        PendingIntent pi = PendingIntent.getBroadcast(LoadingScreenActivity.this, 0, i, PendingIntent.FLAG_UPDATE_CURRENT);
                         AlarmManager alarmManager = (AlarmManager) LoadingScreenActivity.this.getSystemService(Context.ALARM_SERVICE);
-                        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME, 6 * AlarmManager.INTERVAL_HOUR, AlarmManager.INTERVAL_DAY, pi);
+                        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME, updateStartTime, AlarmManager.INTERVAL_DAY, pi);
                         refresh = true;
                     }
 
