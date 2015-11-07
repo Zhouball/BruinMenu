@@ -11,6 +11,4 @@
         android:title = "Show notifications with favorite food whenever you refresh"
         android:defaultValue="false" />
 
-    
-
 </PreferenceScreen>
