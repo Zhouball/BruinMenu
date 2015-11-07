@@ -69,11 +69,14 @@ public class LoadingScreenActivity extends Activity
 
                     if (!alarmUp) {
                         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                        long updateStartTime = prefs.getLong("update_start", 6*AlarmManager.INTERVAL_HOUR);
+                        long updateStartHour = prefs.getLong("update_start_hour", 6);
+                        long updateStartMinute = prefs.getLong("update_start_minute", 0);
+                        int INTERVAL_HOUR = 3600000;
+                        int INTERVAL_MINUTE = 60000;
 
                         PendingIntent pi = PendingIntent.getBroadcast(LoadingScreenActivity.this, 0, i, PendingIntent.FLAG_UPDATE_CURRENT);
                         AlarmManager alarmManager = (AlarmManager) LoadingScreenActivity.this.getSystemService(Context.ALARM_SERVICE);
-                        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME, updateStartTime, AlarmManager.INTERVAL_DAY, pi);
+                        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME, updateStartHour*INTERVAL_HOUR + updateStartMinute*INTERVAL_MINUTE, AlarmManager.INTERVAL_DAY, pi);
                         refresh = true;
                     }
 

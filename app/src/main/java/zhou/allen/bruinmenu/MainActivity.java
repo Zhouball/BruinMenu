@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
         // preparing list data based on time of day
         Calendar calendar = Calendar.getInstance();
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
-        if (hour > 3 && hour < 10) {
+        if (hour < 10) {
             currentMenu = 0;
         } else if(hour < 16) {
             currentMenu = 1;
