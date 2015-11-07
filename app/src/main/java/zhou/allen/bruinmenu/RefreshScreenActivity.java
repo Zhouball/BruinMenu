@@ -139,6 +139,7 @@ public class RefreshScreenActivity extends Activity
                             else {
                                 Elements kitchen = cell.select(".category5");
                                 ContentValues kvalues = new ContentValues();
+                                if(kitchen.first() == null) continue;
                                 String kitchenName = kitchen.first().text().trim();
                                 kvalues.put(MenuDBContract.KitchenEntry.COLUMN_NAME_ITEM, kitchenName);
                                 kvalues.put(MenuDBContract.KitchenEntry.COLUMN_NAME_HALL, hallsIds.get(ite));
@@ -151,6 +152,7 @@ public class RefreshScreenActivity extends Activity
                                 for (Element e : items) {
                                     ContentValues ivalues = new ContentValues();
                                     Element link = e.select("a").first();
+                                    if(e == null) continue;
 
                                     String menuItemName = e.text().trim();
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM, menuItemName);
@@ -185,6 +187,7 @@ public class RefreshScreenActivity extends Activity
                             }
                             else {
                                 Elements kitchen = cell.select(".category5");
+                                if(kitchen.first() == null) continue;
                                 ContentValues kvalues = new ContentValues();
                                 String kitchenName = kitchen.first().text().trim();
                                 kvalues.put(MenuDBContract.KitchenEntry.COLUMN_NAME_ITEM, kitchenName);
@@ -198,6 +201,7 @@ public class RefreshScreenActivity extends Activity
                                 for (Element e : items) {
                                     ContentValues ivalues = new ContentValues();
                                     Element link = e.select("a").first();
+                                    if(e == null) continue;
 
                                     String menuItemName = e.text().trim();
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM, menuItemName);
