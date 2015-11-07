@@ -1,11 +1,6 @@
 package zhou.allen.bruinmenu;
 
 /**
- * sqlite
- * -Store Table of Dining Halls, Table of Kitchens-Hall relations (to select list of kitchens), and food-kitchen relations
- * -Store nutritional data with food (link)
- * TODO: -Fix updating every time error
- *
  * swiper
  * -Make sure the page updates every meal period (http://stackoverflow.com/questions/10849552/update-viewpager-dynamically/17855730#17855730)
  *
@@ -14,10 +9,6 @@ package zhou.allen.bruinmenu;
  *
  * settings
  * TODO: -update frequency setting in menu
- * TODO: -turn off notifications (using sharedpreferences in UpdateDBService to turn off notifications) //requires merging the fixed updatedbservice
- *
- * notify-favorites
- * TODO: -End the branch and checkout to list-view with the working code (notification in updateDBService instead of refreshscreenactivity; remove all the string ArrayLists; check both right and left column parsing)
  *
  * favorites
  * TODO: -Modify intent to go to the correct page and open correct dining hall in expandable list view
@@ -55,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
     SwipeRefreshLayout mSwipeRefreshLayout;
 
     int currentMenu = -1;
-    int NUM_PAGES = 4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

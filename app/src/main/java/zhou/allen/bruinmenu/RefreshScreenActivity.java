@@ -259,7 +259,7 @@ public class RefreshScreenActivity extends Activity
 
             //checking if notifications should display
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-            boolean notification_switch = prefs.getBoolean("notification_switch", true);
+            boolean notification_switch = prefs.getBoolean("notification_switch_refresh", false);
             if(notification_switch) {
                 Context _context = getApplicationContext();
                 //displaying notification
