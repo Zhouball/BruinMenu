@@ -57,6 +57,7 @@ public class RefreshScreenActivity extends Activity
     private class GetPageTask extends AsyncTask<Void, Integer, Void> {
         //String html;
         boolean refresh;
+        boolean error=false;
         //Before running code in separate thread
         @Override
         protected void onPreExecute() {
@@ -94,7 +95,6 @@ public class RefreshScreenActivity extends Activity
 
                     favoriteFoodPresent = new ArrayList<>();
                     favoriteFood = (ArrayList<String>) dbHelper.getFavorites();
-
                     // Get the database. If it does not exist, this is where it will
                     // also be created.
                     SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -151,11 +151,11 @@ public class RefreshScreenActivity extends Activity
                                 for (Element e : items) {
                                     ContentValues ivalues = new ContentValues();
                                     Element link = e.select("a").first();
+
                                     String menuItemName = e.text().trim();
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM, menuItemName);
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_KITCHEN, id);
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_NUTRIURL, link.attr("href"));
-
                                     if(favoriteFood.contains(menuItemName)) {
                                         favoriteFoodPresent.add(kitchenName + "-" + menuItemName);
                                     }
@@ -198,11 +198,11 @@ public class RefreshScreenActivity extends Activity
                                 for (Element e : items) {
                                     ContentValues ivalues = new ContentValues();
                                     Element link = e.select("a").first();
+
                                     String menuItemName = e.text().trim();
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM, menuItemName);
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_KITCHEN, id);
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_NUTRIURL, link.attr("href"));
-
                                     if(favoriteFood.contains(menuItemName)) {
                                         favoriteFoodPresent.add(kitchenName + "-" + menuItemName);
                                     }
@@ -229,13 +229,8 @@ public class RefreshScreenActivity extends Activity
                     db.close();
 
                 } catch (Exception e) {
-                    progressDialog = ProgressDialog.show(RefreshScreenActivity.this, "Connection Failed",
-                            "Unable to connect to BruinMenu", false, false);
-                    try {
-                        Thread.sleep(1000);                 //1000 milliseconds is one second.
-                    } catch(InterruptedException ex) {
-                        Thread.currentThread().interrupt();
-                    }
+                    e.printStackTrace();
+                    error = true; //TODO: TEMP FIX
                 }
             }
             return null;
@@ -254,6 +249,16 @@ public class RefreshScreenActivity extends Activity
         //after executing the code in the thread
         @Override
         protected void onPostExecute(Void result) {
+            if(error) {
+                progressDialog = ProgressDialog.show(RefreshScreenActivity.this, "Connection Failed",
+                        "Unable to connect to BruinMenu", false, false);
+                try {
+                    Thread.sleep(1000);                 //1000 milliseconds is one second.
+                } catch(InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+
             //close the progress dialog
             progressDialog.dismiss();
 

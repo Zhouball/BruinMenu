@@ -12,12 +12,11 @@ package zhou.allen.bruinmenu;
  *
  * favorites
  * TODO: -Modify intent to go to the correct page and open correct dining hall in expandable list view
- * TODO: -Change icon in notification (and all the other icons)
  *
  * sliders
  * -Change font families (font size in sp (not dip), different font type)
- * -App icon
- * -Edit credits (emails, names, special thanks?.. etc)
+ * TODO: -App icon
+ * TODO: -Edit credits (emails, names, special thanks?.. etc)
  **/
 import android.content.Intent;
 import android.net.Uri;

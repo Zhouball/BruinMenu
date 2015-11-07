@@ -112,7 +112,6 @@ public class UpdateDBService extends Service {
 
                     favoriteFoodPresent = new ArrayList<>();
                     favoriteFood = (ArrayList<String>) dbHelper.getFavorites();
-
                     // Get the database. If it does not exist, this is where it will
                     // also be created.
                     SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -123,7 +122,6 @@ public class UpdateDBService extends Service {
 
                     Document doc = Jsoup.parse(html);
                     Elements menus = doc.getElementsByClass("menucontent");
-
 
                     for (int i = 0; i < menus.size(); i++) {
                         String mealTime;
@@ -170,11 +168,11 @@ public class UpdateDBService extends Service {
                                 for (Element e : items) {
                                     ContentValues ivalues = new ContentValues();
                                     Element link = e.select("a").first();
+
                                     String menuItemName = e.text().trim();
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM, menuItemName);
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_KITCHEN, id);
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_NUTRIURL, link.attr("href"));
-
                                     if(favoriteFood.contains(menuItemName)) {
                                         favoriteFoodPresent.add(kitchenName + "-" + menuItemName);
                                     }
@@ -217,11 +215,11 @@ public class UpdateDBService extends Service {
                                 for (Element e : items) {
                                     ContentValues ivalues = new ContentValues();
                                     Element link = e.select("a").first();
+
                                     String menuItemName = e.text().trim();
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM, menuItemName);
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_KITCHEN, id);
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_NUTRIURL, link.attr("href"));
-
                                     if(favoriteFood.contains(menuItemName)) {
                                         favoriteFoodPresent.add(kitchenName + "-" + menuItemName);
                                     }
@@ -244,7 +242,6 @@ public class UpdateDBService extends Service {
                             }
                         }
                     }
-
                     dbHelper.close();
                     db.close();
 

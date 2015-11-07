@@ -35,7 +35,7 @@ public class SettingsActivity extends PreferenceActivity {
 
                 //TODO: Time in milliseconds not set properly.
                 //TODO: Have another frequency setter (set update every 5 hours, eg.)
-                
+
                 int INTERVAL_HOUR = 3600000;
                 int INTERVAL_MINUTE = 60000;
 
