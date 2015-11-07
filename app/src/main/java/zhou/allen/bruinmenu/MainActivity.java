@@ -12,8 +12,11 @@ package zhou.allen.bruinmenu;
  * list-view
  * -If dining hall not open, show it in red
  *
+ * settings
+ * TODO: -update frequency setting in menu
+ * TODO: -turn off notifications (using sharedpreferences in UpdateDBService to turn off notifications) //requires merging the fixed updatedbservice
+ *
  * notify-favorites
- * TODO: -Get notification to work
  * TODO: -End the branch and checkout to list-view with the working code (notification in updateDBService instead of refreshscreenactivity; remove all the string ArrayLists; check both right and left column parsing)
  *
  * favorites
@@ -23,26 +26,20 @@ package zhou.allen.bruinmenu;
  * sliders
  * -Change font families (font size in sp (not dip), different font type)
  * -App icon
+ * -Edit credits (emails, names, special thanks?.. etc)
  **/
 import android.content.Intent;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
-
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import java.util.Calendar;
 
@@ -64,6 +61,9 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //set default settings
+        PreferenceManager.setDefaultValues(this, R.xml.preference, false);
+
         //get ViewPager and MaterialTabHost
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         tabHost = (MaterialTabHost) findViewById(R.id.materialTabHost);
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
         viewPager.setAdapter(viewAdapter);
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activity_main_swipe_refresh_layout);
         mSwipeRefreshLayout.setDistanceToTriggerSync(100);
-        
+
         viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
@@ -128,6 +128,10 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
         int id = item.getItemId();
         if (id == R.id.action_credits) {
             Intent i = new Intent(this, CreditsActivity.class);
+            startActivity(i);
+            return true;
+        } else if(id == R.id.action_settings) {
+            Intent i = new Intent(this, SettingsActivity.class);
             startActivity(i);
             return true;
         }
