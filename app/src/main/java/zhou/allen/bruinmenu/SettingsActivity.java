@@ -46,9 +46,13 @@ public class SettingsActivity extends PreferenceActivity {
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit();
 
-                        editor.putLong("update_start_hour", view.getCurrentHour()).commit();
-                        editor.putLong("update_start_minute", view.getCurrentMinute()).commit();
+                        long sethour = view.getCurrentHour();
+                        long setminute = view.getCurrentMinute();
+                        editor.putLong("update_start_hour", sethour).commit();
+                        editor.putLong("update_start_minute", setminute).commit();
                         view.setVisibility(View.INVISIBLE);
+                        String updateTimeString = (sethour==0||sethour==12?12:sethour%12)+":"+setminute+" "+((sethour<12)?"AM":"PM");
+                        Toast.makeText(SettingsActivity.this, "Menus will update at "+updateTimeString, Toast.LENGTH_LONG).show();
                     }
                 };
                 final TimePickerDialog picker = new TimePickerDialog(SettingsActivity.this, timeSetListener, currHour, ((int) currMinute/30)*30, false);

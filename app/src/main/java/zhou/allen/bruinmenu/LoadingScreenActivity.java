@@ -19,7 +19,10 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.content.Context;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.widget.Toast;
+
+import java.util.Calendar;
 
 //import com.squareup.okhttp.OkHttpClient;
 //import com.squareup.okhttp.Request;
@@ -68,15 +71,18 @@ public class LoadingScreenActivity extends Activity
                     boolean alarmUp = (PendingIntent.getBroadcast(LoadingScreenActivity.this, 0, i, PendingIntent.FLAG_NO_CREATE) != null);
 
                     if (!alarmUp) {
+                        Log.d("Alarm", "Updating DB");
                         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                         long updateStartHour = prefs.getLong("update_start_hour", 6);
                         long updateStartMinute = prefs.getLong("update_start_minute", 0);
-                        int INTERVAL_HOUR = 3600000;
-                        int INTERVAL_MINUTE = 60000;
+                        Calendar cal = Calendar.getInstance();
+                        cal.setTimeInMillis(System.currentTimeMillis());
+                        cal.set(Calendar.HOUR_OF_DAY, (int) updateStartHour);
+                        cal.set(Calendar.MINUTE, (int) updateStartMinute);
 
                         PendingIntent pi = PendingIntent.getBroadcast(LoadingScreenActivity.this, 0, i, PendingIntent.FLAG_UPDATE_CURRENT);
                         AlarmManager alarmManager = (AlarmManager) LoadingScreenActivity.this.getSystemService(Context.ALARM_SERVICE);
-                        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME, updateStartHour*INTERVAL_HOUR + updateStartMinute*INTERVAL_MINUTE, AlarmManager.INTERVAL_DAY, pi);
+                        alarmManager.setInexactRepeating(AlarmManager.RTC, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pi);
                         refresh = true;
                     }
 
