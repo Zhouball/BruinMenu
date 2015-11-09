@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
                 case 0:
                     Calendar c = Calendar.getInstance();
                     int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
-                    if(dayOfWeek == 1 || dayOfWeek == 7) fragment = MenuFragment.newInstance("lunch");
+                    if(dayOfWeek == Calendar.SUNDAY || dayOfWeek == Calendar.SATURDAY) fragment = MenuFragment.newInstance("lunch");
                     else fragment = MenuFragment.newInstance("breakfast");
                     break;
                 case 1:

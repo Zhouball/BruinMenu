@@ -19,6 +19,7 @@ import android.widget.ExpandableListView;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class MenuFragment extends Fragment {
     View layout;
     ExpandableListView menu;
     ExpandableListAdapter listAdapter;
-    List<String> listDataHeader = new ArrayList<>();
+    List<Hall> listDataHeader = new ArrayList<>();
     HashMap<String, List<MenuItem>> listDataChild = new HashMap<>();
 
     private OnFragmentInteractionListener mListener;
@@ -113,7 +114,8 @@ public class MenuFragment extends Fragment {
         ArrayList<Hall> halls = (ArrayList) dbHelper.getHallsByMealTime(timeOfDay);
 
         for(Hall hall : halls) {
-            listDataHeader.add(hall.getItem()); //add the name of hall to listDataHeader
+            listDataHeader.add(hall); //add the name of hall to listDataHeader
+
             ArrayList<Kitchen> kitchensList = (ArrayList) dbHelper.getKitchensByHall(hall); //get list of kitchens (Kitchens)
             ArrayList<MenuItem> listItems = new ArrayList<>(); //list of menuItems (name, url, veg, fav, id)
             for(Kitchen kitchen : kitchensList) {
@@ -124,14 +126,16 @@ public class MenuFragment extends Fragment {
         }
 
         if (menuList.size() == 0) {
-            listDataHeader.add("Nothing to see here!");
+            listDataHeader.add(new Hall("Nothing to see here!"));
             menuList.add(new ArrayList<MenuItem>());
         }
         for (int i = 0; i < menuList.size(); i++) {
-            listDataChild.put(listDataHeader.get(i), menuList.get(i)); // Header, Child data
+            listDataChild.put(listDataHeader.get(i).getItem(), menuList.get(i)); // Header, Child data
         }
         dbHelper.close();
     }
+
+
 /*
     private String listText(Element e) {
         Elements listItems = e.select("li");
