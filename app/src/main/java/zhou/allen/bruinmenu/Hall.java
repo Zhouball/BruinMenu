@@ -13,8 +13,8 @@ public class Hall {
         item = n;
         mealTime = mt;
         id = i;
-        getHallStartTime();
-        getHallEndTime();
+        initHallStartTime();
+        initHallEndTime();
     }
     public Hall(String n) { item = n; }
 
@@ -38,8 +38,8 @@ public class Hall {
 
 
 
-    private int getHallStartTime() {
-        int startTime = -3600000;
+    private void initHallStartTime() {
+        startTime = -3600000;
         int dayOfWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
         if(!(dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY)) {
             if ("breakfast".equals(mealTime)) {
@@ -69,11 +69,10 @@ public class Hall {
                 else if(item.toUpperCase().contains("PLATE")) startTime = StaticVariables.HallTimesWeekends.BPLATE_DINNER_START;
             }
         }
-        return startTime;
     }
 
-    private int getHallEndTime() {
-        int endTime = -3600000;
+    private void initHallEndTime() {
+        endTime = -3600000;
         int dayOfWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
         if(!(dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY)) {
             if ("breakfast".equals(mealTime)) {
@@ -103,6 +102,5 @@ public class Hall {
                 else if(item.toUpperCase().contains("PLATE")) endTime = StaticVariables.HallTimesWeekends.BPLATE_DINNER_END;
             }
         }
-        return endTime;
     }
 }

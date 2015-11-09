@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.TimeZone;
 
 import android.content.Context;
 import android.content.Intent;
@@ -47,7 +48,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     public MenuItem getChildData(int groupPosition, int childPosition) {
-        return this._listDataChild.get(this._listDataHeader.get(groupPosition)).get(childPosition);
+        return this._listDataChild.get(this._listDataHeader.get(groupPosition).getItem()).get(childPosition);
     }
 
     @Override
@@ -140,7 +141,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return this._listDataChild.get(this._listDataHeader.get(groupPosition)).size();
+        return this._listDataChild.get(this._listDataHeader.get(groupPosition).getItem()).size();
     }
 
     @Override
@@ -169,16 +170,19 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         lblListHeader.setText(headerTitle);
 
         TextView hallHours = (TextView) convertView.findViewById(R.id.hallHours);
-        Hall hall = (Hall) getGroup(groupPosition);
-        if(hall.getStartTime() != -3600000) {
-            DateFormat formatter = new SimpleDateFormat("HH:mm");
+        Hall hall = this._listDataHeader.get(groupPosition);
+        if(hall.getStartTime() != -3600000 && hall.getEndTime() != -3600000) {
+            DateFormat formatter = new SimpleDateFormat("hh:mm a");
+            formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
             Calendar st = Calendar.getInstance();
             st.setTimeInMillis(hall.getStartTime());
-            String sts = formatter.format(st);
+            String sts = formatter.format(st.getTime());
             Calendar et = Calendar.getInstance();
             et.setTimeInMillis(hall.getEndTime());
-            String ets = formatter.format(st);
+            String ets = formatter.format(et.getTime());
             hallHours.setText(sts + " - " + ets);
+            Log.d("Time", st.getTimeInMillis() + " - " + et.getTimeInMillis());
+            Log.d("Time", st.getTime() + " " + et.getTime());
             hallHours.setTextColor(getTimeColor(hall));
         } else {
             hallHours.setVisibility(View.INVISIBLE);
@@ -191,7 +195,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         Calendar cal = Calendar.getInstance();
         // get the difference between now and hall's next time. that's the color of the hall
         if(hall.getEndTime() - cal.getTimeInMillis() < 0.5*INTERVAL_HOUR) return Color.YELLOW;
-        if(cal.getTimeInMillis() < hall.getStartTime() || cal.getTimeInMillis() > hall.getEndTime()) return Color.RED;
+        else if(cal.getTimeInMillis() < hall.getStartTime() || cal.getTimeInMillis() > hall.getEndTime()) return Color.RED;
         else return Color.WHITE;
     }
 
