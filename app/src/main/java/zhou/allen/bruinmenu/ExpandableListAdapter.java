@@ -193,8 +193,11 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private int getTimeColor(Hall hall) {
         int INTERVAL_HOUR = 3600000;
         Calendar cal = Calendar.getInstance();
+        long days = cal.getTimeInMillis()/(1000*60*60*24);
+        long offset = days*(1000*60*60*24);
+        cal.setTimeInMillis(cal.getTimeInMillis()-offset);
         // get the difference between now and hall's next time. that's the color of the hall
-        if(hall.getEndTime() - cal.getTimeInMillis() < 0.5*INTERVAL_HOUR) return Color.YELLOW;
+        if((hall.getEndTime() - cal.getTimeInMillis()) < 0.5*INTERVAL_HOUR) return Color.YELLOW;
         else if(cal.getTimeInMillis() < hall.getStartTime() || cal.getTimeInMillis() > hall.getEndTime()) return Color.RED;
         else return Color.WHITE;
     }

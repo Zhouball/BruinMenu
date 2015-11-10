@@ -4,9 +4,6 @@ package zhou.allen.bruinmenu;
  * swiper
  * -Make sure the page updates every meal period (http://stackoverflow.com/questions/10849552/update-viewpager-dynamically/17855730#17855730)
  *
- * list-view
- * -If dining hall not open, show it in red
- *
  * settings
  * TODO: -update frequency setting in menu
  *
