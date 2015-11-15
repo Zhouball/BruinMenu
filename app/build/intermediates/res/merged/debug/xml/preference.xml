@@ -4,7 +4,8 @@
     <CheckBoxPreference
         android:key="notification_switch"
         android:title = "Show favorite food notifications"
-        android:defaultValue="true" />
+        android:defaultValue="true"
+        android:drawableTint="#000000"/>
 
     <CheckBoxPreference
         android:key="notification_switch_refresh"

@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- From: file:/F:/Zhouball/AndroidStudioProjects/BruinMenu/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string-array name="frequency_array">
+        <item>Update every day</item>
+        <item>Update every twelve hours</item>
+        <item>Update every six hours</item>
+        <item>Update every three hours</item>
+        <item>Update every two hours</item>
+        <item>Update every hour</item>
+        <item>Update every thirty minutes</item>
+    </string-array>
     <!-- From: file:/F:/Zhouball/AndroidStudioProjects/BruinMenu/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference" name="drawerArrowStyle"/>

@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from F:\Zhouball\AndroidStudioProjects\BruinMenu\app\src\main\AndroidManifest.xml:2:1-68:12
+ADDED from F:\Zhouball\AndroidStudioProjects\BruinMenu\app\src\main\AndroidManifest.xml:2:1-69:12
 	xmlns:android
 		ADDED from F:\Zhouball\AndroidStudioProjects\BruinMenu\app\src\main\AndroidManifest.xml:2:11-69
 	package
@@ -22,7 +22,7 @@ ADDED from F:\Zhouball\AndroidStudioProjects\BruinMenu\app\src\main\AndroidManif
 	android:name
 		ADDED from F:\Zhouball\AndroidStudioProjects\BruinMenu\app\src\main\AndroidManifest.xml:6:22-78
 application
-ADDED from F:\Zhouball\AndroidStudioProjects\BruinMenu\app\src\main\AndroidManifest.xml:8:5-66:19
+ADDED from F:\Zhouball\AndroidStudioProjects\BruinMenu\app\src\main\AndroidManifest.xml:8:5-67:19
 MERGED from [com.android.support:appcompat-v7:23.1.0] F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.1.0] F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:design:23.1.0] F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\exploded-aar\com.android.support\design\23.1.0\AndroidManifest.xml:22:5-20
@@ -105,17 +105,21 @@ ADDED from F:\Zhouball\AndroidStudioProjects\BruinMenu\app\src\main\AndroidManif
 	android:name
 		ADDED from F:\Zhouball\AndroidStudioProjects\BruinMenu\app\src\main\AndroidManifest.xml:56:13-45
 receiver#zhou.allen.bruinmenu.BootReceiver
-ADDED from F:\Zhouball\AndroidStudioProjects\BruinMenu\app\src\main\AndroidManifest.xml:60:9-65:20
+ADDED from F:\Zhouball\AndroidStudioProjects\BruinMenu\app\src\main\AndroidManifest.xml:60:9-66:20
 	android:enabled
 		ADDED from F:\Zhouball\AndroidStudioProjects\BruinMenu\app\src\main\AndroidManifest.xml:61:13-36
 	android:name
 		ADDED from F:\Zhouball\AndroidStudioProjects\BruinMenu\app\src\main\AndroidManifest.xml:60:19-47
-intent-filter#android.intent.action.BOOT_COMPLETED
-ADDED from F:\Zhouball\AndroidStudioProjects\BruinMenu\app\src\main\AndroidManifest.xml:62:13-64:29
+intent-filter#android.intent.action.BOOT_COMPLETED+zhou.allen.action.RESET_ALARM
+ADDED from F:\Zhouball\AndroidStudioProjects\BruinMenu\app\src\main\AndroidManifest.xml:62:13-65:29
 action#android.intent.action.BOOT_COMPLETED
 ADDED from F:\Zhouball\AndroidStudioProjects\BruinMenu\app\src\main\AndroidManifest.xml:63:17-86
 	android:name
 		ADDED from F:\Zhouball\AndroidStudioProjects\BruinMenu\app\src\main\AndroidManifest.xml:63:25-76
+action#zhou.allen.action.RESET_ALARM
+ADDED from F:\Zhouball\AndroidStudioProjects\BruinMenu\app\src\main\AndroidManifest.xml:64:17-79
+	android:name
+		ADDED from F:\Zhouball\AndroidStudioProjects\BruinMenu\app\src\main\AndroidManifest.xml:64:25-69
 uses-sdk
 INJECTED from F:\Zhouball\AndroidStudioProjects\BruinMenu\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.1.0] F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:20:5-43

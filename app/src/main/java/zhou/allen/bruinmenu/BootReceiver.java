@@ -14,9 +14,7 @@ public class BootReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (intent.getAction().equals("android.intent.action.BOOT_COMPLETED")) {
-
-            Intent i = new Intent(context, UpdateDBService.class);
+        if (intent.getAction().equals("android.intent.action.BOOT_COMPLETED") || intent.getAction().equals("zhou.allen.action.RESET_ALARM")) {
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
             long updateStartHour = prefs.getLong("update_start_hour", 6);
             long updateStartMinute = prefs.getLong("update_start_minute", 0);
@@ -25,11 +23,11 @@ public class BootReceiver extends BroadcastReceiver {
             cal.set(Calendar.HOUR_OF_DAY, (int) updateStartHour);
             cal.set(Calendar.MINUTE, (int) updateStartMinute);
 
-            PendingIntent pi = PendingIntent.getBroadcast(context, 0, i, PendingIntent.FLAG_UPDATE_CURRENT);
-            AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-            alarmManager.cancel(pi);
-            alarmManager.setInexactRepeating(AlarmManager.RTC, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pi);
-
+            Intent i = new Intent(context, UpdateDBService.class);
+            PendingIntent pi = PendingIntent.getService(context, 0, i, PendingIntent.FLAG_CANCEL_CURRENT);
+            AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            am.cancel(pi);
+            am.setInexactRepeating(AlarmManager.RTC, cal.getTimeInMillis(), prefs.getLong("update_frequency", AlarmManager.INTERVAL_DAY), pi);
         }
     }
 }
