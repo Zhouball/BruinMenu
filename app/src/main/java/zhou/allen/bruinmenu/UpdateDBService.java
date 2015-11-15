@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
@@ -29,6 +30,8 @@ import org.jsoup.select.Elements;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
+import android.os.Handler;
+import android.widget.Toast;
 
 /**
  * Created by Owner on 10/20/2015.
@@ -42,12 +45,22 @@ public class UpdateDBService extends Service {
         return null;
     }
     private static final String TAG = "UpdateDbService";
+    private Handler mHandler;
 
     public void onCreate() {
         super.onCreate();
 
         Log.i(TAG, "Service is running");
         new UpdateDB().execute();
+        /*
+        mHandler = new Handler();
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getApplicationContext(), "Service is running!" + System.currentTimeMillis(), Toast.LENGTH_LONG).show();
+            }
+        });
+        */
 
         stopSelf();
     }
@@ -232,15 +245,21 @@ public class UpdateDBService extends Service {
 
             }
 
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
             //checking if notifications should display
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            Context _context = getApplicationContext();
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(_context);
             boolean notification_switch = prefs.getBoolean("notification_switch", true);
             if(notification_switch) {
-                Context _context = getApplicationContext();
                 //displaying notification
                 if (!favoriteFoodPresent.isEmpty()) {
                     NotificationCompat.Builder builder = new NotificationCompat.Builder(_context).
-                            setSmallIcon(R.drawable.vegetarian).
+                            setSmallIcon(R.drawable.notification).
+                            setLargeIcon(BitmapFactory.decodeResource(_context.getResources(), R.drawable.notification)).
                             setContentTitle("Today's Favorites").
                             setContentText(favoriteFoodPresent.get(0) + (favoriteFoodPresent.size() == 1 ? "" : "...."));
                     NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
@@ -257,8 +276,6 @@ public class UpdateDBService extends Service {
                     notifManager.notify(notificationID, builder.build());
                 }
             }
-
-            return null;
         }
     }
 

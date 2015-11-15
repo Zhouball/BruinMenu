@@ -175,16 +175,14 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         if(hall.getStartTime() != -3600000 && hall.getEndTime() != -3600000) {
             DateFormat formatter = new SimpleDateFormat("hh:mm a");
             formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-            Calendar st = Calendar.getInstance();
+            Calendar st = Calendar.getInstance(Locale.UK);
             st.setTimeInMillis(hall.getStartTime());
             String sts = formatter.format(st.getTime());
             Calendar et = Calendar.getInstance();
             et.setTimeInMillis(hall.getEndTime());
             String ets = formatter.format(et.getTime());
             hallHours.setText(sts + " - " + ets);
-            Log.d("Time", st.getTimeInMillis() + " - " + et.getTimeInMillis());
-            Log.d("Time", st.getTime() + " " + et.getTime());
-            hallHours.setTextColor(getTimeColor(hall));
+            //hallHours.setTextColor(getTimeColor(hall));
         } else {
             hallHours.setVisibility(View.INVISIBLE);
         }

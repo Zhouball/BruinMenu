@@ -3,6 +3,7 @@
     package="zhou.allen.bruinmenu" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
     <application
         android:allowBackup="true"
@@ -38,9 +39,6 @@
 
         <service
             android:name=".UpdateDBService" >
-            <intent-filter>
-                <action android:name="zhou.allen.bruinmenu.UPDATEDB" />
-            </intent-filter>
         </service>
 
         <activity android:name=".CreditsActivity" >
@@ -58,6 +56,13 @@
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
+
+        <receiver android:name=".BootReceiver"
+            android:enabled="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"></action>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
