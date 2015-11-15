@@ -7,11 +7,16 @@ Custom ExpandableListAdapter class
 (Slightly) Modified by Preetham Reddy Narayanareddy
 */
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.TimeZone;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.media.Image;
 import android.util.Log;
@@ -25,23 +30,25 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import zhou.allen.bruinmenu.R;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     private Context _context;
-    private List<String> _listDataHeader; // header titles
+    private List<Hall> _listDataHeader; // header titles
     // child data in format of header title, child title
     private HashMap<String, List<MenuItem>> _listDataChild;
 
-    public ExpandableListAdapter(Context context, List<String> listDataHeader, HashMap<String, List<MenuItem>> listChildData) {
+    public ExpandableListAdapter(Context context, List<Hall> listDataHeader, HashMap<String, List<MenuItem>> listChildData) {
         this._context = context;
         this._listDataHeader = listDataHeader;
         this._listDataChild = listChildData;
     }
 
     public MenuItem getChildData(int groupPosition, int childPosition) {
-        return this._listDataChild.get(this._listDataHeader.get(groupPosition)).get(childPosition);
+        return this._listDataChild.get(this._listDataHeader.get(groupPosition).getItem()).get(childPosition);
     }
 
     @Override
@@ -134,13 +141,11 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return this._listDataChild.get(this._listDataHeader.get(groupPosition)).size();
+        return this._listDataChild.get(this._listDataHeader.get(groupPosition).getItem()).size();
     }
 
     @Override
-    public Object getGroup(int groupPosition) {
-        return this._listDataHeader.get(groupPosition);
-    }
+    public Object getGroup(int groupPosition) { return this._listDataHeader.get(groupPosition).getItem(); }
 
     @Override
     public int getGroupCount() {
@@ -164,7 +169,37 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         lblListHeader.setTypeface(null, Typeface.BOLD);
         lblListHeader.setText(headerTitle);
 
+        TextView hallHours = (TextView) convertView.findViewById(R.id.hallHours);
+        Hall hall = this._listDataHeader.get(groupPosition);
+        if(hall.getStartTime() != -3600000 && hall.getEndTime() != -3600000) {
+            DateFormat formatter = new SimpleDateFormat("hh:mm a");
+            formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+            Calendar st = Calendar.getInstance();
+            st.setTimeInMillis(hall.getStartTime());
+            String sts = formatter.format(st.getTime());
+            Calendar et = Calendar.getInstance();
+            et.setTimeInMillis(hall.getEndTime());
+            String ets = formatter.format(et.getTime());
+            hallHours.setText(sts + " - " + ets);
+            Log.d("Time", st.getTimeInMillis() + " - " + et.getTimeInMillis());
+            Log.d("Time", st.getTime() + " " + et.getTime());
+            hallHours.setTextColor(getTimeColor(hall));
+        } else {
+            hallHours.setVisibility(View.INVISIBLE);
+        }
         return convertView;
+    }
+
+    private int getTimeColor(Hall hall) {
+        int INTERVAL_HOUR = 3600000;
+        Calendar cal = Calendar.getInstance();
+        long days = cal.getTimeInMillis()/(1000*60*60*24);
+        long offset = days*(1000*60*60*24);
+        cal.setTimeInMillis(cal.getTimeInMillis()-offset);
+        // get the difference between now and hall's next time. that's the color of the hall
+        if((hall.getEndTime() - cal.getTimeInMillis()) < 0.5*INTERVAL_HOUR) return Color.YELLOW;
+        else if(cal.getTimeInMillis() < hall.getStartTime() || cal.getTimeInMillis() > hall.getEndTime()) return Color.RED;
+        else return Color.WHITE;
     }
 
     @Override

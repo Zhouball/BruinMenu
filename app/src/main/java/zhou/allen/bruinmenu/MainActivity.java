@@ -4,9 +4,6 @@ package zhou.allen.bruinmenu;
  * swiper
  * -Make sure the page updates every meal period (http://stackoverflow.com/questions/10849552/update-viewpager-dynamically/17855730#17855730)
  *
- * list-view
- * -If dining hall not open, show it in red
- *
  * settings
  * TODO: -update frequency setting in menu
  *
@@ -169,7 +166,7 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
                 case 0:
                     Calendar c = Calendar.getInstance();
                     int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
-                    if(dayOfWeek == 1 || dayOfWeek == 7) fragment = MenuFragment.newInstance("lunch");
+                    if(dayOfWeek == Calendar.SUNDAY || dayOfWeek == Calendar.SATURDAY) fragment = MenuFragment.newInstance("lunch");
                     else fragment = MenuFragment.newInstance("breakfast");
                     break;
                 case 1:
