@@ -112,7 +112,7 @@ public class CreditsActivity extends AppCompatActivity {
                         downButton.setVisibility(View.INVISIBLE);
                         aButton.setVisibility(View.INVISIBLE);
                         bButton.setVisibility(View.INVISIBLE);
-                        credits.setText(getResources().getString(R.string.credits) + "And many thanks to our beta tester, Jaron Mink!");
+                        credits.setText(getResources().getString(R.string.credits) + "And many thanks \n \t   to Jaron Mink, for beta testing \n \t   to Wanda He, for design ideas \n \t   to Danial Hosseinian, for being absolutely no help at all \n \t   to Michael Bareian, for something or another... \n \t   and to all our friends and family for their support!");
                     default:
                         stage = 1;
                 }

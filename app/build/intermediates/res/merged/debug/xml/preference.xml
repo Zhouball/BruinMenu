@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBoxPreference
+        android:key="notification_switch"
+        android:title = "Show favorite food notifications"
+        android:defaultValue="true" />
+
+    <CheckBoxPreference
+        android:key="notification_switch_refresh"
+        android:title = "Show notifications on refresh"
+        android:defaultValue="false" />
+
+</PreferenceScreen><!-- From: file:/F:/Zhouball/AndroidStudioProjects/BruinMenu/app/src/main/res/xml/preference.xml -->

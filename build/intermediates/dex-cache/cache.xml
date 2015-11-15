@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="F:\Zhouball\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
+        <dex dex="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\pre-dexed\release\support-annotations-23.1.0-1755dae0745cafddc9752b4e9ab752a0a7918cd4.jar" />
+    </item>
+    <item
+        jar="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\exploded-aar\it.neokree\MaterialTabs\0.11\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="fef6aa7ea0bb2d6adf10965d0a5bb8e353517bff">
+        <dex dex="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\pre-dexed\debug\classes-5983b69db409af7c90b9ba80a9ef16ab5f276153.jar" />
+    </item>
+    <item
+        jar="F:\Zhouball\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.6.0\98476622f10715998eacf9240d6b479f12c66143\okio-1.6.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="98476622f10715998eacf9240d6b479f12c66143">
+        <dex dex="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\pre-dexed\release\okio-1.6.0-1f67bef606133af9d79a786ab5ddcfed78fefded.jar" />
+    </item>
+    <item
+        jar="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
+        <dex dex="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\pre-dexed\release\classes-f275eb91c1bad444035bdb4d1d6083330326a6ba.jar" />
+    </item>
+    <item
+        jar="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\exploded-aar\com.github.markushi\android-ui\1.2\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="96436aef5f48b09aca1e0183dfcd7782aa580bd6">
+        <dex dex="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\pre-dexed\debug\classes-a30938ded2607f8f875b4c8985568ddf0901815a.jar" />
+    </item>
+    <item
+        jar="F:\Zhouball\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.5.0\4de2b4ed3445c37ec1720a7d214712e845a24636\okhttp-2.5.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4de2b4ed3445c37ec1720a7d214712e845a24636">
+        <dex dex="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\pre-dexed\release\okhttp-2.5.0-8788732d2f58ab3d8c97d47b1b80cbc0bb11eadd.jar" />
+    </item>
+    <item
+        jar="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\src\main\resources\libs\jsoup-1.8.3.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3a86e137575e4a45f5a9eec407f8135512e823a2">
+        <dex dex="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\pre-dexed\release\jsoup-1.8.3-eea363fe784244e03cdeee7a32e0e45ab0615a99.jar" />
+    </item>
+    <item
+        jar="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\pre-dexed\release\internal_impl-23.1.0-8a8bd69551e9f3a7e846f28f97cc9e30896942be.jar" />
+    </item>
+    <item
+        jar="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\pre-dexed\release\classes-0972e490ad4d3c857292f00e9560417b0ff28a99.jar" />
+    </item>
+    <item
+        jar="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
+        <dex dex="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\pre-dexed\release\classes-e21eff4e096d6e27f15330486e233fbda2abc88b.jar" />
+    </item>
+    <item
+        jar="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\exploded-aar\com.android.support\design\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="19026d31f5d3ae868db81319671a642be5fbba08">
+        <dex dex="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\pre-dexed\release\classes-b5597bbc23a7e8a05c65076cc5568b20677a704e.jar" />
+    </item>
+
+</items>
