@@ -49,32 +49,6 @@ public class UpdateDBService extends Service {
         Log.i(TAG, "Service is running");
         new UpdateDB().execute();
 
-        //checking if notifications should display
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        boolean notification_switch = prefs.getBoolean("notification_switch", true);
-        if(notification_switch) {
-            Context _context = getApplicationContext();
-            //displaying notification
-            if (!favoriteFoodPresent.isEmpty()) {
-                NotificationCompat.Builder builder = new NotificationCompat.Builder(_context).
-                        setSmallIcon(R.drawable.vegetarian).
-                        setContentTitle("Today's Favorites").
-                        setContentText(favoriteFoodPresent.get(0) + (favoriteFoodPresent.size() == 1 ? "" : "...."));
-                NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
-                inboxStyle.setBigContentTitle("Today's Favorites");
-                for (String foods : favoriteFoodPresent) {
-                    inboxStyle.addLine(foods);
-                }
-                builder.setStyle(inboxStyle);
-                builder.setContentIntent(PendingIntent.getActivity(_context, 0, new Intent(_context, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT));
-                builder.setAutoCancel(true);
-                NotificationManager notifManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
-                int notificationID = 1;
-                notifManager.notify(notificationID, builder.build());
-            }
-        }
-
         stopSelf();
     }
 
@@ -257,6 +231,33 @@ public class UpdateDBService extends Service {
                 }
 
             }
+
+            //checking if notifications should display
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            boolean notification_switch = prefs.getBoolean("notification_switch", true);
+            if(notification_switch) {
+                Context _context = getApplicationContext();
+                //displaying notification
+                if (!favoriteFoodPresent.isEmpty()) {
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(_context).
+                            setSmallIcon(R.drawable.vegetarian).
+                            setContentTitle("Today's Favorites").
+                            setContentText(favoriteFoodPresent.get(0) + (favoriteFoodPresent.size() == 1 ? "" : "...."));
+                    NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
+                    inboxStyle.setBigContentTitle("Today's Favorites");
+                    for (String foods : favoriteFoodPresent) {
+                        inboxStyle.addLine(foods);
+                    }
+                    builder.setStyle(inboxStyle);
+                    builder.setContentIntent(PendingIntent.getActivity(_context, 0, new Intent(_context, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT));
+                    builder.setAutoCancel(true);
+                    NotificationManager notifManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+                    int notificationID = 1;
+                    notifManager.notify(notificationID, builder.build());
+                }
+            }
+
             return null;
         }
     }

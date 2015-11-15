@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.TimeZone;
 
 import android.content.Context;
@@ -192,7 +193,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     private int getTimeColor(Hall hall) {
         int INTERVAL_HOUR = 3600000;
-        Calendar cal = Calendar.getInstance();
+        Calendar cal = Calendar.getInstance(Locale.UK);
         long days = cal.getTimeInMillis()/(1000*60*60*24);
         long offset = days*(1000*60*60*24);
         cal.setTimeInMillis(cal.getTimeInMillis()-offset);
