@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.TimeZone;
 
 import android.content.Context;
@@ -174,16 +175,14 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         if(hall.getStartTime() != -3600000 && hall.getEndTime() != -3600000) {
             DateFormat formatter = new SimpleDateFormat("hh:mm a");
             formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-            Calendar st = Calendar.getInstance();
+            Calendar st = Calendar.getInstance(Locale.UK);
             st.setTimeInMillis(hall.getStartTime());
             String sts = formatter.format(st.getTime());
             Calendar et = Calendar.getInstance();
             et.setTimeInMillis(hall.getEndTime());
             String ets = formatter.format(et.getTime());
             hallHours.setText(sts + " - " + ets);
-            Log.d("Time", st.getTimeInMillis() + " - " + et.getTimeInMillis());
-            Log.d("Time", st.getTime() + " " + et.getTime());
-            hallHours.setTextColor(getTimeColor(hall));
+            //hallHours.setTextColor(getTimeColor(hall));
         } else {
             hallHours.setVisibility(View.INVISIBLE);
         }
@@ -192,7 +191,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     private int getTimeColor(Hall hall) {
         int INTERVAL_HOUR = 3600000;
-        Calendar cal = Calendar.getInstance();
+        Calendar cal = Calendar.getInstance(Locale.UK);
         long days = cal.getTimeInMillis()/(1000*60*60*24);
         long offset = days*(1000*60*60*24);
         cal.setTimeInMillis(cal.getTimeInMillis()-offset);

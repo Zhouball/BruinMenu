@@ -13,7 +13,7 @@
         <android.support.v7.widget.Toolbar android:id="@+id/toolbar"
             android:layout_width="match_parent" android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary" app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title = "Settings" />
+            app:title = "Settings"/>
 
     </android.support.design.widget.AppBarLayout>
 
@@ -24,10 +24,11 @@
         android:layout_below="@+id/appbarlayout"/>
 
     <Button
+        android:id="@+id/pickerbutton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/pickerbutton"
+        android:background="#F0F0F0"
         android:text="PICK START TIME"
-        android:layout_below="@android:id/list"/>
+        android:layout_below="@android:id/list" />
 
 </RelativeLayout>

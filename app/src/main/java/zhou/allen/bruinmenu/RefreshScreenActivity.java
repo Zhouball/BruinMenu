@@ -15,6 +15,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.content.Intent;
@@ -237,6 +238,34 @@ public class RefreshScreenActivity extends Activity
                     error = true; //TODO: TEMP FIX
                 }
             }
+
+            //checking if notifications should display
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            boolean notification_switch = prefs.getBoolean("notification_switch_refresh", false);
+            if(notification_switch) {
+                Context _context = getApplicationContext();
+                //displaying notification
+                if (!favoriteFoodPresent.isEmpty()) {
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(_context).
+                            setSmallIcon(R.drawable.notification).
+                            setLargeIcon(BitmapFactory.decodeResource(_context.getResources(), R.drawable.notification)).
+                            setContentTitle("Today's Favorites").
+                            setContentText(favoriteFoodPresent.get(0) + (favoriteFoodPresent.size() == 1 ? "" : "...."));
+                    NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
+                    inboxStyle.setBigContentTitle("Today's Favorites");
+                    for (String foods : favoriteFoodPresent) {
+                        inboxStyle.addLine(foods);
+                    }
+                    builder.setStyle(inboxStyle);
+                    builder.setContentIntent(PendingIntent.getActivity(_context, 0, new Intent(_context, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT));
+                    builder.setAutoCancel(true);
+                    NotificationManager notifManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+                    int notificationID = 1;
+                    notifManager.notify(notificationID, builder.build());
+                }
+            }
+
             return null;
         }
 
@@ -265,32 +294,6 @@ public class RefreshScreenActivity extends Activity
 
             //close the progress dialog
             progressDialog.dismiss();
-
-            //checking if notifications should display
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-            boolean notification_switch = prefs.getBoolean("notification_switch_refresh", false);
-            if(notification_switch) {
-                Context _context = getApplicationContext();
-                //displaying notification
-                if (!favoriteFoodPresent.isEmpty()) {
-                    NotificationCompat.Builder builder = new NotificationCompat.Builder(_context).
-                            setSmallIcon(R.drawable.vegetarian).
-                            setContentTitle("Today's Favorites").
-                            setContentText(favoriteFoodPresent.get(0) + (favoriteFoodPresent.size() == 1 ? "" : "...."));
-                    NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
-                    inboxStyle.setBigContentTitle("Today's Favorites");
-                    for (String foods : favoriteFoodPresent) {
-                        inboxStyle.addLine(foods);
-                    }
-                    builder.setStyle(inboxStyle);
-                    builder.setContentIntent(PendingIntent.getActivity(_context, 0, new Intent(_context, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT));
-                    builder.setAutoCancel(true);
-                    NotificationManager notifManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
-                    int notificationID = 1;
-                    notifManager.notify(notificationID, builder.build());
-                }
-            }
 
             Intent i = new Intent(RefreshScreenActivity.this, MainActivity.class);
             startActivity(i);
