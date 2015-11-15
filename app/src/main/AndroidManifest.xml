@@ -39,9 +39,6 @@
 
         <service
             android:name=".UpdateDBService" >
-            <intent-filter>
-                <action android:name="zhou.allen.bruinmenu.UPDATEDB" />
-            </intent-filter>
         </service>
 
         <activity android:name=".CreditsActivity" >

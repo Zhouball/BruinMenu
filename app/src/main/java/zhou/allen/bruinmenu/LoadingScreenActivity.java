@@ -13,7 +13,9 @@ import android.app.PendingIntent;
 import android.app.ProgressDialog;
 //import android.content.ContentValues;
 //import android.database.sqlite.SQLiteDatabase;
+import android.content.ComponentName;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.content.Intent;
@@ -67,12 +69,13 @@ public class LoadingScreenActivity extends Activity
             //Get the current thread's token
             synchronized (this) {
                 try {
-                    Intent i = new Intent("zhou.allen.bruinmenu.UPDATEDB");
-                    boolean alarmUp = (PendingIntent.getBroadcast(LoadingScreenActivity.this, 0, i, PendingIntent.FLAG_NO_CREATE) != null);
+                    Intent i = new Intent(LoadingScreenActivity.this, UpdateDBService.class);
+                    boolean alarmUp = (PendingIntent.getService(LoadingScreenActivity.this, 0, i, PendingIntent.FLAG_NO_CREATE) != null);
+                    //startService(i);
 
                     if (!alarmUp) {
                         Log.d("Alarm", "Updating DB");
-                        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(LoadingScreenActivity.this);
                         long updateStartHour = prefs.getLong("update_start_hour", 6);
                         long updateStartMinute = prefs.getLong("update_start_minute", 0);
                         Calendar cal = Calendar.getInstance();
@@ -80,9 +83,19 @@ public class LoadingScreenActivity extends Activity
                         cal.set(Calendar.HOUR_OF_DAY, (int) updateStartHour);
                         cal.set(Calendar.MINUTE, (int) updateStartMinute);
 
-                        PendingIntent pi = PendingIntent.getBroadcast(LoadingScreenActivity.this, 0, i, PendingIntent.FLAG_UPDATE_CURRENT);
-                        AlarmManager alarmManager = (AlarmManager) LoadingScreenActivity.this.getSystemService(Context.ALARM_SERVICE);
-                        alarmManager.setInexactRepeating(AlarmManager.RTC, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pi);
+                        PendingIntent pi = PendingIntent.getService(LoadingScreenActivity.this, 0, i, PendingIntent.FLAG_CANCEL_CURRENT);
+                        AlarmManager am = (AlarmManager) LoadingScreenActivity.this.getSystemService(Context.ALARM_SERVICE);
+                        am.cancel(pi);
+                        am.setInexactRepeating(AlarmManager.RTC, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pi);
+                        //am.setRepeating(AlarmManager.RTC, System.currentTimeMillis(), 1000 * 15, pi);
+
+                        ComponentName receiver = new ComponentName(LoadingScreenActivity.this, BootReceiver.class);
+                        PackageManager pm = LoadingScreenActivity.this.getPackageManager();
+
+                        pm.setComponentEnabledSetting(receiver,
+                                PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                                PackageManager.DONT_KILL_APP);
+
                         refresh = true;
                     }
 
