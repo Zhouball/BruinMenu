@@ -87,7 +87,7 @@ public class LoadingScreenActivity extends Activity
                         AlarmManager am = (AlarmManager) LoadingScreenActivity.this.getSystemService(Context.ALARM_SERVICE);
                         am.cancel(pi);
                         am.setInexactRepeating(AlarmManager.RTC, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pi);
-                        //am.setRepeating(AlarmManager.RTC, System.currentTimeMillis(), 1000 * 15, pi);
+                        //am.setRepeating(AlarmManager.RTC, System.currentTimeMillis(), 1000 * 5, pi);
 
                         ComponentName receiver = new ComponentName(LoadingScreenActivity.this, BootReceiver.class);
                         PackageManager pm = LoadingScreenActivity.this.getPackageManager();

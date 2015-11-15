@@ -52,15 +52,14 @@ public class UpdateDBService extends Service {
 
         Log.i(TAG, "Service is running");
         new UpdateDB().execute();
-        /*
-        mHandler = new Handler();
+
+        /*mHandler = new Handler();
         mHandler.post(new Runnable() {
             @Override
             public void run() {
                 Toast.makeText(getApplicationContext(), "Service is running!" + System.currentTimeMillis(), Toast.LENGTH_LONG).show();
             }
-        });
-        */
+        });*/
 
         stopSelf();
     }

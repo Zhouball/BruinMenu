@@ -15,6 +15,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.content.Intent;
@@ -246,7 +247,8 @@ public class RefreshScreenActivity extends Activity
                 //displaying notification
                 if (!favoriteFoodPresent.isEmpty()) {
                     NotificationCompat.Builder builder = new NotificationCompat.Builder(_context).
-                            setSmallIcon(R.drawable.vegetarian).
+                            setSmallIcon(R.drawable.notification).
+                            setLargeIcon(BitmapFactory.decodeResource(_context.getResources(), R.drawable.notification)).
                             setContentTitle("Today's Favorites").
                             setContentText(favoriteFoodPresent.get(0) + (favoriteFoodPresent.size() == 1 ? "" : "...."));
                     NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
