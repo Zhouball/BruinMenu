@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- From: file:/F:/Zhouball/AndroidStudioProjects/BruinMenu/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string-array name="frequency_array">
+        <item>Update every day</item>
+        <item>Update every twelve hours</item>
+        <item>Update every six hours</item>
+        <item>Update every three hours</item>
+        <item>Update every two hours</item>
+        <item>Update every hour</item>
+        <item>Update every thirty minutes</item>
+    </string-array>
     <!-- From: file:/F:/Zhouball/AndroidStudioProjects/BruinMenu/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference" name="drawerArrowStyle"/>
@@ -353,16 +364,22 @@
     <string name="character_counter_pattern" translatable="false">%1$d/%2$d</string>
     <!-- From: file:/F:/Zhouball/AndroidStudioProjects/BruinMenu/app/src/main/res/values/strings.xml -->
     <eat-comment/>
-    <string name="credits">Authors: Allen Zhou &amp; Preetham R.N.\n \n
+    <string name="credits">Authors: Allen Zhou &amp; Preetham Reddy N.\n \n
     This project is licensed under the terms of the MIT license.\n \n
     Source code is available at https://github.com/Zhouball/BruinMenu \n \n
-    If you find an issue, send us an email at a.zhou@ucla.edu</string>
+    If you find an issue, send us an email at a.zhou@ucla.edu \n \n</string>
     <string name="home">Home</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <!-- From: file:/F:/Zhouball/AndroidStudioProjects/BruinMenu/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/values/values.xml -->
     <eat-comment/>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <!-- From: file:/F:/Zhouball/AndroidStudioProjects/BruinMenu/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="title_activity_nutri_data_web_view">NutriDataWebView</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <!-- From: file:/F:/Zhouball/AndroidStudioProjects/BruinMenu/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/values/values.xml -->
+    <eat-comment/>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
