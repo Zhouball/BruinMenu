@@ -142,6 +142,7 @@ public class RefreshScreenActivity extends Activity
                                         values));
                             }
                             else if (cell.hasClass("menusplit")) {
+                                splitEncountered = true;
                                 splits++;
                                 ite = numCols * splits;
                             }
