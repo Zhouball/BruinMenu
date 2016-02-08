@@ -117,30 +117,42 @@ public class RefreshScreenActivity extends Activity
                         else
                             mealTime = "dinner";
 
-                        Elements halls = menus.get(i).select(".menulocheader");
-                        Elements leftCells = menus.get(i).select(".menugridcell, .menusplit");
-                        Elements rightCells = menus.get(i).select(".menugridcell_last, .menusplit");
+                        //Elements halls = menus.get(i).select(".menulocheader");
+                        //Elements leftCells = menus.get(i).select(".menugridcell, .menusplit");
+                        //Elements rightCells = menus.get(i).select(".menugridcell_last, .menusplit");
+                        Elements cells = menus.get(i).select(".menulocheader, .menugridcell, .menugridcell_last, .menusplit");
 
                         ArrayList<Long> hallsIds = new ArrayList<>();
-                        for (Element hall : halls) {
-                            ContentValues values = new ContentValues();
-                            values.put(MenuDBContract.HallEntry.COLUMN_NAME_ITEM, hall.text().trim());
-                            values.put(MenuDBContract.HallEntry.COLUMN_NAME_MEALTIME, mealTime);
-                            hallsIds.add(db.insert(
-                                    MenuDBContract.HallEntry.TABLE_NAME,
-                                    null,
-                                    values));
-                        }
-
                         int ite = 0;
-                        for (Element cell : leftCells) {
-                            if (cell.hasClass("menusplit")) {
-                                ite += 2;
+                        boolean splitEncountered = false;
+                        int numCols = 0;
+                        int splits = 0;
+
+                        for (Element cell : cells) {
+                            if (cell.hasClass("menulocheader")) {
+                                if (!splitEncountered) {
+                                    numCols++;
+                                }
+                                ContentValues values = new ContentValues();
+                                values.put(MenuDBContract.HallEntry.COLUMN_NAME_ITEM, cell.text().trim());
+                                values.put(MenuDBContract.HallEntry.COLUMN_NAME_MEALTIME, mealTime);
+                                hallsIds.add(db.insert(
+                                        MenuDBContract.HallEntry.TABLE_NAME,
+                                        null,
+                                        values));
+                            }
+                            else if (cell.hasClass("menusplit")) {
+                                splits++;
+                                ite = numCols * splits;
                             }
                             else {
+                                if (ite >= hallsIds.size()) {
+                                    continue;
+                                }
                                 Elements kitchen = cell.select(".category5");
                                 ContentValues kvalues = new ContentValues();
                                 if(kitchen.first() == null) continue;
+
                                 String kitchenName = kitchen.first().text().trim();
                                 kvalues.put(MenuDBContract.KitchenEntry.COLUMN_NAME_ITEM, kitchenName);
                                 kvalues.put(MenuDBContract.KitchenEntry.COLUMN_NAME_HALL, hallsIds.get(ite));
@@ -178,54 +190,9 @@ public class RefreshScreenActivity extends Activity
                                             null,
                                             ivalues);
                                 }
-                            }
-                        }
-
-                        ite = 1;
-                        for (Element cell : rightCells) {
-                            if (cell.hasClass("menusplit")) {
-                                ite += 2;
-                            }
-                            else {
-                                Elements kitchen = cell.select(".category5");
-                                if(kitchen.first() == null) continue;
-                                ContentValues kvalues = new ContentValues();
-                                String kitchenName = kitchen.first().text().trim();
-                                kvalues.put(MenuDBContract.KitchenEntry.COLUMN_NAME_ITEM, kitchenName);
-                                kvalues.put(MenuDBContract.KitchenEntry.COLUMN_NAME_HALL, hallsIds.get(ite));
-                                long id = db.insert(
-                                        MenuDBContract.KitchenEntry.TABLE_NAME,
-                                        null,
-                                        kvalues);
-
-                                Elements items = cell.select(".level5");
-                                for (Element e : items) {
-                                    ContentValues ivalues = new ContentValues();
-                                    Element link = e.select("a").first();
-                                    if(e == null) continue;
-
-                                    String menuItemName = e.text().trim();
-                                    ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM, menuItemName);
-                                    ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_KITCHEN, id);
-                                    ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_NUTRIURL, link.attr("href"));
-                                    if(favoriteFood.contains(menuItemName)) {
-                                        favoriteFoodPresent.add(kitchenName + "-" + menuItemName);
-                                    }
-
-                                    Element v = e.select("img").first();
-                                    int veg = 0;
-                                    if (v == null) {
-                                        veg = 0;
-                                    } else if (v.attr("alt").toLowerCase().contains("vegetarian")) {
-                                        veg = 1;
-                                    } else if (v.attr("alt").toLowerCase().contains("vegan")) {
-                                        veg = 2;
-                                    }
-                                    ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_VEG, veg);
-                                    long id2 = db.insert(
-                                            MenuDBContract.MenuEntry.TABLE_NAME,
-                                            null,
-                                            ivalues);
+                                ite++;
+                                if (ite >= numCols * (splits + 1)) {
+                                    ite -= numCols;
                                 }
                             }
                         }
