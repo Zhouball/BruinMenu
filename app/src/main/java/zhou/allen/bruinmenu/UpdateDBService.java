@@ -144,6 +144,7 @@ public class UpdateDBService extends Service {
                                         values));
                             }
                             else if (cell.hasClass("menusplit")) {
+                                splitEncountered = true;
                                 splits++;
                                 ite = numCols * splits;
                             }
