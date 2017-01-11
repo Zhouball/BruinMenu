@@ -117,7 +117,11 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_credits) {
+        if (id == R.id.action_quick_dining_menu) {
+            Intent i = new Intent(this, QuickDiningMenusActivity.class);
+            startActivity(i);
+            return true;
+        } else if (id == R.id.action_credits) {
             Intent i = new Intent(this, CreditsActivity.class);
             startActivity(i);
             return true;

@@ -34,33 +34,26 @@
         <activity
             android:name="com.rhombus.bruinmenu.MainActivity"
             android:label="@string/app_name"
-            android:launchMode="singleTop" >
-        </activity>
+            android:launchMode="singleTop" />
 
         <!-- Main Activity (display menu) -->
         <activity
             android:name="com.rhombus.bruinmenu.RefreshScreenActivity"
-            android:noHistory="true" >
-        </activity>
+            android:noHistory="true" />
 
-        <service android:name="com.rhombus.bruinmenu.UpdateDBService" >
-        </service>
+        <service android:name="com.rhombus.bruinmenu.UpdateDBService" />
 
-        <activity android:name="com.rhombus.bruinmenu.CreditsActivity" >
-        </activity>
+        <activity android:name="com.rhombus.bruinmenu.CreditsActivity" />
         <activity
             android:name="com.rhombus.bruinmenu.NutriDataWebView"
             android:label="Nutritional Data"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.rhombus.bruinmenu.LoadNutriDataActivity"
-            android:noHistory="true" >
-        </activity>
+            android:noHistory="true" />
         <activity
             android:name="com.rhombus.bruinmenu.SettingsActivity"
-            android:label="@string/title_activity_settings" >
-        </activity>
+            android:label="@string/title_activity_settings" />
 
         <receiver
             android:name="com.rhombus.bruinmenu.BootReceiver"
@@ -70,6 +63,8 @@
                 <action android:name="com.rhombus.action.RESET_ALARM" />
             </intent-filter>
         </receiver>
+
+        <activity android:name="com.rhombus.bruinmenu.QuickDiningMenusActivity" />
     </application>
 
 </manifest>
