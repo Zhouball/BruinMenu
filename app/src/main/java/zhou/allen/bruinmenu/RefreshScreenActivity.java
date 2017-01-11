@@ -111,12 +111,12 @@ public class RefreshScreenActivity extends Activity
                     String mealTime = "";
                     for (int i = 0; i < menus.size(); i++) {
                         Element menu = menus.get(i);
-                        if("page-header".equals(menu.id())) {
+                        if ("page-header".equals(menu.id())) {
                             String mealTimeString = menu.text().toLowerCase();
                             mealTime = mealTimeString.contains("breakfast") ? "breakfast" :
-                                        mealTimeString.contains("lunch") ? "lunch" :
-                                        mealTimeString.contains("dinner") ? "dinner" : "";
-                        } else if(menu.hasClass("menu-block")) {
+                                    mealTimeString.contains("lunch") ? "lunch" :
+                                            mealTimeString.contains("dinner") ? "dinner" : "";
+                        } else if (menu.hasClass("menu-block")) {
                             // Get dining hall name
                             Element hcell = menu.getElementsByClass("col-header").size() > 0 ? menu.getElementsByClass("col-header").get(0) : null;
                             ContentValues hvalues = new ContentValues();
@@ -145,12 +145,13 @@ public class RefreshScreenActivity extends Activity
                                 for (Element item : items) {
                                     if (item == null) continue;
                                     ContentValues ivalues = new ContentValues();
-                                    Element link = item.select("a").first();
+                                    String link = item.select("a").first().attr("href");
 
-                                    String menuItemName = item.text().trim();
+                                    String menuItemName = item.select("a").first().text().trim();
+                                    //Log.v("menuItem", menuItemName + ": " + link);
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_ITEM, menuItemName);
                                     ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_KITCHEN, id);
-                                    ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_NUTRIURL, link.attr("href"));
+                                    ivalues.put(MenuDBContract.MenuEntry.COLUMN_NAME_NUTRIURL, link);
                                     if (favoriteFood.contains(menuItemName)) {
                                         favoriteFoodPresent.add(kitchenName + "-" + menuItemName);
                                     }
@@ -182,6 +183,32 @@ public class RefreshScreenActivity extends Activity
                 }
             }
 
+            return null;
+        }
+
+
+        /*
+        //Update the progress
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            //set the current progress of the progress dialog
+            progressDialog.setProgress(values[0]);
+        }
+        */
+
+        //after executing the code in the thread
+        @Override
+        protected void onPostExecute(Void result) {
+            if(error) {
+                progressDialog = ProgressDialog.show(RefreshScreenActivity.this, "Connection Failed",
+                        "Unable to connect to BruinMenu", false, false);
+                try {
+                    Thread.sleep(1000);                 //1000 milliseconds is one second.
+                } catch(InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+
             //checking if notifications should display
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
             boolean notification_switch = prefs.getBoolean("notification_switch_refresh", false);
@@ -206,32 +233,6 @@ public class RefreshScreenActivity extends Activity
 
                     int notificationID = 1;
                     notifManager.notify(notificationID, builder.build());
-                }
-            }
-
-            return null;
-        }
-
-
-        /*
-        //Update the progress
-        @Override
-        protected void onProgressUpdate(Integer... values) {
-            //set the current progress of the progress dialog
-            progressDialog.setProgress(values[0]);
-        }
-        */
-
-        //after executing the code in the thread
-        @Override
-        protected void onPostExecute(Void result) {
-            if(error) {
-                progressDialog = ProgressDialog.show(RefreshScreenActivity.this, "Connection Failed",
-                        "Unable to connect to BruinMenu", false, false);
-                try {
-                    Thread.sleep(1000);                 //1000 milliseconds is one second.
-                } catch(InterruptedException ex) {
-                    Thread.currentThread().interrupt();
                 }
             }
 
