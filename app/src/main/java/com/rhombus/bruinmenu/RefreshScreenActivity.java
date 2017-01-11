@@ -215,7 +215,7 @@ public class RefreshScreenActivity extends Activity
             if(notification_switch) {
                 Context _context = getApplicationContext();
                 //displaying notification
-                if (!favoriteFoodPresent.isEmpty()) {
+                if (favoriteFoodPresent != null && !favoriteFoodPresent.isEmpty()) {
                     NotificationCompat.Builder builder = new NotificationCompat.Builder(_context).
                             setSmallIcon(R.drawable.notification).
                             setLargeIcon(BitmapFactory.decodeResource(_context.getResources(), R.drawable.notification)).

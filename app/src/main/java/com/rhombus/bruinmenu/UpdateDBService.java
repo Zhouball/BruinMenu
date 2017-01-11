@@ -197,7 +197,7 @@ public class UpdateDBService extends Service {
             boolean notification_switch = prefs.getBoolean("notification_switch", true);
             if(notification_switch) {
                 //displaying notification
-                if (!favoriteFoodPresent.isEmpty()) {
+                if (favoriteFoodPresent != null && !favoriteFoodPresent.isEmpty()) {
                     NotificationCompat.Builder builder = new NotificationCompat.Builder(_context).
                             setSmallIcon(R.drawable.notification).
                             setLargeIcon(BitmapFactory.decodeResource(_context.getResources(), R.drawable.notification)).

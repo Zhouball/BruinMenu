@@ -106,7 +106,7 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.1"
-        sha1="d5fc36898497833a0b233c7584f2980931d50345">
+        sha1="741c74e39a46d4cc99f1299cdf0a55c523364f22">
         <dex dex="E:\Programming\Interesting\BruinMenu\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_a7ed0bf36a7034cea003dd896ce1a716cfbe2d75\classes.dex" />
     </item>
     <item
@@ -169,7 +169,7 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.1"
-        sha1="2eebcf47edd1f73888dd85cdaa112989085a8463">
+        sha1="ca81e92c4a54c4ec1476b6d38f75a52271c4d6a7">
         <dex dex="E:\Programming\Interesting\BruinMenu\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_ee79346bbcf08bee22ada426d1e795ef6a8ba9ec\classes.dex" />
     </item>
     <item
