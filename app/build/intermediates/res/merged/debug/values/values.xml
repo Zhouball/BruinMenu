@@ -303,7 +303,7 @@
     <string name="character_counter_pattern" translatable="false">%1$d/%2$d</string>
     <string name="credits">Authors: Allen Zhou &amp; Preetham Reddy N.\n \n
     This project is licensed under the terms of the MIT license.\n \n
-    Source code is available at https://github.com/Zhouball/BruinMenu \n \n
+    Source code is available at https://github.com/Zhouball/BruinMenu OR https://github.com/preethamrn/BruinMenu \n \n
     If you find an issue, send us an email at a.zhou@ucla.edu \n \n</string>
     <string name="home">Home</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

@@ -2,7 +2,7 @@
 manifest
 ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:2:1-69:12
 	package
-		ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:3:5-35
+		ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:3:5-36
 		INJECTED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml
 		INJECTED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml
 	android:versionName
@@ -37,7 +37,7 @@ MERGED from [com.github.markushi:android-ui:1.2] E:\Programming\Interesting\Brui
 		ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:10:9-43
 	android:theme
 		ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:13:9-40
-activity#zhou.allen.bruinmenu.LoadingScreenActivity
+activity#com.rhombus.bruinmenu.LoadingScreenActivity
 ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:16:9-25:20
 	android:label
 		ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:18:13-45
@@ -55,7 +55,7 @@ category#android.intent.category.LAUNCHER
 ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:23:17-77
 	android:name
 		ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:23:27-74
-activity#zhou.allen.bruinmenu.MainActivity
+activity#com.rhombus.bruinmenu.MainActivity
 ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:28:9-32:20
 	android:label
 		ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:30:13-45
@@ -63,21 +63,21 @@ ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml
 		ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:31:13-43
 	android:name
 		ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:29:13-41
-activity#zhou.allen.bruinmenu.RefreshScreenActivity
+activity#com.rhombus.bruinmenu.RefreshScreenActivity
 ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:35:9-38:20
 	android:noHistory
 		ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:37:13-37
 	android:name
 		ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:36:13-50
-service#zhou.allen.bruinmenu.UpdateDBService
+service#com.rhombus.bruinmenu.UpdateDBService
 ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:40:9-42:19
 	android:name
 		ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:41:13-44
-activity#zhou.allen.bruinmenu.CreditsActivity
+activity#com.rhombus.bruinmenu.CreditsActivity
 ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:44:9-45:20
 	android:name
 		ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:44:19-50
-activity#zhou.allen.bruinmenu.NutriDataWebView
+activity#com.rhombus.bruinmenu.NutriDataWebView
 ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:46:9-50:20
 	android:label
 		ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:48:13-45
@@ -85,34 +85,34 @@ ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml
 		ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:49:13-56
 	android:name
 		ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:47:13-45
-activity#zhou.allen.bruinmenu.LoadNutriDataActivity
+activity#com.rhombus.bruinmenu.LoadNutriDataActivity
 ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:51:9-54:20
 	android:noHistory
 		ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:53:13-37
 	android:name
 		ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:52:13-50
-activity#zhou.allen.bruinmenu.SettingsActivity
+activity#com.rhombus.bruinmenu.SettingsActivity
 ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:55:9-58:20
 	android:label
 		ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:57:13-60
 	android:name
 		ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:56:13-45
-receiver#zhou.allen.bruinmenu.BootReceiver
+receiver#com.rhombus.bruinmenu.BootReceiver
 ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:60:9-66:20
 	android:enabled
 		ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:61:13-36
 	android:name
 		ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:60:19-47
-intent-filter#android.intent.action.BOOT_COMPLETED+zhou.allen.action.RESET_ALARM
+intent-filter#android.intent.action.BOOT_COMPLETED+com.rhombus.action.RESET_ALARM
 ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:62:13-65:29
 action#android.intent.action.BOOT_COMPLETED
 ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:63:17-86
 	android:name
 		ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:63:25-76
-action#zhou.allen.action.RESET_ALARM
-ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:64:17-79
+action#com.rhombus.action.RESET_ALARM
+ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:64:17-80
 	android:name
-		ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:64:25-69
+		ADDED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml:64:25-70
 uses-sdk
 INJECTED from E:\Programming\Interesting\BruinMenu\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:design:23.1.0] E:\Programming\Interesting\BruinMenu\app\build\intermediates\exploded-aar\com.android.support\design\23.1.0\AndroidManifest.xml:20:5-43

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="zhou.allen.bruinmenu.test">
+    package="com.rhombus.bruinmenu.test">
 
     <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="23" />
 
@@ -9,8 +9,8 @@
     </application>
 
     <instrumentation android:name="android.test.InstrumentationTestRunner"
-                     android:targetPackage="zhou.allen.bruinmenu"
+                     android:targetPackage="com.rhombus.bruinmenu"
                      android:handleProfiling="false"
                      android:functionalTest="false"
-                     android:label="Tests for zhou.allen.bruinmenu"/>
+                     android:label="Tests for com.rhombus.bruinmenu"/>
 </manifest>

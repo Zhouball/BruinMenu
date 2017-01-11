@@ -9,7 +9,7 @@
     <string name="home">Home</string>
     <string name="credits">Authors: Allen Zhou &amp; Preetham Reddy N.\n \n
     This project is licensed under the terms of the MIT license.\n \n
-    Source code is available at https://github.com/Zhouball/BruinMenu \n \n
+    Source code is available at https://github.com/Zhouball/BruinMenu OR https://github.com/preethamrn/BruinMenu \n \n
     If you find an issue, send us an email at a.zhou@ucla.edu \n \n</string>
     <string name="title_activity_nutri_data_web_view">NutriDataWebView</string>
     <string name="title_activity_settings">SettingsActivity</string>

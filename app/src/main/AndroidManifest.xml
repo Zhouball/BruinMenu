@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="zhou.allen.bruinmenu" >
+    package="com.rhombus.bruinmenu" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
@@ -61,7 +61,7 @@
             android:enabled="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"></action>
-                <action android:name="zhou.allen.action.RESET_ALARM"></action>
+                <action android:name="com.rhombus.action.RESET_ALARM"></action>
             </intent-filter>
         </receiver>
     </application>
