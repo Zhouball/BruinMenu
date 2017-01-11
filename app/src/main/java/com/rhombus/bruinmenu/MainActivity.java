@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
 
     @Override
     public void onTabSelected(MaterialTab tab) {
-        //currentMenu = tab.getPosition(); //TODO: tempfix with the `currentMenu = 4` line
+        //currentMenu = tab.getPosition(); //TODO: tempfix with the `currentMenu = 4` line. Fix why currentMenu isn't being changed when you swipe
         viewPager.setCurrentItem(tab.getPosition());
     }
 
