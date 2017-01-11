@@ -13,7 +13,7 @@
     If you find an issue, send us an email at a.zhou@ucla.edu \n \n</string>
     <string name="title_activity_nutri_data_web_view">NutriDataWebView</string>
     <string name="title_activity_settings">SettingsActivity</string>
-    
+
     <string-array name="frequency_array">
         <item>Update every day</item>
         <item>Update every twelve hours</item>
@@ -23,5 +23,8 @@
         <item>Update every hour</item>
         <item>Update every thirty minutes</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

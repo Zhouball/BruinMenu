@@ -25,6 +25,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -34,7 +35,7 @@ import it.neokree.materialtabs.MaterialTab;
 import it.neokree.materialtabs.MaterialTabHost;
 import it.neokree.materialtabs.MaterialTabListener;
 
-public class MainActivity extends AppCompatActivity implements MaterialTabListener, MenuFragment.OnFragmentInteractionListener, SwipesLeftFragment.OnFragmentInteractionListener{
+public class MainActivity extends AppCompatActivity implements MaterialTabListener, MenuFragment.OnFragmentInteractionListener, SwipesLeftFragment.OnFragmentInteractionListener, LoadWebViewFragment.OnFragmentInteractionListener{
 
     private MaterialTabHost tabHost;
     private ViewPager viewPager;
@@ -62,11 +63,14 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
             @Override
             public void onPageSelected(int position) {
                 tabHost.setSelectedNavigationItem(position);
+                if(currentMenu == 4) mSwipeRefreshLayout.setEnabled(false); //disable refreshing when on hours of operation page
+                else mSwipeRefreshLayout.setEnabled(true);
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-                if(state == ViewPager.SCROLL_STATE_DRAGGING) mSwipeRefreshLayout.setEnabled(false);
+                if(state == ViewPager.SCROLL_STATE_DRAGGING) mSwipeRefreshLayout.setEnabled(false); //disable refreshing when changing pages
+                else if(currentMenu == 4) mSwipeRefreshLayout.setEnabled(false); //disable refreshing when on hours of operation page
                 else mSwipeRefreshLayout.setEnabled(true);
             }
         });
@@ -87,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
         }
 
         viewPager.setCurrentItem(currentMenu);
+        currentMenu = 4; //TODO: tempfix to prevent refresh from occurring in the hours of operation fragment
 
 
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -133,7 +138,7 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
 
     @Override
     public void onTabSelected(MaterialTab tab) {
-        currentMenu = tab.getPosition();
+        //currentMenu = tab.getPosition(); //TODO: tempfix with the `currentMenu = 4` line
         viewPager.setCurrentItem(tab.getPosition());
     }
 
@@ -151,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
 
     private class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
-        String menus[] = {"Breakfast", "Lunch", "Dinner", "Swipes"};
+        String menus[] = {"Breakfast", "Lunch", "Dinner", "Swipes", "Hours"};
 
         FragmentManager fragmentManager;
 
@@ -177,6 +182,9 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
                     break;
                 case 3:
                     fragment = SwipesLeftFragment.newInstance();
+                    break;
+                case 4:
+                    fragment = LoadWebViewFragment.newInstance("http://menu.dining.ucla.edu/Hours");
                     break;
             }
             return fragment;

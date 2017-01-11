@@ -394,7 +394,7 @@ public final class R {
 		public static final int progress_circular = 0x7f0c0008;
 		public static final int progress_horizontal = 0x7f0c0009;
 		public static final int radio = 0x7f0c0058;
-		public static final int reveal = 0x7f0c0093;
+		public static final int reveal = 0x7f0c0094;
 		public static final int right = 0x7f0c0001;
 		public static final int search_badge = 0x7f0c0062;
 		public static final int search_bar = 0x7f0c0061;
@@ -406,7 +406,7 @@ public final class R {
 		public static final int search_plate = 0x7f0c0066;
 		public static final int search_src_text = 0x7f0c0067;
 		public static final int search_voice_btn = 0x7f0c006b;
-		public static final int selector = 0x7f0c0095;
+		public static final int selector = 0x7f0c0096;
 		public static final int shortcut = 0x7f0c0057;
 		public static final int showCustom = 0x7f0c0013;
 		public static final int showHome = 0x7f0c0014;
@@ -414,7 +414,7 @@ public final class R {
 		public static final int split_action_bar = 0x7f0c000a;
 		public static final int submit_area = 0x7f0c0069;
 		public static final int tabMode = 0x7f0c000f;
-		public static final int text = 0x7f0c0094;
+		public static final int text = 0x7f0c0095;
 		public static final int title = 0x7f0c0047;
 		public static final int up = 0x7f0c000b;
 		public static final int useLogo = 0x7f0c0016;
@@ -449,11 +449,11 @@ public final class R {
 		public static final int abc_screen_toolbar = 0x7f040015;
 		public static final int abc_search_dropdown_item_icons_2line = 0x7f040016;
 		public static final int abc_search_view = 0x7f040017;
-		public static final int material_tab = 0x7f040030;
-		public static final int material_tab_icon = 0x7f040031;
-		public static final int support_simple_spinner_dropdown_item = 0x7f04003e;
-		public static final int tab = 0x7f04003f;
-		public static final int tab_icon = 0x7f040040;
+		public static final int material_tab = 0x7f040031;
+		public static final int material_tab_icon = 0x7f040032;
+		public static final int support_simple_spinner_dropdown_item = 0x7f04003f;
+		public static final int tab = 0x7f040040;
+		public static final int tab_icon = 0x7f040041;
 	}
 	public static final class string {
 		public static final int abc_action_bar_home_description = 0x7f070000;
