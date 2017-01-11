@@ -12,4 +12,3 @@
     <TextView android:text="Hello World!" android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </RelativeLayout>
-<!-- From: file:/F:/Zhouball/AndroidStudioProjects/BruinMenu/app/src/main/res/layout/content_main.xml -->

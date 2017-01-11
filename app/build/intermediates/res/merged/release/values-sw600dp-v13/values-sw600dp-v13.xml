@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- From: file:/F:/Zhouball/AndroidStudioProjects/BruinMenu/app/build/intermediates/exploded-aar/it.neokree/MaterialTabs/0.11/res/values-sw600dp-v13/values.xml -->
-    <eat-comment/>
-    <bool name="isTablet">true</bool>
-    <item name="left" type="id"/>
-    <item name="right" type="id"/>
-</resources>

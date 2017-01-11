@@ -2,81 +2,121 @@
 <items version="2" >
 
     <item
-        jar="F:\Zhouball\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="E:\Programming\android_sdk\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
+        jumboMode="true"
+        optimize="true"
         revision="23.0.1"
         sha1="92e3fc113ec3ee36b64603a38857b95700025633">
-        <dex dex="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\pre-dexed\release\support-annotations-23.1.0-1755dae0745cafddc9752b4e9ab752a0a7918cd4.jar" />
+        <dex dex="E:\Programming\Interesting\BruinMenu\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.1.0_9817867c2a703630a1050d64e59c808b95cf3145\classes.dex" />
     </item>
     <item
-        jar="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\exploded-aar\it.neokree\MaterialTabs\0.11\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="fef6aa7ea0bb2d6adf10965d0a5bb8e353517bff">
-        <dex dex="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\pre-dexed\debug\classes-5983b69db409af7c90b9ba80a9ef16ab5f276153.jar" />
-    </item>
-    <item
-        jar="F:\Zhouball\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.6.0\98476622f10715998eacf9240d6b479f12c66143\okio-1.6.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="98476622f10715998eacf9240d6b479f12c66143">
-        <dex dex="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\pre-dexed\release\okio-1.6.0-1f67bef606133af9d79a786ab5ddcfed78fefded.jar" />
-    </item>
-    <item
-        jar="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
-        <dex dex="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\pre-dexed\release\classes-f275eb91c1bad444035bdb4d1d6083330326a6ba.jar" />
-    </item>
-    <item
-        jar="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\exploded-aar\com.github.markushi\android-ui\1.2\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="96436aef5f48b09aca1e0183dfcd7782aa580bd6">
-        <dex dex="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\pre-dexed\debug\classes-a30938ded2607f8f875b4c8985568ddf0901815a.jar" />
-    </item>
-    <item
-        jar="F:\Zhouball\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.5.0\4de2b4ed3445c37ec1720a7d214712e845a24636\okhttp-2.5.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="4de2b4ed3445c37ec1720a7d214712e845a24636">
-        <dex dex="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\pre-dexed\release\okhttp-2.5.0-8788732d2f58ab3d8c97d47b1b80cbc0bb11eadd.jar" />
-    </item>
-    <item
-        jar="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\src\main\resources\libs\jsoup-1.8.3.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="E:\Programming\Interesting\BruinMenu\app\src\main\resources\libs\jsoup-1.8.3.jar"
+        jumboMode="true"
+        optimize="true"
         revision="23.0.1"
         sha1="3a86e137575e4a45f5a9eec407f8135512e823a2">
-        <dex dex="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\pre-dexed\release\jsoup-1.8.3-eea363fe784244e03cdeee7a32e0e45ab0615a99.jar" />
+        <dex dex="E:\Programming\Interesting\BruinMenu\app\build\intermediates\transforms\dex\debug\folders\1000\2\jsoup-1.8.3_6ddc2f8f63df5cdc8595a76e3478935fae8c0a1a\classes.dex" />
     </item>
     <item
-        jar="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="E:\Programming\Interesting\BruinMenu\app\build\intermediates\exploded-aar\com.github.markushi\android-ui\1.2\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
         revision="23.0.1"
-        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
-        <dex dex="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\pre-dexed\release\internal_impl-23.1.0-8a8bd69551e9f3a7e846f28f97cc9e30896942be.jar" />
+        sha1="96436aef5f48b09aca1e0183dfcd7782aa580bd6">
+        <dex dex="E:\Programming\Interesting\BruinMenu\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.github.markushi-android-ui-1.2_3e12a990cefa9a9cd28e65ba14c991a547c891be\classes.dex" />
     </item>
     <item
-        jar="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\Preetham\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.6.0\98476622f10715998eacf9240d6b479f12c66143\okio-1.6.0.jar"
+        jumboMode="true"
+        optimize="true"
         revision="23.0.1"
-        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
-        <dex dex="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\pre-dexed\release\classes-0972e490ad4d3c857292f00e9560417b0ff28a99.jar" />
+        sha1="98476622f10715998eacf9240d6b479f12c66143">
+        <dex dex="E:\Programming\Interesting\BruinMenu\app\build\intermediates\transforms\dex\debug\folders\1000\10\okio-1.6.0_3eb3cb78401dfba70ebb29e2090e6db64bd01644\classes.dex" />
     </item>
     <item
-        jar="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\jars\classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="E:\Programming\Interesting\BruinMenu\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="84e0172ef37bd5ef7e36f8610f14897e105f9d52">
+        <dex dex="E:\Programming\Interesting\BruinMenu\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_a7ed0bf36a7034cea003dd896ce1a716cfbe2d75\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\Programming\Interesting\BruinMenu\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
         revision="23.0.1"
         sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
-        <dex dex="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\pre-dexed\release\classes-e21eff4e096d6e27f15330486e233fbda2abc88b.jar" />
+        <dex dex="E:\Programming\Interesting\BruinMenu\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.1.0_5ab1bd4057730b0b3e2f717064e995e79a5e9840\classes.dex" />
     </item>
     <item
-        jar="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\exploded-aar\com.android.support\design\23.1.0\jars\classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="E:\Programming\Interesting\BruinMenu\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="E:\Programming\Interesting\BruinMenu\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.1.0_c6c0560bf16ecfb40db47aa66cf56ee379846817\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\Programming\Interesting\BruinMenu\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="E:\Programming\Interesting\BruinMenu\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.1.0_a1dfc4c7b74dc5db23b711080847a970a32c38a8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\Programming\Interesting\BruinMenu\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
+        <dex dex="E:\Programming\Interesting\BruinMenu\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-23.1.0_e7e22c10ca4808c78140e5d7799cff735d9d5740\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Preetham\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.5.0\4de2b4ed3445c37ec1720a7d214712e845a24636\okhttp-2.5.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="4de2b4ed3445c37ec1720a7d214712e845a24636">
+        <dex dex="E:\Programming\Interesting\BruinMenu\app\build\intermediates\transforms\dex\debug\folders\1000\10\okhttp-2.5.0_1489958a1dcb50db418a8384ac1e154b67e87934\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\Programming\Interesting\BruinMenu\app\build\intermediates\exploded-aar\it.neokree\MaterialTabs\0.11\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="fef6aa7ea0bb2d6adf10965d0a5bb8e353517bff">
+        <dex dex="E:\Programming\Interesting\BruinMenu\app\build\intermediates\transforms\dex\debug\folders\1000\10\it.neokree-MaterialTabs-0.11_e115075ee876388033d54d916ba8c98c6e13a926\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\Programming\Interesting\BruinMenu\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="e610e022aa33248cf9dc45043f43cdac979cd439">
+        <dex dex="E:\Programming\Interesting\BruinMenu\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_ee79346bbcf08bee22ada426d1e795ef6a8ba9ec\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\Programming\Interesting\BruinMenu\app\build\intermediates\exploded-aar\com.android.support\design\23.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
         revision="23.0.1"
         sha1="19026d31f5d3ae868db81319671a642be5fbba08">
-        <dex dex="F:\Zhouball\AndroidStudioProjects\BruinMenu\app\build\intermediates\pre-dexed\release\classes-b5597bbc23a7e8a05c65076cc5568b20677a704e.jar" />
+        <dex dex="E:\Programming\Interesting\BruinMenu\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-23.1.0_5435c89a13b0ec24ab9f6bbe871e7b069f3625dd\classes.dex" />
     </item>
 
 </items>

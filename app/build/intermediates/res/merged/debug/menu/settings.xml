@@ -9,4 +9,3 @@
         android:title="@string/home"
         app:showAsAction="always"/>
 </menu>
-<!-- From: file:/F:/Zhouball/AndroidStudioProjects/BruinMenu/app/src/main/res/menu/settings.xml -->

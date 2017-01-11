@@ -99,4 +99,4 @@
         android:layout_above="@+id/aButton"
         android:layout_toRightOf="@+id/aButton"
         android:layout_toEndOf="@+id/aButton" />
-</RelativeLayout><!-- From: file:/F:/Zhouball/AndroidStudioProjects/BruinMenu/app/src/main/res/layout/activity_credits.xml -->
+</RelativeLayout>
