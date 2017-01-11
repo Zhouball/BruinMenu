@@ -19,21 +19,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.media.Image;
 import android.util.Log;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
-import zhou.allen.bruinmenu.R;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
@@ -66,7 +59,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     public boolean getChildIsFav(int groupPosition, int childPosition) {
         return getChildData(groupPosition, childPosition).isFavorite();
     }
-    public String getChildNurtiUrl(int groupPosition, int childPosition) {
+    public String getChildNutriUrl(int groupPosition, int childPosition) {
         return getChildData(groupPosition, childPosition).getNutriurl();
     }
 
@@ -124,11 +117,10 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             }
 
             txtListChild.setOnClickListener(new View.OnClickListener() {
-                private String nutriURLprefix = "http://menu.ha.ucla.edu/foodpro/";
 
                 @Override
                 public void onClick(View v) {
-                    String nutriURL = nutriURLprefix + getChildNurtiUrl(groupPosition, childPosition);
+                    String nutriURL = getChildNutriUrl(groupPosition, childPosition);
                     Intent intent = new Intent(_context, LoadNutriDataActivity.class);
                     intent.putExtra("nutriURL", nutriURL);
                     _context.startActivity(intent);
