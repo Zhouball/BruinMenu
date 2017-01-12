@@ -35,7 +35,7 @@ import it.neokree.materialtabs.MaterialTab;
 import it.neokree.materialtabs.MaterialTabHost;
 import it.neokree.materialtabs.MaterialTabListener;
 
-public class MainActivity extends AppCompatActivity implements MaterialTabListener, MenuFragment.OnFragmentInteractionListener, SwipesLeftFragment.OnFragmentInteractionListener, LoadWebViewFragment.OnFragmentInteractionListener{
+public class MainActivity extends AppCompatActivity implements MaterialTabListener, MenuFragment.OnFragmentInteractionListener, SwipesLeftFragment.OnFragmentInteractionListener, LoadWebViewFragment.OnFragmentInteractionListener {
 
     private MaterialTabHost tabHost;
     private ViewPager viewPager;
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
         //get ViewPager and MaterialTabHost
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         tabHost = (MaterialTabHost) findViewById(R.id.materialTabHost);
-        viewAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewAdapter = new MainActivity.ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(viewAdapter);
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activity_main_swipe_refresh_layout);
         mSwipeRefreshLayout.setDistanceToTriggerSync(100);
