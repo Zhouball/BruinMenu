@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 
@@ -63,9 +64,17 @@ public class LoadWebViewFragment extends Fragment {
         // Inflate the layout for this fragment
         View layout =  inflater.inflate(R.layout.fragment_load_web_view, container, false);
         WebView view = (WebView) layout.findViewById(R.id.load_url_web_view);
-        view.loadUrl(url);
-        //view.getSettings().setJavaScriptEnabled(true);
+
+        // Cache webpages
+        view.getSettings().setAppCacheMaxSize(5 * 1024 * 1024); // 5MB
+        view.getSettings().setAppCachePath(getActivity().getCacheDir().getAbsolutePath());
+        view.getSettings().setAppCacheEnabled(true);
+        view.getSettings().setAllowFileAccess(true);
+        view.getSettings().setJavaScriptEnabled(true);
         //view.getSettings().setLoadWithOverviewMode(true);
+        view.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
+
+        view.loadUrl(url);
 
         return layout;
     }
