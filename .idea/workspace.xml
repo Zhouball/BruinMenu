@@ -10,222 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f713f797-8c58-44c8-b218-ece95aa2f741" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/acsf(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/acsf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/aegg(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/aegg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/afsh(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/afsh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/amlk(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/amlk.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/apnt(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/apnt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/asoy(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/asoy.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/atnt(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/atnt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/awht(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/awht.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/bruincafe-logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/ds-logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/icon-1swipe.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/icon-2swipe.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/icon-cold.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/icon-hot.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/icon-hotorcold.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/icon-star.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/lc.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/logo-print.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/nav-left.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/nav-right.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/v(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/v.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/vg(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/vg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/165133.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/acsf(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/acsf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/aegg(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/aegg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/afsh(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/afsh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/amlk(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/amlk.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/apnt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/asoy(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/asoy.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/atnt(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/atnt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/awht(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/awht.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/cafe1919-logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/ds-logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/icon-hotonly.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/icon-star.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/lc.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/logo-print.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/nav-left.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/nav-right.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/v(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/v.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/vg(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/vg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/acsf(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/acsf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/aegg(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/aegg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/afsh(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/afsh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/amlk(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/amlk.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/apnt(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/apnt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/asoy(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/asoy.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/atnt(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/atnt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/awht(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/awht.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/ds-logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/lc.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/logo-print.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/nav-left.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/nav-right.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/rendezvous-logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/v(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/v.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/vg(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/vg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/acsf.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/aegg(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/aegg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/afsh(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/afsh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/amlk(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/amlk.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/apnt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/asoy(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/asoy.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/atnt(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/atnt.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/awht(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/awht.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/ds-logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/hedrickstudy-logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/icon-star.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/lc.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/logo-print.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/nav-left.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/nav-right.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/v(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/v.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/vg(1).png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/vg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/Dining.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/Menus.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/Menus.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/MenusBoutique.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/MenusBoutique.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/MenusBruinCafe.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/MenusBruinCafe.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/RecipeBoxed.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/RecipeNutritionFacts.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/RecipeRedirect.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/global.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/jquery.min.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/main.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/modernizr.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/plugins.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/print.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/respond.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/responsive.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/responsive.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/search.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/swiper.jquery.min.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Bruin Café Menu_files/swiper.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/Dining.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/Menus.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/Menus.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/MenusBoutique.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/MenusBoutique.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/MenusCafe1919.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/MenusCafe1919.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/RecipeBoxed.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/RecipeNutritionFacts.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/RecipeRedirect.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/global.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/jquery.min.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/main.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/modernizr.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/plugins.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/print.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/respond.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/responsive.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/responsive.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/search.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/swiper.jquery.min.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Café 1919 Menu_files/swiper.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/Dining.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/Menus.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/Menus.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/MenusBoutique.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/MenusBoutique.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/MenusRendezvous.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/MenusRendezvous.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/RecipeBoxed.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/RecipeNutritionFacts.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/RecipeRedirect.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/global.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/jquery.min.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/main.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/modernizr.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/plugins.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/print.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/respond.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/responsive.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/responsive.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/search.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/swiper.jquery.min.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Rendezvous Menu_files/swiper.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/Dining.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/Menus.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/Menus.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/MenusBoutique.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/MenusBoutique.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/MenusHedrickStudy.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/MenusHedrickStudy.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/RecipeBoxed.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/RecipeNutritionFacts.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/RecipeRedirect.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/global.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/jquery.min.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/main.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/modernizr.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/plugins.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/print.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/respond.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/responsive.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/responsive.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/search.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/swiper.jquery.min.js.download" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/The Study at Hedrick Menu_files/swiper.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app-release.apk" afterPath="$PROJECT_DIR$/app/app-release.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug-androidTest.ap_" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug.ap_" afterPath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug.ap_" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/design/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/design/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/v7/appcompat/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/v7/appcompat/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/it/neokree/materialtabs/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/it/neokree/materialtabs/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values/values.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values/values.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" afterPath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/rhombus/bruinmenu/LoadWebViewFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/rhombus/bruinmenu/LoadWebViewFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/rhombus/bruinmenu/QuickDiningMenusActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/rhombus/bruinmenu/QuickDiningMenusActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
     </list>
     <ignored path="BruinMenu.iws" />
@@ -271,7 +61,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="264">
@@ -293,7 +83,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoadWebViewFragment.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LoadWebViewFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rhombus/bruinmenu/LoadWebViewFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
@@ -1648,7 +1438,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="E:\Programming\Interesting\BruinMenu" value="4452375544703" />
+        <entry key="E:\Programming\Interesting\BruinMenu" value="4452483209448" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -1957,10 +1747,10 @@
         <option value="$PROJECT_DIR$/app/src/main/res/menu/main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/rhombus/bruinmenu/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_quick_dining_menus.xml" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/rhombus/bruinmenu/QuickDiningMenusActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/rhombus/bruinmenu/LoadWebViewFragment.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
       </list>
     </option>
   </component>
@@ -2019,34 +1809,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BruinMenu" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BruinMenu" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="manifests" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidManifestsGroupNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -2752,14 +2514,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
@@ -2788,6 +2542,14 @@
           <folding>
             <element signature="e#3056#3057#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
