@@ -1,0 +1,109 @@
+﻿
+div.recipecontainer h2
+{
+    margin: 10px;
+}
+
+div.fancybox-inner
+{
+    overflow: visible !important;
+}
+
+div.recipecontainer
+{
+    border: 0;
+    height: 600px;
+    margin: auto;
+    overflow: visible;
+    padding: 5px 0;
+    position: relative;
+    width: 860px;
+}
+
+div.nfbox
+{
+    float: left;
+    left: -55px;
+    margin-right: -50px;
+    position: relative;
+}
+
+div.productinfo
+{
+    float: right;
+    font-size: 14px;
+    margin-bottom: 10px;
+    padding-right: 5px;
+    width: 658px;
+}
+
+div.altname
+{
+    font-style: italic;
+}
+
+div.ingred_allergen, div.ingred_allergen p
+{
+    font-size: 14px;
+}
+
+div.ia_img
+{
+    bottom: 140px;
+    font-size: 12px;
+    height: 260px;
+    overflow-y: scroll;
+    position: absolute;
+    right: 405px;
+    width: 253px;
+}
+
+div.ia_img p
+{
+    font-size: 12px;
+}
+
+div.imageSpacer
+{
+    float: right;
+    height: 299px;
+    vertical-align: bottom;
+    width: 400px;
+}
+
+div.imageSpacer2
+{
+    float: right;
+    height: 125px;
+    width: 400px;
+}
+
+div.pagelink
+{
+    clear: both;
+    font-size: 12px;
+    padding: 0 0 10px 10px;
+    text-align: left;
+}
+
+img.recipeimage
+{
+    border: 0;
+    bottom: -50px;
+    height: 450px;
+    position: absolute;
+    right: -50px;
+    width: 450px;
+}
+
+div.nutritiondisclaimer
+{
+    font-size: 13px;
+    font-style: italic;
+    bottom: 0px;
+    left: 0px;
+    padding: 5px;
+    position: absolute;
+    text-align: justify;
+    width: 850px;
+}

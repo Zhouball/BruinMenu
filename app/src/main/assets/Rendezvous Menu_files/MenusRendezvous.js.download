@@ -1,0 +1,15 @@
+﻿$(document).ready(function () {
+
+    //initialize swiper 
+    var mySwiper = new Swiper('.swiper-container', {
+        // Optional parameters
+        direction: 'horizontal',
+        loop: true,
+        autoHeight: true,
+        nextButton: '#nav-right',
+        prevButton: '#nav-left',
+        onSlideChangeEnd: SlideChange
+    });
+
+    NavInit(mySwiper);
+});

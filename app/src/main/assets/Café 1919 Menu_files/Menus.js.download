@@ -1,0 +1,43 @@
+﻿$(document).ready(function () {
+
+    $('.recipelink').click(function (e) {
+        if (e.which == 1 && Modernizr.mq('(min-width: 960px)')) {
+
+            $('<a href="' + $(this).attr('href') + '/Boxed">').fancybox({
+                'beforeShow': function () {
+                    $('.fancybox-inner').attr('style', 'width: auto; height:auto; overflow : visible;');
+                },
+                'afterShow': function () {
+                    $('.fancybox-inner').attr('style', 'width: auto; height:auto; overflow : visible;');
+                },
+                'overflow': 'visible',
+                'padding': 0,
+                'type': 'ajax'
+            }).trigger('click');
+
+            var u = $(this).attr('href').substring(8);
+
+            try {
+                ga('send', 'pageview', u.substring(u.indexOf("/")));
+            }
+            catch (e) {
+            }
+
+            return false;
+        }
+    });
+
+    $('span.tooltip-target-wrapper').hover(function () {
+        $(this).next('.item-description-wrapper').show();
+    }, function () {
+        $(this).next('.item-description-wrapper').hide();
+    });
+
+    $('#dateselect').change(function () {
+        if ($(this).val() != "") {
+            window.location.href = $(this).val();
+        }
+
+    });
+
+});

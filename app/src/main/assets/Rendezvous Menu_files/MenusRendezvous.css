@@ -1,0 +1,42 @@
+﻿
+
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::
+	ITEM STYLES
+::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+div.style-list
+{
+    margin-bottom: 20px;
+}
+
+div.style-list .menu-item
+{
+    margin-bottom: 2px;
+}
+
+div.style-list .menu-item-name
+{
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+}
+
+div.style-list .menu-item-description
+{
+    display: inline;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+div.style-list .menu-item-price
+{
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    padding-top: 3px;
+}
+
+ul.day-list>li>div
+{
+    margin-top: 5px;
+}

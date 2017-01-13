@@ -5,11 +5,13 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 
 /**
@@ -64,15 +66,35 @@ public class LoadWebViewFragment extends Fragment {
         // Inflate the layout for this fragment
         View layout =  inflater.inflate(R.layout.fragment_load_web_view, container, false);
         WebView view = (WebView) layout.findViewById(R.id.load_url_web_view);
+        view.setWebViewClient(new WebViewClient());
 
-        // Cache webpages
-        view.getSettings().setAppCacheMaxSize(5 * 1024 * 1024); // 5MB
-        view.getSettings().setAppCachePath(getActivity().getCacheDir().getAbsolutePath());
+        view.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(event.getAction() == KeyEvent.ACTION_DOWN) {
+                    WebView webView = (WebView) v;
+                    switch(keyCode) {
+                        case KeyEvent.KEYCODE_BACK:
+                            if(webView.canGoBack()) {
+                                webView.goBack();
+                                return true;
+                            }
+                            break;
+                    }
+                }
+
+                return false;
+            }
+        });
+        /* TODO: fix caching (instead of just loading saved html webpage like I am now)
+        view.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
         view.getSettings().setAppCacheEnabled(true);
+        view.getSettings().setAppCachePath(getActivity().getCacheDir().getAbsolutePath());
         view.getSettings().setAllowFileAccess(true);
+        */
+
         view.getSettings().setJavaScriptEnabled(true);
         //view.getSettings().setLoadWithOverviewMode(true);
-        view.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
 
         view.loadUrl(url);
 

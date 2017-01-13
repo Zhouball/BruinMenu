@@ -1,0 +1,11 @@
+﻿div.redirect-info
+{
+    padding: 10px;
+}
+
+div.redirect-info p
+{
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}

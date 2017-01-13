@@ -1,0 +1,357 @@
+﻿/* :::::::::::::::::::::::::::::::::::::::::::::::::::
+	CONTAINERS
+::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+.swiper-container
+{
+    width: 900px;
+}
+
+div.menu-block
+{
+    display: inline-block;
+    margin-bottom: 30px;
+    padding: 10px;
+    text-align: left;
+    vertical-align: top;
+    width: 428px;
+}
+
+div.img-wrapper-left
+{
+    text-align: right;
+    width: 100%;
+}
+
+div.img-wrapper-right
+{
+    text-align: left;
+    width: 100%;
+}
+
+img.spill
+{
+    border: 0;
+    max-width: 100%;
+}
+
+
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::
+	NAVIGATION
+::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+#page-nav-wrapper
+{
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.nav-button
+{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#page-nav-shroud
+{
+    display: inline-block;
+    overflow-x: hidden;
+    position: relative;
+    vertical-align: middle;
+}
+
+div.nav-centered
+{
+    width: calc(100% - 50px);
+}
+
+#page-nav, #page-nav-inner
+{
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    white-space: nowrap;
+}
+
+button.page-nav-button
+{
+	-moz-border-radius: 5px;
+    -moz-transition: 0.1s all ease;
+    -webkit-transition: 0.1s all ease;
+	background: #FFFFFF;
+	border: 2px solid #4e8db6;
+    border-radius: 5px;
+	color: #4e8db6;
+    display: inline-block;
+	font-size: 14px;
+    padding: 3px 10px 3px 10px;
+    text-decoration: none;
+	text-transform: uppercase;
+    transition: 0.1s all ease;
+}
+
+/* Hover doesn't work right on mobile */
+@media only screen and (min-width: 960px)
+{
+    button.page-nav-button:hover 
+    {
+	    background: #4e8db6;
+	    border: 2px solid #4e8db6;
+	    color: #FFFFFF;
+    }
+}
+
+button.active  
+{	
+	background: #1e4b87;
+	border: 2px solid #1e4b87;
+	color: #FFFFFF;
+}
+
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::
+	HEADER STYLES
+::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+#unit-logo
+{
+    margin: 0 auto 30px auto;
+    max-height: 200px;
+}
+
+img.section-header
+{
+    margin: 0 auto 20px auto;
+    max-width: 100%;
+}
+
+div.section-header
+{
+    text-align: center;
+}
+
+div.info-box
+{
+	background-color: #D7EAF1;
+	padding: 10px;
+	border-radius: 10px;
+	margin-bottom: 20px;
+	width: calc(100% - 20px);
+}
+
+div.info-box p
+{
+    margin: 0;
+}
+
+div.info-box small
+{
+    text-decoration: underline;
+}
+
+div.info-box ul
+{
+    margin: 0 0 0 10px;
+}
+
+div.section-spacer
+{
+    display: block;
+    height: 20px;
+}
+
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::
+	ITEM STYLES
+::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+span.menu-item-altname
+{
+    display: block;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: bold;
+    line-height: normal;
+}
+
+div.style-entree .menu-item
+{
+    line-height: 1.1em;
+    margin-bottom: 20px;
+}
+
+div.style-entree .menu-item-name
+{
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 18px;
+    padding-bottom: 2px;
+}
+
+div.style-entree .menu-item-description
+{
+    display: block;
+    font-size: 14px;
+    line-height: normal;
+    text-align: left;
+}
+
+div.style-entree .menu-item-price
+{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+div.style-side
+{
+    margin-bottom: 20px;
+}
+
+div.style-side .menu-item
+{
+    margin-bottom: 2px;
+}
+
+div.style-side .menu-item-name
+{
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+}
+
+div.style-side .menu-item-description, div.style-side .menu-item-altname
+{
+    display: none;
+}
+
+div.style-side .menu-item-price
+{
+    display: inline-block;
+    float: right;
+    font-size: 14px;
+    font-weight: bold;
+    padding-top: 3px;
+}
+
+div.style-center div, div.style-center .menu-item-description
+{
+    text-align: center;
+}
+
+span.style-inline img.webcode
+{
+    height: 16px;
+}
+
+div.style-3flow div.menu-item
+{
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+    vertical-align: top;
+    width: 288px;
+}
+
+div.style-2flow div.menu-item
+{
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+    vertical-align: top;
+    width: 418px;
+}
+
+ul.day-list
+{
+    list-style-type: none;
+}
+
+ul.day-list>li .menu-item
+{
+    padding-left: 20px;
+}
+
+ul.day-list>li .style-side .menu-item
+{
+    margin-bottom: 20px;
+    margin-top: -20px;
+    padding-left: 40px;
+}
+
+ul.day-list>li h4
+{
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
+    text-indent: 5px;
+    margin-bottom: 2px;
+}
+
+table.coffee-list td
+{
+    font-size: 16px;
+}
+
+div.style-noprice .menu-item-price
+{
+    display: none;
+}
+
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::
+	FIXES
+::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+#fancybox-overlay
+{
+    position: fixed;
+}
+    
+
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::
+	MOBILE STYLES
+::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+@media only screen and (max-width: 959px)
+{
+    .swiper-container
+    {
+        height: auto;
+        width: 100%;
+    }
+
+    div.menu-block
+    {
+        display: block;
+        padding: 0;
+        width: 100%;
+    }
+    
+    div.stack
+    {
+        margin-bottom: -18px;
+    }
+
+    div.img-wrapper-left, div.img-wrapper-right
+    {
+        text-align: center;
+        width: 100%;
+    }
+
+    img.spill
+    {
+        border: 0;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100%;
+    }
+    
+    div.style-2flow div.menu-item, div.style-3flow div.menu-item
+    {
+        display: block;
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+    }
+}
+
+

@@ -102,19 +102,19 @@ public class QuickDiningMenusActivity extends AppCompatActivity implements Mater
             Fragment fragment = null;
             switch (num) {
                 case 0:
-                    fragment = LoadWebViewFragment.newInstance("http://menu.dining.ucla.edu/Menus/BruinCafe");
+                    fragment = LoadWebViewFragment.newInstance("file:///android_asset/Bruin Café Menu.html");
                     break;
                 case 1:
-                    fragment = LoadWebViewFragment.newInstance("http://menu.dining.ucla.edu/Menus/Cafe1919");
+                    fragment = LoadWebViewFragment.newInstance("file:///android_asset/Café 1919 Menu.html");
                     break;
                 case 2:
-                    fragment = LoadWebViewFragment.newInstance("http://menu.dining.ucla.edu/Menus/Rendezvous");
+                    fragment = LoadWebViewFragment.newInstance("file:///android_asset/Rendezvous Menu.html");
                     break;
                 case 3:
                     fragment = LoadWebViewFragment.newInstance("http://menu.dining.ucla.edu/Menus/GrabNGo");
                     break;
                 case 4:
-                    fragment = LoadWebViewFragment.newInstance("http://menu.dining.ucla.edu/Menus/HedrickStudy");
+                    fragment = LoadWebViewFragment.newInstance("file:///android_asset/The Study at Hedrick Menu.html");
                     break;
             }
             return fragment;

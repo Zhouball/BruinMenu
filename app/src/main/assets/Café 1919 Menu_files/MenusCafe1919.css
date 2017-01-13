@@ -1,0 +1,17 @@
+﻿
+
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::
+	ITEM STYLES
+::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+
+table.coffee-list td .menu-item-description
+{
+    display: block;
+    font-size: 14px;
+}
+
+table.coffee-list td .menu-item-webcodes
+{
+    white-space: nowrap;
+}
