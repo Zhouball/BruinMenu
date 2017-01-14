@@ -117,6 +117,7 @@ public class UpdateDBService extends Service {
                             String mealTimeString = menu.text().toLowerCase();
                             mealTime = mealTimeString.contains("breakfast") ? "breakfast" :
                                     mealTimeString.contains("lunch") ? "lunch" :
+                                            mealTimeString.contains("brunch") ? "lunch" :
                                             mealTimeString.contains("dinner") ? "dinner" : "";
                         } else if (menu.hasClass("menu-block")) {
                             // Get dining hall name

@@ -114,7 +114,8 @@ public class RefreshScreenActivity extends Activity
                         if ("page-header".equals(menu.id())) {
                             String mealTimeString = menu.text().toLowerCase();
                             mealTime = mealTimeString.contains("breakfast") ? "breakfast" :
-                                    mealTimeString.contains("lunch") ? "lunch" :
+                                            mealTimeString.contains("lunch") ? "lunch" :
+                                            mealTimeString.contains("brunch") ? "lunch" :
                                             mealTimeString.contains("dinner") ? "dinner" : "";
                         } else if (menu.hasClass("menu-block")) {
                             // Get dining hall name
