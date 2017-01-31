@@ -86,6 +86,11 @@ public class UpdateDBService extends Service {
                     //Response response = client.newCall(request).execute();
                     Call call = client.newCall(request);
                     Response response = call.execute();
+                    if(!response.isSuccessful()) {
+                        //TODO: Notify that refresh failed.
+                        return null;
+                    }
+
                     String html = response.body().string();
 
                     response.body().close();
@@ -102,7 +107,6 @@ public class UpdateDBService extends Service {
                     // also be created.
                     SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-                    //TODO: don't delete if the page doesn't return any contents
                     db.delete(MenuDBContract.HallEntry.TABLE_NAME, null, null);
                     db.delete(MenuDBContract.KitchenEntry.TABLE_NAME, null, null);
                     db.delete(MenuDBContract.MenuEntry.TABLE_NAME, null, null);

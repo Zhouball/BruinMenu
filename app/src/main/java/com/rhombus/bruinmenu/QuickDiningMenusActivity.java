@@ -89,7 +89,7 @@ public class QuickDiningMenusActivity extends AppCompatActivity implements Mater
 
     private class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
-        String menus[] = {"BCafe", "Cafe1919", "Rendezvous", "GrabNGo", "Hedrick Study"};
+        String menus[] = {"BCafe", "Cafe1919", "Rendezvous", "Hedrick Study"};
 
         FragmentManager fragmentManager;
 
@@ -109,11 +109,11 @@ public class QuickDiningMenusActivity extends AppCompatActivity implements Mater
                     break;
                 case 2:
                     fragment = LoadWebViewFragment.newInstance("file:///android_asset/Rendezvous Menu.html");
-                    break;
+                    break;/*
                 case 3:
                     fragment = LoadWebViewFragment.newInstance("http://menu.dining.ucla.edu/Menus/GrabNGo");
-                    break;
-                case 4:
+                    break;*/
+                case 3:
                     fragment = LoadWebViewFragment.newInstance("file:///android_asset/The Study at Hedrick Menu.html");
                     break;
             }

@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
         viewAdapter = new MainActivity.ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(viewAdapter);
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activity_main_swipe_refresh_layout);
-        mSwipeRefreshLayout.setDistanceToTriggerSync(100);
+        mSwipeRefreshLayout.setDistanceToTriggerSync(200);
 
         viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override

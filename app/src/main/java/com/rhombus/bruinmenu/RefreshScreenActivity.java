@@ -74,7 +74,7 @@ public class RefreshScreenActivity extends Activity
                 try {
                     OkHttpClient client = new OkHttpClient();
 
-                    String url = "http://menu.dining.ucla.edu/Menus";
+                    String url = "http://menu.dining.ucla.edu/Menu";
                     client.setConnectTimeout(15, TimeUnit.SECONDS); // connect timeout
                     client.setReadTimeout(15, TimeUnit.SECONDS);    // socket timeout
                     Request request = new Request.Builder()
@@ -84,6 +84,12 @@ public class RefreshScreenActivity extends Activity
                     //Response response = client.newCall(request).execute();
                     Call call = client.newCall(request);
                     Response response = call.execute();
+                    if(!response.isSuccessful()) {
+                        //TODO: Notify that refresh failed.
+                        //Toast.makeText(getBaseContext(), "Couldn't get page. It's possible the Menu website is down.", Toast.LENGTH_LONG).show();
+                        return null;
+                    }
+
                     String html = response.body().string();
 
                     response.body().close();
@@ -100,7 +106,6 @@ public class RefreshScreenActivity extends Activity
                     // also be created.
                     SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-                    //TODO: don't delete if the page doesn't return any contents
                     db.delete(MenuDBContract.HallEntry.TABLE_NAME, null, null);
                     db.delete(MenuDBContract.KitchenEntry.TABLE_NAME, null, null);
                     db.delete(MenuDBContract.MenuEntry.TABLE_NAME, null, null);
