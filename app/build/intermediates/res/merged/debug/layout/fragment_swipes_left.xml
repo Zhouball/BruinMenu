@@ -1,6 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="zhou.allen.bruinmenu.SwipesLeftFragment">
+    android:layout_height="match_parent" tools:context="com.rhombus.bruinmenu.SwipesLeftFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -142,4 +142,3 @@
         </RelativeLayout>
     </RelativeLayout>
 </FrameLayout>
-<!-- From: file:/F:/Zhouball/AndroidStudioProjects/BruinMenu/app/src/main/res/layout/fragment_swipes_left.xml -->

@@ -12,4 +12,4 @@
         android:title = "Show notifications on refresh"
         android:defaultValue="false" />
 
-</PreferenceScreen><!-- From: file:/F:/Zhouball/AndroidStudioProjects/BruinMenu/app/src/main/res/xml/preference.xml -->
+</PreferenceScreen>

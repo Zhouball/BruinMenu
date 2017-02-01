@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="zhou.allen.bruinmenu"
-    android:versionCode="2"
-    android:versionName="1.0.1" >
+    package="com.rhombus.bruinmenu"
+    android:versionCode="5"
+    android:versionName="2.2.0" >
 
     <uses-sdk
         android:minSdkVersion="15"
         android:targetSdkVersion="23" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -20,7 +19,7 @@
 
         <!-- Connecting Screen -->
         <activity
-            android:name="zhou.allen.bruinmenu.LoadingScreenActivity"
+            android:name="com.rhombus.bruinmenu.LoadingScreenActivity"
             android:label="@string/app_name"
             android:noHistory="true" >
             <intent-filter>
@@ -32,44 +31,39 @@
 
         <!-- Main Activity (display menu) -->
         <activity
-            android:name="zhou.allen.bruinmenu.MainActivity"
+            android:name="com.rhombus.bruinmenu.MainActivity"
             android:label="@string/app_name"
-            android:launchMode="singleTop" >
-        </activity>
+            android:launchMode="singleTop" />
 
         <!-- Main Activity (display menu) -->
         <activity
-            android:name="zhou.allen.bruinmenu.RefreshScreenActivity"
-            android:noHistory="true" >
-        </activity>
+            android:name="com.rhombus.bruinmenu.RefreshScreenActivity"
+            android:noHistory="true" />
 
-        <service android:name="zhou.allen.bruinmenu.UpdateDBService" >
-        </service>
+        <service android:name="com.rhombus.bruinmenu.UpdateDBService" />
 
-        <activity android:name="zhou.allen.bruinmenu.CreditsActivity" >
-        </activity>
+        <activity android:name="com.rhombus.bruinmenu.CreditsActivity" />
         <activity
-            android:name="zhou.allen.bruinmenu.NutriDataWebView"
+            android:name="com.rhombus.bruinmenu.NutriDataWebView"
             android:label="Nutritional Data"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="zhou.allen.bruinmenu.LoadNutriDataActivity"
-            android:noHistory="true" >
-        </activity>
+            android:name="com.rhombus.bruinmenu.LoadNutriDataActivity"
+            android:noHistory="true" />
         <activity
-            android:name="zhou.allen.bruinmenu.SettingsActivity"
-            android:label="@string/title_activity_settings" >
-        </activity>
+            android:name="com.rhombus.bruinmenu.SettingsActivity"
+            android:label="@string/title_activity_settings" />
 
         <receiver
-            android:name="zhou.allen.bruinmenu.BootReceiver"
+            android:name="com.rhombus.bruinmenu.BootReceiver"
             android:enabled="false" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="zhou.allen.action.RESET_ALARM" />
+                <action android:name="com.rhombus.action.RESET_ALARM" />
             </intent-filter>
         </receiver>
+
+        <activity android:name="com.rhombus.bruinmenu.QuickDiningMenusActivity" />
     </application>
 
 </manifest>

@@ -2,11 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="zhou.allen.bruinmenu.SettingsActivity">
+    tools:context="com.rhombus.bruinmenu.SettingsActivity">
     <item
         android:id="@+id/home"
         android:orderInCategory="100"
         android:title="@string/home"
         app:showAsAction="always"/>
 </menu>
-<!-- From: file:/F:/Zhouball/AndroidStudioProjects/BruinMenu/app/src/main/res/menu/settings.xml -->

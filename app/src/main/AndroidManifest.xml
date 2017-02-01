@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="zhou.allen.bruinmenu" >
+    package="com.rhombus.bruinmenu">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
 
         <!-- Connecting Screen -->
         <activity
             android:name=".LoadingScreenActivity"
             android:label="@string/app_name"
-            android:noHistory="true" >
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,42 +27,37 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:launchMode="singleTop" >
-        </activity>
+            android:launchMode="singleTop"></activity>
 
         <!-- Main Activity (display menu) -->
         <activity
             android:name=".RefreshScreenActivity"
-            android:noHistory="true" >
-        </activity>
+            android:noHistory="true"></activity>
 
-        <service
-            android:name=".UpdateDBService" >
-        </service>
+        <service android:name=".UpdateDBService"></service>
 
-        <activity android:name=".CreditsActivity" >
-        </activity>
+        <activity android:name=".CreditsActivity"></activity>
         <activity
             android:name=".NutriDataWebView"
             android:label="Nutritional Data"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".LoadNutriDataActivity"
-            android:noHistory="true" >
-        </activity>
+            android:noHistory="true"></activity>
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings" >
-        </activity>
+            android:label="@string/title_activity_settings"></activity>
 
-        <receiver android:name=".BootReceiver"
+        <receiver
+            android:name=".BootReceiver"
             android:enabled="false">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"></action>
-                <action android:name="zhou.allen.action.RESET_ALARM"></action>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="com.rhombus.action.RESET_ALARM" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".QuickDiningMenusActivity"></activity>
     </application>
 
 </manifest>

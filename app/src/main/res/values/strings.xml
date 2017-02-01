@@ -5,15 +5,16 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="action_quick_dining_menu">Quick Dining Menus</string>
     <string name="action_credits">Credits</string>
     <string name="home">Home</string>
     <string name="credits">Authors: Allen Zhou &amp; Preetham Reddy N.\n \n
     This project is licensed under the terms of the MIT license.\n \n
-    Source code is available at https://github.com/Zhouball/BruinMenu \n \n
+    Source code is available at https://github.com/Zhouball/BruinMenu OR https://github.com/preethamrn/BruinMenu \n \n
     If you find an issue, send us an email at a.zhou@ucla.edu \n \n</string>
     <string name="title_activity_nutri_data_web_view">NutriDataWebView</string>
     <string name="title_activity_settings">SettingsActivity</string>
-    
+
     <string-array name="frequency_array">
         <item>Update every day</item>
         <item>Update every twelve hours</item>
@@ -23,5 +24,8 @@
         <item>Update every hour</item>
         <item>Update every thirty minutes</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
